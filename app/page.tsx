@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import CountUp from "@/components/CountUp";
+import HeroNetwork from "@/components/HeroNetwork";
 
 export default function Home() {
   return (
@@ -33,14 +33,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative flex justify-center">
-            <Image
-              src="/images/heronetworkimage.png"
-              alt="Impact Works network connecting community organizations"
-              width={560}
-              height={560}
-              className="w-full max-w-md md:max-w-full"
-              priority
-            />
+            <HeroNetwork />
           </div>
         </div>
       </section>
@@ -49,13 +42,22 @@ export default function Home() {
       <section className="section-padding bg-light-bg">
         <div className="max-w-site mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="flex justify-center">
-            <Image
-              src="/images/fragmented-system.png"
-              alt="Person navigating disconnected social services"
-              width={480}
-              height={480}
-              className="w-full max-w-sm md:max-w-md"
-            />
+            {/* Illustration: inline SVG fallback */}
+            <div className="w-full max-w-sm md:max-w-md bg-white rounded-2xl p-10 border border-gray-100 shadow-sm">
+              <div className="flex flex-col items-center text-center gap-4">
+                <svg className="w-24 h-24 text-impact-blue/20" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                </svg>
+                <div className="grid grid-cols-3 gap-3 w-full">
+                  {["Phone calls", "Outdated info", "Long waits", "Paperwork", "Wrong referrals", "No coordination"].map((label) => (
+                    <div key={label} className="bg-red-50 text-red-400 text-xs font-medium rounded-lg py-2 px-1">
+                      {label}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-sm text-gray-400 mt-2">The current experience for people seeking help</p>
+              </div>
+            </div>
           </div>
           <div>
             <p className="text-sm font-semibold text-impact-blue uppercase tracking-wider mb-3">
@@ -86,33 +88,33 @@ export default function Home() {
             A smarter path from need to help — in three simple steps.
           </p>
 
-          <Image
-            src="/images/linksyprocessmap.png"
-            alt="Linksy 3-step process: Ask for Help, AI Matches, Instant Referral"
-            width={960}
-            height={320}
-            className="w-full max-w-4xl mx-auto mb-12"
-          />
-
           <div className="grid md:grid-cols-3 gap-8 text-left">
             {[
               {
                 step: "01",
                 title: "Ask for Help",
                 desc: "Residents simply ask Linksy what they need — in plain language, on any device.",
+                icon: "M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z",
               },
               {
                 step: "02",
                 title: "Smart Matching",
                 desc: "Linksy analyzes available services and identifies the best organizations to help.",
+                icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z",
               },
               {
                 step: "03",
                 title: "Instant Referral",
                 desc: "The request is routed directly to the provider — no waiting, no paperwork.",
+                icon: "M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5",
               },
             ].map((item) => (
               <div key={item.step} className="bg-light-bg rounded-xl p-8">
+                <div className="w-12 h-12 bg-impact-blue/10 rounded-xl flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-impact-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
+                  </svg>
+                </div>
                 <span className="text-sm font-bold text-teal-accent">
                   Step {item.step}
                 </span>

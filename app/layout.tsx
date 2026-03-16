@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "ImpactWorks",
-  description: "Mission-Driven. Systems-Powered. Kingdom-Focused.",
+  description: "Connecting communities to critical services through data-driven technology.",
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased flex flex-col min-h-screen">
+      <body className="font-sans antialiased flex flex-col min-h-screen bg-light-bg text-text-dark">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

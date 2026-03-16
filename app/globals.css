@@ -3,5 +3,15 @@
 @tailwind utilities;
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  color: #0F172A;
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32 px-6;
+  }
+  .container-site {
+    @apply max-w-site mx-auto w-full;
+  }
 }

@@ -115,7 +115,7 @@ export default function Platform() {
           </p>
 
           <Image
-            src="/images/linksy-process.png"
+            src="/images/linksyprocessmap.png"
             alt="Linksy 3-step process"
             width={960}
             height={320}

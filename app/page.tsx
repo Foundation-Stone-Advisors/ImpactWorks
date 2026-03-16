@@ -34,7 +34,7 @@ export default function Home() {
           </div>
           <div className="relative flex justify-center">
             <Image
-              src="/images/hero-network.png"
+              src="/images/heronetworkimage.png"
               alt="Impact Works network connecting community organizations"
               width={560}
               height={560}
@@ -87,7 +87,7 @@ export default function Home() {
           </p>
 
           <Image
-            src="/images/linksy-process.png"
+            src="/images/linksyprocessmap.png"
             alt="Linksy 3-step process: Ask for Help, AI Matches, Instant Referral"
             width={960}
             height={320}

@@ -101,7 +101,7 @@ export default function Impact() {
             Real-time visibility into community service needs and outcomes.
           </p>
           <Image
-            src="/images/dashboard.png"
+            src="/images/datadashboard.png"
             alt="Community Service Dashboard showing referral volume, demand categories, and partner organizations"
             width={1120}
             height={640}

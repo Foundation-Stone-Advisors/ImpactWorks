@@ -1,3 +1,29 @@
+import Image from "next/image";
+
+const team = [
+  {
+    name: "Connie Thomas",
+    title: "Chief Executive Officer",
+    photo: "/team/connie.jpg",
+    bio: "Connie is a Licensed Clinical Social Worker and President & CEO of Impact Clay since 2022. A Clay County native, she has led community initiatives across the business, faith-based, nonprofit, and government sectors — including the Impact Clay Train, which delivers vital care to underserved areas.",
+    color: "border-impact-blue",
+  },
+  {
+    name: "Michelle Reaves",
+    title: "Chief Operating Officer",
+    photo: "/team/michelle.jpg",
+    bio: "Michelle Reaves brings expertise in project coordination, administrative operations, and grant writing. Certified in Six Sigma Lean Black Belt and Change Management, she previously secured critical funding and led process improvement at the Clay County Sheriff\u2019s Office.",
+    color: "border-teal-accent",
+  },
+  {
+    name: "Heather Johnson",
+    title: "Administrative Assistant & Data Systems Analyst",
+    photo: "/team/heather.jpg",
+    bio: "Heather brings 20+ years of administrative experience across for-profit, nonprofit, and military settings as a Navy veteran. She holds a BA in Psychology from UNF and serves as a licensed Pastoral Care Lay Leader for the Diocese of North Florida.",
+    color: "border-impact-blue",
+  },
+];
+
 export default function About() {
   return (
     <div>
@@ -89,6 +115,40 @@ export default function About() {
         </div>
       </section>
 
+      {/* Our Team */}
+      <section className="section-padding bg-light-bg">
+        <div className="max-w-site mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-dark text-center mb-12">
+            Our Team
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {team.map((member) => (
+              <div
+                key={member.name}
+                className={`bg-white rounded-xl p-8 text-center border-t-4 ${member.color}`}
+              >
+                <Image
+                  src={member.photo}
+                  alt={member.name}
+                  width={128}
+                  height={128}
+                  className="w-32 h-32 rounded-full object-cover mx-auto mb-6"
+                />
+                <h3 className="text-xl font-semibold text-text-dark">
+                  {member.name}
+                </h3>
+                <p className="text-impact-blue font-medium text-sm mt-1 mb-4">
+                  {member.title}
+                </p>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {member.bio}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Expansion Section */}
       <section className="section-padding bg-gradient-to-br from-deep-blue to-impact-blue text-white">
         <div className="max-w-site mx-auto text-center">
@@ -102,7 +162,6 @@ export default function About() {
             From Clay County to statewide networks.
           </p>
 
-          {/* Expansion visual */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-4">
             {[
               { label: "Clay County", status: "active" },

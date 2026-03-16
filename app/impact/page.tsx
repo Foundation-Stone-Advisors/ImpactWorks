@@ -1,4 +1,3 @@
-import Image from "next/image";
 import CountUp from "@/components/CountUp";
 
 const stories = [
@@ -100,13 +99,42 @@ export default function Impact() {
           <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-12">
             Real-time visibility into community service needs and outcomes.
           </p>
-          <Image
-            src="/images/datadashboard.png"
-            alt="Community Service Dashboard showing referral volume, demand categories, and partner organizations"
-            width={1120}
-            height={640}
-            className="w-full rounded-2xl shadow-lg border border-gray-200"
-          />
+          {/* Dashboard mockup */}
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 md:p-10 text-left">
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-lg font-bold text-text-dark">Community Service Dashboard</h3>
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-400" />
+                <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                <div className="w-3 h-3 rounded-full bg-green-400" />
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-4 mb-8">
+              {[
+                { label: "Total Referrals", value: "2,850" },
+                { label: "Active Cases", value: "1,120" },
+                { label: "Successful Outcomes", value: "87%" },
+              ].map((m) => (
+                <div key={m.label} className="border border-gray-100 rounded-xl p-4 text-center">
+                  <p className="text-xs text-gray-500 mb-1">{m.label}</p>
+                  <p className="text-2xl font-bold font-data text-text-dark">{m.value}</p>
+                </div>
+              ))}
+            </div>
+            <div className="grid md:grid-cols-3 gap-4">
+              {[
+                { label: "Monthly Referrals", value: "850", sub: "Conversion Rate: 72%" },
+                { label: "Top Category", value: "Housing", sub: "35% of all requests" },
+                { label: "Avg. Resolution", value: "5.4 Days", sub: "Down from 12 days" },
+              ].map((m) => (
+                <div key={m.label} className="border border-gray-100 rounded-xl p-4">
+                  <p className="text-xs text-gray-500 mb-1">{m.label}</p>
+                  <p className="text-xl font-bold font-data text-impact-blue">{m.value}</p>
+                  <p className="text-xs text-gray-400 mt-1">{m.sub}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

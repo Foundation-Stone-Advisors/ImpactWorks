@@ -27,6 +27,7 @@ export default function Footer() {
                 { href: "/platform", label: "Linksy Platform" },
                 { href: "/impact", label: "Community Impact" },
                 { href: "/partners", label: "Partners" },
+                { href: "/expansion", label: "Expansion" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -54,7 +55,16 @@ export default function Footer() {
                   Get in Touch
                 </Link>
               </li>
-              <li>hello@impactworks.dev</li>
+              <li>
+                <a href="mailto:info@impactworks.us" className="hover:text-teal-accent transition-colors">
+                  info@impactworks.us
+                </a>
+              </li>
+              <li>
+                <a href="tel:9043301848" className="hover:text-teal-accent transition-colors">
+                  904.330.1848
+                </a>
+              </li>
               <li>Clay County, Florida</li>
             </ul>
           </div>

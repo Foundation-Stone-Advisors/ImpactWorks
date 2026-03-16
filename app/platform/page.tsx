@@ -158,41 +158,114 @@ export default function Platform() {
       {/* Architecture */}
       <section className="section-padding bg-white">
         <div className="max-w-site mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-text-dark mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-dark mb-4">
             Platform Architecture
           </h2>
-          <div className="flex flex-col items-center gap-4 max-w-xs mx-auto">
-            {[
-              { label: "Residents & Providers", color: "bg-impact-blue" },
-              { label: "Linksy AI", color: "bg-teal-accent" },
-              { label: "Central Services Database", color: "bg-deep-blue" },
-              { label: "Community Organizations", color: "bg-impact-blue" },
-            ].map((layer, i) => (
-              <div key={layer.label} className="w-full">
-                <div
-                  className={`${layer.color} text-white text-sm font-semibold py-4 px-6 rounded-xl text-center`}
-                >
-                  {layer.label}
-                </div>
-                {i < 3 && (
-                  <div className="flex justify-center py-2">
-                    <svg
-                      className="w-5 h-5 text-gray-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                      />
-                    </svg>
-                  </div>
-                )}
-              </div>
-            ))}
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-12">
+            How data flows through the Linksy ecosystem.
+          </p>
+
+          <div className="max-w-4xl mx-auto">
+            <svg viewBox="0 0 800 500" className="w-full" aria-label="Linksy platform architecture diagram">
+              <defs>
+                <linearGradient id="archGrad1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#1F4ED8" />
+                  <stop offset="100%" stopColor="#1E3A8A" />
+                </linearGradient>
+                <linearGradient id="archGrad2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#14B8A6" />
+                  <stop offset="100%" stopColor="#0D9488" />
+                </linearGradient>
+                <filter id="archShadow" x="-10%" y="-10%" width="120%" height="130%">
+                  <feDropShadow dx="0" dy="4" stdDeviation="6" floodOpacity="0.1" />
+                </filter>
+              </defs>
+
+              {/* Connection lines with animation */}
+              <line x1="200" y1="120" x2="400" y2="220" stroke="#1F4ED8" strokeWidth="2" strokeOpacity="0.3" strokeDasharray="6 4">
+                <animate attributeName="strokeDashoffset" values="0;-20" dur="2s" repeatCount="indefinite" />
+              </line>
+              <line x1="600" y1="120" x2="400" y2="220" stroke="#1F4ED8" strokeWidth="2" strokeOpacity="0.3" strokeDasharray="6 4">
+                <animate attributeName="strokeDashoffset" values="0;-20" dur="2s" repeatCount="indefinite" />
+              </line>
+              <line x1="400" y1="280" x2="200" y2="380" stroke="#14B8A6" strokeWidth="2" strokeOpacity="0.3" strokeDasharray="6 4">
+                <animate attributeName="strokeDashoffset" values="0;-20" dur="2s" repeatCount="indefinite" />
+              </line>
+              <line x1="400" y1="280" x2="400" y2="380" stroke="#14B8A6" strokeWidth="2" strokeOpacity="0.3" strokeDasharray="6 4">
+                <animate attributeName="strokeDashoffset" values="0;-20" dur="2s" repeatCount="indefinite" />
+              </line>
+              <line x1="400" y1="280" x2="600" y2="380" stroke="#14B8A6" strokeWidth="2" strokeOpacity="0.3" strokeDasharray="6 4">
+                <animate attributeName="strokeDashoffset" values="0;-20" dur="2s" repeatCount="indefinite" />
+              </line>
+
+              {/* Top: Residents node */}
+              <g filter="url(#archShadow)">
+                <rect x="100" y="50" width="200" height="70" rx="16" fill="url(#archGrad1)" />
+                <text x="200" y="82" textAnchor="middle" fill="white" fontSize="13" fontWeight="600">Residents &amp;</text>
+                <text x="200" y="100" textAnchor="middle" fill="white" fontSize="13" fontWeight="600">Service Seekers</text>
+                {/* Person icon */}
+                <circle cx="145" cy="85" r="8" fill="none" stroke="white" strokeWidth="1.5" strokeOpacity="0.5" />
+                <path d="M137 100a8 8 0 0116 0" fill="none" stroke="white" strokeWidth="1.5" strokeOpacity="0.5" />
+              </g>
+
+              {/* Top: Providers node */}
+              <g filter="url(#archShadow)">
+                <rect x="500" y="50" width="200" height="70" rx="16" fill="url(#archGrad1)" />
+                <text x="600" y="82" textAnchor="middle" fill="white" fontSize="13" fontWeight="600">Service Providers</text>
+                <text x="600" y="100" textAnchor="middle" fill="white" fontSize="13" fontWeight="600">&amp; Organizations</text>
+                {/* Building icon */}
+                <rect x="545" y="72" width="12" height="18" rx="2" fill="none" stroke="white" strokeWidth="1.5" strokeOpacity="0.5" />
+                <line x1="549" y1="78" x2="549" y2="78.5" stroke="white" strokeWidth="1.5" strokeOpacity="0.5" />
+                <line x1="553" y1="78" x2="553" y2="78.5" stroke="white" strokeWidth="1.5" strokeOpacity="0.5" />
+                <line x1="549" y1="83" x2="549" y2="83.5" stroke="white" strokeWidth="1.5" strokeOpacity="0.5" />
+                <line x1="553" y1="83" x2="553" y2="83.5" stroke="white" strokeWidth="1.5" strokeOpacity="0.5" />
+              </g>
+
+              {/* Center: Linksy AI hub */}
+              <g filter="url(#archShadow)">
+                <rect x="300" y="210" width="200" height="80" rx="20" fill="url(#archGrad2)" />
+                <text x="400" y="245" textAnchor="middle" fill="white" fontSize="16" fontWeight="700">Linksy AI</text>
+                <text x="400" y="268" textAnchor="middle" fill="white" fontSize="11" fontWeight="400" opacity="0.8">Intelligent Matching Engine</text>
+                {/* Pulse ring */}
+                <rect x="300" y="210" width="200" height="80" rx="20" fill="none" stroke="#14B8A6" strokeWidth="2">
+                  <animate attributeName="strokeOpacity" values="0.6;0.1;0.6" dur="3s" repeatCount="indefinite" />
+                  <animate attributeName="strokeWidth" values="2;4;2" dur="3s" repeatCount="indefinite" />
+                </rect>
+              </g>
+
+              {/* Bottom: Output nodes */}
+              <g filter="url(#archShadow)">
+                <rect x="90" y="370" width="180" height="65" rx="14" fill="white" stroke="#1F4ED8" strokeWidth="2" />
+                <text x="180" y="400" textAnchor="middle" fill="#1E3A8A" fontSize="12" fontWeight="600">Referral</text>
+                <text x="180" y="418" textAnchor="middle" fill="#1E3A8A" fontSize="12" fontWeight="600">Management</text>
+              </g>
+
+              <g filter="url(#archShadow)">
+                <rect x="310" y="370" width="180" height="65" rx="14" fill="white" stroke="#14B8A6" strokeWidth="2" />
+                <text x="400" y="400" textAnchor="middle" fill="#0F172A" fontSize="12" fontWeight="600">Services</text>
+                <text x="400" y="418" textAnchor="middle" fill="#0F172A" fontSize="12" fontWeight="600">Database</text>
+              </g>
+
+              <g filter="url(#archShadow)">
+                <rect x="530" y="370" width="180" height="65" rx="14" fill="white" stroke="#1F4ED8" strokeWidth="2" />
+                <text x="620" y="400" textAnchor="middle" fill="#1E3A8A" fontSize="12" fontWeight="600">Analytics &amp;</text>
+                <text x="620" y="418" textAnchor="middle" fill="#1E3A8A" fontSize="12" fontWeight="600">Insights</text>
+              </g>
+
+              {/* Data flow arrows */}
+              <text x="280" y="170" textAnchor="middle" fill="#1F4ED8" fontSize="10" fontWeight="500" opacity="0.6">requests</text>
+              <text x="520" y="170" textAnchor="middle" fill="#1F4ED8" fontSize="10" fontWeight="500" opacity="0.6">listings</text>
+              <text x="270" y="340" textAnchor="middle" fill="#14B8A6" fontSize="10" fontWeight="500" opacity="0.6">matches</text>
+              <text x="400" y="340" textAnchor="middle" fill="#14B8A6" fontSize="10" fontWeight="500" opacity="0.6">queries</text>
+              <text x="530" y="340" textAnchor="middle" fill="#14B8A6" fontSize="10" fontWeight="500" opacity="0.6">data</text>
+
+              {/* Decorative dots */}
+              {[{x:50,y:150},{x:750,y:150},{x:50,y:350},{x:750,y:350},{x:400,y:470}].map((dot, i) => (
+                <circle key={`dot-${i}`} cx={dot.x} cy={dot.y} r="3" fill="#1F4ED8" opacity="0.1">
+                  <animate attributeName="opacity" values="0.05;0.15;0.05" dur="4s" begin={`${i * 0.8}s`} repeatCount="indefinite" />
+                </circle>
+              ))}
+            </svg>
           </div>
         </div>
       </section>

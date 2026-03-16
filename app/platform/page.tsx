@@ -122,7 +122,7 @@ export default function Platform() {
             ].map((s) => (
               <div key={s.step} className="flex flex-col items-center gap-3">
                 <div className="w-16 h-16 rounded-full bg-impact-blue/10 flex items-center justify-center">
-                  <svg className="w-7 h-7 text-impact-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                  <svg className="w-7 h-7 text-impact-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={s.icon} />
                   </svg>
                 </div>
@@ -151,7 +151,7 @@ export default function Platform() {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  strokeWidth={1.5}
+                  strokeWidth={2}
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d={f.icon} />
                 </svg>

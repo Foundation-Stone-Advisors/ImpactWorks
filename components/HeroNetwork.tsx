@@ -23,7 +23,7 @@ export default function HeroNetwork() {
           x2={node.x}
           y2={node.y}
           stroke={node.color}
-          strokeWidth={1.5}
+          strokeWidth={2}
           strokeOpacity={0.3}
           strokeDasharray="6 4"
         />
@@ -51,7 +51,7 @@ export default function HeroNetwork() {
       {/* Outer nodes */}
       {nodes.map((node, i) => (
         <g key={i}>
-          <circle cx={node.x} cy={node.y} r={32} fill={node.color} fillOpacity={0.15} stroke={node.color} strokeWidth={1.5} />
+          <circle cx={node.x} cy={node.y} r={32} fill={node.color} fillOpacity={0.15} stroke={node.color} strokeWidth={2} />
           <circle cx={node.x} cy={node.y} r={5} fill={node.color}>
             <animate attributeName="r" values="4;6;4" dur="3s" begin={`${i * 0.5}s`} repeatCount="indefinite" />
             <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin={`${i * 0.5}s`} repeatCount="indefinite" />

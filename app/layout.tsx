@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "ImpactWorks",
-  description: "Mission-Driven. Systems-Powered. Kingdom-Focused.",
+  description: "Connecting communities to critical services through data-driven technology.",
 };
 
 export default function RootLayout({
@@ -18,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased flex flex-col min-h-screen pt-[76px]`}>
+      <body className="font-sans antialiased flex flex-col min-h-screen bg-light-bg text-text-dark">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

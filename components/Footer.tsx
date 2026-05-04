@@ -21,7 +21,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {[
                 { href: "/about", label: "About" },
-                { href: "/platform", label: "Linksy Platform" },
+                { href: "/platform", label: "Linksi Platform" },
                 { href: "/impact", label: "Community Impact" },
                 { href: "/partners", label: "Partners" },
                 { href: "/expansion", label: "Expansion" },

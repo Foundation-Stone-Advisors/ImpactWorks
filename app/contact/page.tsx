@@ -18,7 +18,7 @@ export default function Contact() {
             Contact Impact<span className="gradient-text-orange">Works</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 mt-6 max-w-xl">
-            Questions about partnerships, Linksy access, or collaboration?
+            Questions about partnerships, Linksi access, or collaboration?
           </motion.p>
         </div>
       </section>

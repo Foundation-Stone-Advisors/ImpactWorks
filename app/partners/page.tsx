@@ -65,7 +65,7 @@ export default function Partners() {
                   </Link>
                 </div>
                 <div className="md:col-span-6 relative flex justify-center items-center">
-                  <Image src="/images/linksy-full.png" alt="Linksy" width={800} height={430} className="w-full max-w-[500px] md:max-w-[560px] drop-shadow-2xl" />
+                  <Image src="/images/linksi-full.png" alt="Linksi" width={800} height={430} className="w-full max-w-[500px] md:max-w-[560px] drop-shadow-2xl" />
                 </div>
               </div>
             </div>

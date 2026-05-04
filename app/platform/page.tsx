@@ -23,12 +23,12 @@ export default function Platform() {
       <section className="relative min-h-[60vh] flex items-center section-dark overflow-hidden">
         <HeroArcs />
         <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 text-center">
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Linksy Platform</motion.p>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Linksi Platform</motion.p>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white mb-6">
             AI-Powered Connections Between People &amp; <span className="gradient-text-blue">Services</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 max-w-2xl mx-auto mb-8">
-            Linksy uses intelligent matching to connect residents with the help they need — instantly and privately.
+            Linksi uses intelligent matching to connect residents with the help they need — instantly and privately.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
             <Link href="#demo" className="btn-primary">See How It Works <span>&darr;</span></Link>
@@ -36,11 +36,11 @@ export default function Platform() {
         </div>
       </section>
 
-      {/* Linksy Mascot + Demo — light */}
+      {/* Linksi Mascot + Demo — light */}
       <section id="demo" className="section-pad section-light">
         <div className="max-w-site mx-auto grid md:grid-cols-2 gap-12 items-center">
           <ScrollReveal>
-            <Image src="/images/linksy-mascot.png" alt="Linksy — AI assistant octopus" width={400} height={300} className="w-full max-w-sm mx-auto" />
+            <Image src="/images/linksi-mascot.png" alt="Linksi — AI assistant octopus" width={400} height={300} className="w-full max-w-sm mx-auto" />
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
             <div className="card-light overflow-hidden">
@@ -50,7 +50,7 @@ export default function Platform() {
                   <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
                   <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
                 </div>
-                <span className="font-mono text-[11px] text-slate-400">linksy.impactworks.dev</span>
+                <span className="font-mono text-[11px] text-slate-400">linksi.impactworks.dev</span>
               </div>
               <div className="p-6 space-y-4">
                 <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="flex justify-end">
@@ -79,7 +79,7 @@ export default function Platform() {
             <p className="eyebrow mb-4">How It Works</p>
             <h2 className="heading-section text-slate-800">A smarter path from need to <span className="gradient-text-orange">help</span></h2>
           </ScrollReveal>
-          <ScrollReveal><Image src="/images/linksyprocessmap.png" alt="Linksy 3-step process" width={960} height={320} className="w-full max-w-4xl mx-auto" /></ScrollReveal>
+          <ScrollReveal><Image src="/images/linksiprocessmap.png" alt="Linksi 3-step process" width={960} height={320} className="w-full max-w-4xl mx-auto" /></ScrollReveal>
         </div>
       </section>
 
@@ -114,7 +114,7 @@ export default function Platform() {
           <ScrollReveal className="text-center mb-4">
             <p className="eyebrow mb-4">System Design</p>
             <h2 className="heading-section text-slate-800 mb-2">Platform <span className="gradient-text-blue">Architecture</span></h2>
-            <p className="body-text-muted max-w-xl mx-auto">How data flows through the Linksy ecosystem.</p>
+            <p className="body-text-muted max-w-xl mx-auto">How data flows through the Linksi ecosystem.</p>
           </ScrollReveal>
           <ScrollReveal>
             <ArchitectureDiagram />

@@ -26,7 +26,7 @@ const phases = [
       { num: 50, suffix: "+", label: "Partner Organizations" },
       { num: 4000, suffix: "+", label: "Referrals Made" },
     ],
-    desc: "Our foundation — where Impact Works began. Linksy is live and connecting residents to critical services across Clay County.",
+    desc: "Our foundation — where Impact Works began. Linksi is live and connecting residents to critical services across Clay County.",
     isActive: true,
   },
   {

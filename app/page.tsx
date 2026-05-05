@@ -26,14 +26,16 @@ export default function Home() {
         {/* Clean dark base — vertical gradient for natural depth, no overlapping color zones */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#15132C] via-[#0E1126] to-[#080B1A]" />
 
-        {/* Subtle background circles — clean diagonal: one top-left, one bottom-right */}
-        <div className="absolute -top-32 -left-32 w-[640px] h-[640px] border-[2px] border-[#212749] rounded-full pointer-events-none" />
-        <div className="absolute -bottom-40 -right-40 w-[720px] h-[720px] border-[2px] border-[#212749] rounded-full pointer-events-none" />
+        {/* Subtle paired background circles — opposite corners, two-stop opacity for layered depth */}
+        <div className="absolute -top-44 -left-44 w-[720px] h-[720px] border-[2px] border-[#212749]/60 rounded-full pointer-events-none" />
+        <div className="absolute -top-24 -left-24 w-[480px] h-[480px] border-[2px] border-[#212749]/35 rounded-full pointer-events-none" />
+        <div className="absolute -bottom-48 -right-48 w-[800px] h-[800px] border-[2px] border-[#212749]/60 rounded-full pointer-events-none" />
+        <div className="absolute -bottom-28 -right-28 w-[560px] h-[560px] border-[2px] border-[#212749]/35 rounded-full pointer-events-none" />
 
-        {/* Single warm sun centered on mascot — both orbs share the same center point now */}
+        {/* Warm sun centered on mascot — both orbs share the SAME center point via translate */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 right-[3%] -translate-y-1/2 w-[1100px] h-[1100px] bg-gradient-radial from-brand-orange/30 via-brand-orange/8 to-transparent rounded-full blur-3xl" />
-          <div className="absolute top-1/2 right-[18%] -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-brand-gold/28 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-[70%] -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[1100px] bg-gradient-radial from-brand-orange/30 via-brand-orange/8 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-[70%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-brand-gold/28 to-transparent rounded-full blur-3xl" />
         </div>
 
         {/* Vignette — slight darkening at edges for cinematic focus */}

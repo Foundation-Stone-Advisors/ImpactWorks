@@ -24,18 +24,18 @@ export default function About() {
       {/* ━━━ HERO — matches site pattern ━━━ */}
       <section className="relative min-h-[55vh] flex items-center overflow-hidden text-white">
         <DarkBackdrop variant="hero-symmetric" />
-        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 grid md:grid-cols-2 gap-12 items-center w-full">
-          <div>
+        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 grid md:grid-cols-12 gap-10 items-center w-full">
+          <div className="md:col-span-7">
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Our Story</motion.p>
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white">
-              About Impact<span className="gradient-text-orange">Works</span>
+              About <span className="gradient-text-orange">Impact Works</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 mt-6 max-w-lg">
               Technology for Stronger Communities
             </motion.p>
           </div>
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2 }} className="flex justify-center">
-            <Image src="/images/logo-full.png" alt="Impact Works" width={320} height={320} className="w-full max-w-[280px] drop-shadow-2xl" />
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2 }} className="md:col-span-5 flex justify-center">
+            <Image src="/images/logo-full.png" alt="Impact Works" width={320} height={320} className="w-full max-w-[260px] drop-shadow-2xl" />
           </motion.div>
         </div>
       </section>
@@ -203,7 +203,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
             {/* MISSION — dark, grounded, "now" */}
             <ScrollReveal className="flex">
-              <div className="relative bg-navy-900 rounded-3xl p-10 md:p-12 w-full overflow-hidden flex flex-col">
+              <div className="relative rounded-3xl p-10 md:p-12 w-full overflow-hidden flex flex-col bg-gradient-to-br from-[#15132C] via-[#0E1126] to-[#080B1A]">
                 {/* Decorative arcs */}
                 <div className="absolute -top-20 -right-20 w-64 h-64 border-[2px] border-brand-blue/15 rounded-full" />
                 <div className="absolute -top-8 -right-8 w-40 h-40 border-[2px] border-brand-blue/10 rounded-full" />

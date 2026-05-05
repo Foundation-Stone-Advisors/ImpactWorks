@@ -22,16 +22,43 @@ export default function Platform() {
       {/* Hero — dark */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden text-white">
         <DarkBackdrop variant="hero-asymmetric" />
-        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 text-center">
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Linksi Platform</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white mb-6">
-            AI-Powered Connections Between People &amp; <span className="gradient-text-blue">Services</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 max-w-2xl mx-auto mb-8">
-            Linksi uses intelligent matching to connect residents with the help they need — instantly and privately.
-          </motion.p>
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-            <Link href="#demo" className="btn-primary">See How It Works <span>&darr;</span></Link>
+        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 grid md:grid-cols-12 gap-10 items-center w-full">
+          <div className="md:col-span-7">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Linksi Platform</motion.p>
+            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero-sm text-white mb-6">
+              AI-Powered Connections Between People &amp; <span className="gradient-text-blue">Services</span>
+            </motion.h1>
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 max-w-xl mb-8">
+              Linksi uses intelligent matching to connect residents with the help they need — instantly and privately.
+            </motion.p>
+            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+              <Link href="#demo" className="btn-primary">See How It Works <span>&darr;</span></Link>
+            </motion.div>
+          </div>
+          {/* Page-specific visual: small floating chat-bubble preview teasing the demo below */}
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }} className="md:col-span-5 hidden md:flex justify-center">
+            <div className="relative w-full max-w-[340px] space-y-3">
+              {/* Incoming bubble */}
+              <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 }} className="flex justify-start">
+                <div className="bg-white/[0.08] backdrop-blur-md border border-white/15 text-slate-100 text-sm px-4 py-2.5 rounded-xl rounded-bl-sm max-w-[260px]">
+                  &ldquo;I need help with food assistance.&rdquo;
+                </div>
+              </motion.div>
+              {/* Outgoing bubble — Linksi reply */}
+              <motion.div initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.1 }} className="flex justify-end">
+                <div className="bg-brand-blue text-white text-sm px-4 py-2.5 rounded-xl rounded-br-sm max-w-[260px] shadow-lg">
+                  Found 3 organizations within 5 miles.
+                </div>
+              </motion.div>
+              {/* Typing indicator */}
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="flex justify-end">
+                <div className="bg-white/[0.06] backdrop-blur-sm border border-white/10 px-3 py-2 rounded-full flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-bounce" style={{ animationDelay: "0ms" }} />
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-bounce" style={{ animationDelay: "150ms" }} />
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-bounce" style={{ animationDelay: "300ms" }} />
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>

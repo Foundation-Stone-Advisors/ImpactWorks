@@ -5,71 +5,238 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import CountUp from "@/components/CountUp";
 import ScrollReveal from "@/components/ScrollReveal";
-import HeroArcs from "@/components/HeroArcs";
-
 export default function Home() {
+  const services = [
+    { label: "Housing",       dot: "#2E8BC0", angle: -90 },
+    { label: "Healthcare",    dot: "#E8751A", angle: -30 },
+    { label: "Food",          dot: "#3DAA5C", angle: 30 },
+    { label: "Jobs",          dot: "#F5A623", angle: 90 },
+    { label: "Mental Health", dot: "#475569", angle: 150 },
+    { label: "Childcare",     dot: "#4DA8D9", angle: 210 },
+  ];
+
   return (
     <div>
-      {/* ━━━ HERO ━━━ */}
-      <section className="relative min-h-screen flex items-center section-dark overflow-hidden">
-        <HeroArcs />
-        <div className="absolute top-1/2 right-[10%] -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-brand-blue/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      {/* ━━━ HERO — Sunlit Editorial Operating System ━━━ */}
+      <section className="relative overflow-hidden bg-[#FAF6EE]">
+        {/* Top scrim — keeps nav readable on warm bg */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[rgba(15,10,3,0.45)] via-[rgba(15,10,3,0.18)] to-transparent z-10 pointer-events-none" />
 
-        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 grid md:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
-          <div className="md:col-span-7">
-            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="eyebrow mb-5">Community Impact Platform</motion.p>
+        {/* Atmospheric color mesh */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-[10%] -right-[5%] w-[700px] h-[700px] bg-gradient-radial from-brand-orange/15 via-brand-orange/5 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -bottom-[15%] -left-[8%] w-[650px] h-[650px] bg-gradient-radial from-brand-blue/10 via-brand-blue/3 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-[40%] left-[35%] w-[420px] h-[420px] bg-gradient-radial from-brand-gold/8 to-transparent rounded-full blur-3xl" />
+        </div>
+
+        {/* Paper grain texture */}
+        <div
+          className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-multiply"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+            backgroundSize: "180px 180px",
+          }}
+        />
+
+        {/* Editorial top hairline (just below nav scrim) */}
+        <div className="absolute top-24 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent z-[5]" />
+
+        {/* Content grid */}
+        <div className="relative z-[5] max-w-site mx-auto px-6 pt-32 pb-20 md:pt-36 md:pb-24 lg:pt-40 lg:pb-28 grid md:grid-cols-12 gap-10 lg:gap-16 items-center min-h-[88vh]">
+          {/* COPY COLUMN */}
+          <div className="md:col-span-7 relative">
+            {/* Vertical accent rule (desktop only) */}
+            <motion.div
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              transition={{ duration: 0.9, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="hidden lg:block absolute -left-6 top-2 bottom-32 w-[2px] bg-gradient-to-b from-brand-orange via-brand-orange/40 to-transparent origin-top"
+            />
+
+            {/* Eyebrow with horizontal rule */}
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="flex items-center gap-3 mb-7"
+            >
+              <span className="block w-8 h-px bg-brand-orange" />
+              <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-brand-orange font-medium">
+                Community Impact Platform
+              </p>
+            </motion.div>
+
+            {/* Lead-in */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold text-slate-300 mb-3 leading-tight"
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-xl md:text-2xl lg:text-[1.875rem] font-medium text-slate-600 mb-5 leading-snug tracking-[-0.01em]"
             >
               An Innovative Community Operating System
             </motion.p>
+
+            {/* Main H1 — controlled wrap via block span */}
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display font-extrabold text-white mb-6 text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight"
+              transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display font-extrabold text-slate-900 mb-8 text-4xl md:text-5xl lg:text-[4.25rem] xl:text-[5rem] leading-[0.98] tracking-[-0.035em]"
             >
-              Connecting Communities to{" "}<span className="gradient-text-orange">Critical Services</span>
+              Connecting Communities
+              <span className="block">
+                to <span className="gradient-text-orange">Critical Services</span>
+              </span>
             </motion.h1>
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }} className="body-text text-slate-300 max-w-lg mb-10">
+
+            {/* Body */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              className="font-display text-base md:text-[17px] text-slate-600 max-w-md leading-[1.65] mb-10"
+            >
               Impact Works develops data-driven solutions, making it easier for people to find the help they need while strengthening funding and collaboration among organizations serving the community.
             </motion.p>
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex flex-wrap gap-4">
-              <Link href="/platform" className="btn-primary">Explore Linksi <span>&rarr;</span></Link>
-              <Link href="/impact" className="btn-ghost">Explore the Community Operating System</Link>
+
+            {/* CTAs — editorial pairing */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="flex flex-wrap items-center gap-x-7 gap-y-4"
+            >
+              <Link
+                href="/platform"
+                className="group inline-flex items-center gap-2 bg-brand-orange text-white font-display font-bold px-7 py-3.5 rounded-xl hover:bg-brand-orange-light hover:shadow-[0_8px_24px_-6px_rgba(232,117,26,0.45)] active:scale-[0.97] transition-all duration-300 cursor-pointer"
+              >
+                Explore Linksi
+                <span className="transition-transform duration-300 group-hover:translate-x-0.5">&rarr;</span>
+              </Link>
+              <Link
+                href="/impact"
+                className="group inline-flex items-center gap-1.5 font-display font-semibold text-slate-700 text-[15px] hover:text-brand-orange transition-colors duration-300"
+              >
+                <span className="relative">
+                  Explore the Community Operating System
+                  <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-current scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                </span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+              </Link>
             </motion.div>
           </div>
-          {/* Linksi mascot — main hero visual */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-5 relative flex justify-center"
-          >
-            <motion.div
-              animate={{ y: [0, -14, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="relative"
+
+          {/* MASCOT COLUMN — orbital operating system */}
+          <div className="md:col-span-5 relative aspect-square w-full max-w-md md:max-w-none mx-auto">
+            {/* Concentric warm arcs orbiting */}
+            <svg
+              className="absolute inset-0 w-full h-full"
+              viewBox="-50 -50 100 100"
+              aria-hidden="true"
             >
-              {/* Soft glow halo */}
-              <div className="absolute inset-0 bg-brand-orange/20 rounded-full blur-3xl scale-90" />
-              <Image
-                src="/images/linksi-mascot.png"
-                alt="Linksi — your guide to community services"
-                width={520}
-                height={520}
-                priority
-                className="relative w-full max-w-[360px] md:max-w-[440px] lg:max-w-[520px] mx-auto drop-shadow-[0_20px_40px_rgba(232,117,26,0.35)]"
-              />
+              {[
+                { r: 44, color: "#E8751A", dasharray: "8 14", strokeWidth: 0.45, rotation: 0,   duration: 60 },
+                { r: 39, color: "#F5A623", dasharray: "4 10", strokeWidth: 0.35, rotation: 45,  duration: 80 },
+                { r: 34, color: "#2E8BC0", dasharray: "6 16", strokeWidth: 0.40, rotation: 90,  duration: 70 },
+                { r: 29, color: "#3DAA5C", dasharray: "3 12", strokeWidth: 0.30, rotation: 135, duration: 90 },
+              ].map((arc, i) => (
+                <motion.circle
+                  key={i}
+                  cx="0" cy="0"
+                  r={arc.r}
+                  fill="none"
+                  stroke={arc.color}
+                  strokeOpacity={0.55}
+                  strokeWidth={arc.strokeWidth}
+                  strokeDasharray={arc.dasharray}
+                  strokeLinecap="round"
+                  initial={{ rotate: arc.rotation, opacity: 0 }}
+                  animate={{ rotate: arc.rotation + 360, opacity: 0.6 }}
+                  transition={{
+                    rotate: { duration: arc.duration, repeat: Infinity, ease: "linear" },
+                    opacity: { duration: 1.2, delay: 0.9 + i * 0.12 },
+                  }}
+                  style={{ transformOrigin: "0px 0px" }}
+                />
+              ))}
+              {/* Center glow ping */}
+              <circle cx="0" cy="0" r="0.6" fill="#E8751A" opacity="0.7">
+                <animate attributeName="r" values="0.4;1.4;0.4" dur="3s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.4;0.9;0.4" dur="3s" repeatCount="indefinite" />
+              </circle>
+            </svg>
+
+            {/* Soft warm cast shadow under mascot */}
+            <div className="absolute bottom-[12%] left-1/2 -translate-x-1/2 w-[55%] h-10 bg-brand-orange/35 rounded-full blur-2xl pointer-events-none" />
+
+            {/* Linksi mascot — the protagonist */}
+            <motion.div
+              initial={{ scale: 0.82, opacity: 0, y: 12 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-[70%] md:w-[78%]"
+              >
+                <Image
+                  src="/images/linksi-mascot.png"
+                  alt="Linksi — your guide to community services"
+                  width={520}
+                  height={520}
+                  priority
+                  className="w-full h-auto drop-shadow-[0_22px_36px_rgba(232,117,26,0.32)]"
+                />
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            {/* Service chips orbiting at fixed angles */}
+            {services.map((chip, i) => {
+              const radius = 49; // % of container
+              const rad = (chip.angle * Math.PI) / 180;
+              const x = 50 + radius * Math.cos(rad);
+              const y = 50 + radius * Math.sin(rad);
+              return (
+                <motion.div
+                  key={chip.label}
+                  initial={{ opacity: 0, scale: 0.7 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 1.3 + i * 0.11, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%, -50%)" }}
+                  className="absolute hidden md:flex bg-white border border-slate-200/70 shadow-[0_4px_14px_rgba(15,15,20,0.07)] rounded-full px-3 py-1.5 items-center gap-1.5 whitespace-nowrap"
+                >
+                  <span
+                    className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: chip.dot, boxShadow: `0 0 10px ${chip.dot}88` }}
+                  />
+                  <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-slate-700 font-medium">
+                    {chip.label}
+                  </span>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="w-5 h-8 border border-white/30 rounded-full flex justify-center pt-1.5">
+        {/* Bottom hairline + soft fade into next section */}
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/15 to-transparent z-[5]" />
+        <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-b from-transparent to-white pointer-events-none" />
+
+        {/* Scroll indicator — recolored for cream bg */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.8 }}
+          className="hidden md:block absolute bottom-6 left-1/2 -translate-x-1/2 z-[6]"
+        >
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity }}
+            className="w-5 h-8 border border-slate-400/50 rounded-full flex justify-center pt-1.5"
+          >
             <div className="w-1 h-1.5 bg-brand-orange rounded-full" />
           </motion.div>
         </motion.div>

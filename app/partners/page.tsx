@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
-import HeroArcs from "@/components/HeroArcs";
+import DarkBackdrop from "@/components/DarkBackdrop";
 
 const categories = [
   { title: "Nonprofits", desc: "Community organizations providing direct services to residents in need.", color: "border-brand-orange" },
@@ -19,8 +19,8 @@ export default function Partners() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[55vh] flex items-center section-dark overflow-hidden">
-        <HeroArcs />
+      <section className="relative min-h-[55vh] flex items-center overflow-hidden text-white">
+        <DarkBackdrop variant="hero-symmetric" />
         <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40">
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Our Network</motion.p>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white max-w-3xl">

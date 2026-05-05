@@ -20,18 +20,21 @@ export default function Home() {
 
   return (
     <div>
-      {/* ━━━ HERO — Sunlit Editorial Operating System ━━━ */}
-      <section className="relative overflow-hidden bg-[#FAF6EE]">
-        {/* Atmospheric color mesh */}
+      {/* ━━━ HERO — Deep Editorial Operating System (warm navy) ━━━ */}
+      <section className="relative overflow-hidden">
+        {/* Layered warm-tinted dark base — cinematic depth, not flat navy */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#141228] via-[#0E1126] to-[#0A0F1F]" />
+
+        {/* Atmospheric color mesh — warm amber + cool blue + central orange glow */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-[10%] -right-[5%] w-[700px] h-[700px] bg-gradient-radial from-brand-orange/15 via-brand-orange/5 to-transparent rounded-full blur-3xl" />
-          <div className="absolute -bottom-[15%] -left-[8%] w-[650px] h-[650px] bg-gradient-radial from-brand-blue/10 via-brand-blue/3 to-transparent rounded-full blur-3xl" />
-          <div className="absolute top-[40%] left-[35%] w-[420px] h-[420px] bg-gradient-radial from-brand-gold/8 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -top-[12%] -right-[8%] w-[750px] h-[750px] bg-gradient-radial from-[#3A2614]/55 via-[#3A2614]/15 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -bottom-[18%] -left-[10%] w-[700px] h-[700px] bg-gradient-radial from-brand-blue/22 via-brand-blue/6 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-[35%] left-[55%] w-[480px] h-[480px] bg-gradient-radial from-brand-orange/18 via-brand-orange/5 to-transparent rounded-full blur-3xl" />
         </div>
 
-        {/* Paper grain texture */}
+        {/* Grain texture — screen blend on dark for subtle film feel */}
         <div
-          className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-multiply"
+          className="absolute inset-0 opacity-[0.06] pointer-events-none mix-blend-screen"
           style={{
             backgroundImage:
               "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
@@ -39,19 +42,19 @@ export default function Home() {
           }}
         />
 
-        {/* Editorial top hairline (just below nav scrim) */}
-        <div className="absolute top-24 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent z-[5]" />
+        {/* Editorial top hairline */}
+        <div className="absolute top-24 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/40 to-transparent z-[5]" />
 
         {/* Content grid */}
         <div className="relative z-[5] max-w-site mx-auto px-6 pt-32 pb-20 md:pt-36 md:pb-24 lg:pt-40 lg:pb-28 grid md:grid-cols-12 gap-10 lg:gap-16 items-center min-h-[88vh]">
           {/* COPY COLUMN */}
           <div className="md:col-span-7 relative">
-            {/* Vertical accent rule (desktop only) */}
+            {/* Vertical accent rule (desktop only) — brighter on dark */}
             <motion.div
               initial={{ scaleY: 0 }}
               animate={{ scaleY: 1 }}
               transition={{ duration: 0.9, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden lg:block absolute -left-6 top-2 bottom-32 w-[2px] bg-gradient-to-b from-brand-orange via-brand-orange/40 to-transparent origin-top"
+              className="hidden lg:block absolute -left-6 top-2 bottom-32 w-[2px] bg-gradient-to-b from-brand-orange via-brand-orange/60 to-transparent origin-top shadow-[0_0_12px_rgba(232,117,26,0.4)]"
             />
 
             {/* Lead-in */}
@@ -59,7 +62,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-xl md:text-2xl lg:text-[1.875rem] font-medium text-slate-600 mb-5 leading-snug tracking-[-0.01em]"
+              className="font-display text-xl md:text-2xl lg:text-[1.875rem] font-medium text-slate-300 mb-5 leading-snug tracking-[-0.01em]"
             >
               An Innovative Community Operating System
             </motion.p>
@@ -69,7 +72,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display font-extrabold text-slate-900 mb-8 text-4xl md:text-5xl lg:text-[4.25rem] xl:text-[5rem] leading-[0.98] tracking-[-0.035em]"
+              className="font-display font-extrabold text-white mb-8 text-4xl md:text-5xl lg:text-[4.25rem] xl:text-[5rem] leading-[0.98] tracking-[-0.035em]"
             >
               Connecting Communities
               <span className="block">
@@ -82,7 +85,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.5 }}
-              className="font-display text-base md:text-[17px] text-slate-600 max-w-md leading-[1.65] mb-10"
+              className="font-display text-base md:text-[17px] text-slate-300 max-w-md leading-[1.65] mb-10"
             >
               Impact Works develops data-driven solutions, making it easier for people to find the help they need while strengthening funding and collaboration among organizations serving the community.
             </motion.p>
@@ -96,14 +99,14 @@ export default function Home() {
             >
               <Link
                 href="/platform"
-                className="group inline-flex items-center gap-2 bg-brand-orange text-white font-display font-bold px-7 py-3.5 rounded-xl hover:bg-brand-orange-light hover:shadow-[0_8px_24px_-6px_rgba(232,117,26,0.45)] active:scale-[0.97] transition-all duration-300 cursor-pointer"
+                className="group inline-flex items-center gap-2 bg-brand-orange text-white font-display font-bold px-7 py-3.5 rounded-xl hover:bg-brand-orange-light hover:shadow-[0_8px_28px_-4px_rgba(232,117,26,0.55)] active:scale-[0.97] transition-all duration-300 cursor-pointer"
               >
                 Explore Linksi
                 <span className="transition-transform duration-300 group-hover:translate-x-0.5">&rarr;</span>
               </Link>
               <Link
                 href="/impact"
-                className="group inline-flex items-center gap-1.5 font-display font-semibold text-slate-700 text-[15px] hover:text-brand-orange transition-colors duration-300"
+                className="group inline-flex items-center gap-1.5 font-display font-semibold text-slate-200 text-[15px] hover:text-brand-orange transition-colors duration-300"
               >
                 <span className="relative">
                   Explore the Community Operating System
@@ -116,7 +119,7 @@ export default function Home() {
 
           {/* MASCOT COLUMN — choreographed boot sequence */}
           <div className="md:col-span-5 relative aspect-square w-full max-w-md md:max-w-none mx-auto">
-            {/* Soft halo container — fades in during boot */}
+            {/* Soft halo container — brighter on dark */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -124,7 +127,7 @@ export default function Home() {
               className="absolute inset-[6%] rounded-full pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(232,117,26,0.12) 0%, rgba(245,166,35,0.07) 40%, rgba(232,117,26,0.02) 70%, transparent 100%)",
+                  "radial-gradient(circle, rgba(232,117,26,0.28) 0%, rgba(245,166,35,0.14) 40%, rgba(232,117,26,0.04) 70%, transparent 100%)",
               }}
             />
 
@@ -379,13 +382,13 @@ export default function Home() {
                     <motion.div
                       animate={{ scale: [1, 1.08, 1] }}
                       transition={{ duration: 0.5, delay: 2.7, times: [0, 0.5, 1], ease: "easeOut" }}
-                      className="bg-white/95 backdrop-blur-sm border border-slate-200/60 shadow-[0_2px_8px_rgba(15,15,20,0.06)] rounded-full px-2.5 py-1 flex items-center gap-1.5 whitespace-nowrap"
+                      className="bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_2px_12px_rgba(0,0,0,0.3)] rounded-full px-2.5 py-1 flex items-center gap-1.5 whitespace-nowrap"
                     >
                       <span
                         className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                        style={{ backgroundColor: chip.dot, boxShadow: `0 0 6px ${chip.dot}99` }}
+                        style={{ backgroundColor: chip.dot, boxShadow: `0 0 8px ${chip.dot}` }}
                       />
-                      <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-slate-700 font-medium">
+                      <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-slate-100 font-medium">
                         {chip.label}
                       </span>
                     </motion.div>
@@ -396,11 +399,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Bottom hairline + soft fade into next section */}
-        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/15 to-transparent z-[5]" />
-        <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-b from-transparent to-white pointer-events-none" />
+        {/* Bottom hairline + soft fade into next section (dark → white) */}
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent z-[5]" />
 
-        {/* Scroll indicator — recolored for cream bg */}
+        {/* Scroll indicator — light on dark */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -410,7 +412,7 @@ export default function Home() {
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 1.6, repeat: Infinity }}
-            className="w-5 h-8 border border-slate-400/50 rounded-full flex justify-center pt-1.5"
+            className="w-5 h-8 border border-white/30 rounded-full flex justify-center pt-1.5"
           >
             <div className="w-1 h-1.5 bg-brand-orange rounded-full" />
           </motion.div>
@@ -488,16 +490,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ━━━ STATS — warm cream, matches hero direction ━━━ */}
-      <section className="section-pad relative overflow-hidden bg-[#FAF6EE]">
-        {/* Subtle warm atmosphere — matches hero color mesh language */}
+      {/* ━━━ STATS — warm dark navy, matches hero direction ━━━ */}
+      <section className="section-pad relative overflow-hidden">
+        {/* Same warm-tinted dark base as hero for visual rhythm */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#141228] via-[#0E1126] to-[#0A0F1F]" />
+        {/* Atmospheric mesh — same language as hero */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-[20%] left-[15%] w-[500px] h-[500px] bg-gradient-radial from-brand-orange/10 to-transparent rounded-full blur-3xl" />
-          <div className="absolute -bottom-[20%] right-[10%] w-[450px] h-[450px] bg-gradient-radial from-brand-blue/8 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -top-[20%] left-[15%] w-[500px] h-[500px] bg-gradient-radial from-brand-orange/15 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -bottom-[20%] right-[10%] w-[450px] h-[450px] bg-gradient-radial from-brand-blue/12 to-transparent rounded-full blur-3xl" />
         </div>
-        {/* Editorial top + bottom hairlines */}
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/20 to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/20 to-transparent" />
+        {/* Editorial top + bottom hairlines — brighter on dark */}
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent" />
 
         <div className="relative z-10 max-w-site mx-auto">
           <ScrollReveal className="text-center mb-16">
@@ -506,7 +510,7 @@ export default function Home() {
               <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-brand-orange font-medium">Our Reach</p>
               <span className="block w-8 h-px bg-brand-orange" />
             </div>
-            <h2 className="heading-section text-slate-900">Community <span className="gradient-text-orange">Impact</span></h2>
+            <h2 className="heading-section text-white">Community <span className="gradient-text-orange">Impact</span></h2>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
             {[
@@ -516,11 +520,11 @@ export default function Home() {
               { value: 100, suffix: "%", label: "Real-Time Data Access" },
             ].map((stat, i) => (
               <ScrollReveal key={stat.label} delay={i * 0.1}>
-                <div className="bg-white/70 backdrop-blur-sm border border-slate-200/60 rounded-2xl p-6 md:p-8 text-center hover:bg-white hover:shadow-[0_8px_24px_-8px_rgba(232,117,26,0.20)] transition-all duration-300">
+                <div className="bg-white/[0.04] backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8 text-center hover:bg-white/[0.07] hover:border-white/20 hover:shadow-[0_8px_28px_-4px_rgba(232,117,26,0.30)] transition-all duration-300">
                   <p className="font-mono text-3xl md:text-4xl lg:text-5xl text-brand-orange font-bold tabular-nums">
                     <CountUp end={stat.value} suffix={stat.suffix} />
                   </p>
-                  <p className="text-sm text-slate-600 mt-3">{stat.label}</p>
+                  <p className="text-sm text-slate-400 mt-3">{stat.label}</p>
                 </div>
               </ScrollReveal>
             ))}

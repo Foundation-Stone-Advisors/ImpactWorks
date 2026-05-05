@@ -79,7 +79,7 @@ export default function Platform() {
             <p className="eyebrow mb-4">How It Works</p>
             <h2 className="heading-section text-slate-800">A smarter path from need to <span className="gradient-text-orange">help</span></h2>
           </ScrollReveal>
-          <ScrollReveal><Image src="/images/linksiprocessmap.png" alt="Linksi 3-step process" width={960} height={320} className="w-full max-w-4xl mx-auto" /></ScrollReveal>
+          <ScrollReveal><Image src="/images/linksiprocessmap.png" alt="Linksi 3-step process: resident requests help, Linksi matches services, organization receives referral" width={2100} height={749} className="w-full max-w-5xl mx-auto" /></ScrollReveal>
         </div>
       </section>
 

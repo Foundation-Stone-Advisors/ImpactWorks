@@ -131,35 +131,49 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* MASCOT COLUMN — unified "operating system" composition */}
+          {/* MASCOT COLUMN — choreographed boot sequence */}
           <div className="md:col-span-5 relative aspect-square w-full max-w-md md:max-w-none mx-auto">
-            {/* Soft halo container — visually frames the whole composition as one artifact */}
+            {/* Soft halo container — fades in during boot */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
+              initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-[6%] rounded-full pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(232,117,26,0.10) 0%, rgba(245,166,35,0.06) 40%, rgba(232,117,26,0.02) 70%, transparent 100%)",
+                  "radial-gradient(circle, rgba(232,117,26,0.12) 0%, rgba(245,166,35,0.07) 40%, rgba(232,117,26,0.02) 70%, transparent 100%)",
               }}
             />
 
-            {/* Single SVG canvas: arcs + connection lines + system frame */}
+            {/* Single SVG canvas — boot sequence + ambient state */}
             <svg
               className="absolute inset-0 w-full h-full overflow-visible"
               viewBox="-50 -50 100 100"
               aria-hidden="true"
             >
-              <defs>
-                <radialGradient id="systemGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#E8751A" stopOpacity="0.15" />
-                  <stop offset="50%" stopColor="#F5A623" stopOpacity="0.06" />
-                  <stop offset="100%" stopColor="#E8751A" stopOpacity="0" />
-                </radialGradient>
-              </defs>
+              {/* Wake-up energy burst — expands outward at 0.5s as Linksi boots */}
+              <motion.circle
+                cx="0" cy="0"
+                fill="none"
+                stroke="#E8751A"
+                strokeOpacity={0}
+                strokeWidth={0.6}
+                initial={{ r: 0, strokeOpacity: 0 }}
+                animate={{ r: [0, 18, 38], strokeOpacity: [0, 0.7, 0] }}
+                transition={{ duration: 1.4, delay: 0.4, ease: "easeOut", times: [0, 0.4, 1] }}
+              />
+              <motion.circle
+                cx="0" cy="0"
+                fill="none"
+                stroke="#F5A623"
+                strokeOpacity={0}
+                strokeWidth={0.4}
+                initial={{ r: 0, strokeOpacity: 0 }}
+                animate={{ r: [0, 22, 44], strokeOpacity: [0, 0.5, 0] }}
+                transition={{ duration: 1.6, delay: 0.55, ease: "easeOut", times: [0, 0.4, 1] }}
+              />
 
-              {/* Faint outer system ring — establishes the "boundary" of the OS */}
+              {/* Faint outer system ring — appears AFTER the network establishes */}
               <motion.circle
                 cx="0" cy="0" r="48"
                 fill="none"
@@ -171,12 +185,12 @@ export default function Home() {
                 animate={{ opacity: 0.6, rotate: 360 }}
                 transition={{
                   rotate: { duration: 200, repeat: Infinity, ease: "linear" },
-                  opacity: { duration: 1.5, delay: 0.6 },
+                  opacity: { duration: 1.0, delay: 2.7 },
                 }}
                 style={{ transformOrigin: "0px 0px" }}
               />
 
-              {/* Concentric warm arcs (inside the ring) */}
+              {/* Concentric warm arcs — fade in during wake-up phase */}
               {[
                 { r: 38, color: "#E8751A", dasharray: "8 14", strokeWidth: 0.40, rotation: 0,   duration: 60 },
                 { r: 33, color: "#F5A623", dasharray: "4 10", strokeWidth: 0.32, rotation: 45,  duration: 80 },
@@ -196,106 +210,225 @@ export default function Home() {
                   initial={{ rotate: arc.rotation, opacity: 0 }}
                   animate={{ rotate: arc.rotation + 360, opacity: 0.6 }}
                   transition={{
-                    rotate: { duration: arc.duration, repeat: Infinity, ease: i % 2 === 0 ? "linear" : "linear" },
-                    opacity: { duration: 1.2, delay: 0.9 + i * 0.12 },
+                    rotate: { duration: arc.duration, repeat: Infinity, ease: "linear" },
+                    opacity: { duration: 1.2, delay: 0.7 + i * 0.1 },
                   }}
                   style={{ transformOrigin: "0px 0px" }}
                 />
               ))}
 
-              {/* Connection lines from outer arc edge → chip position. Each chip becomes a "tap point" off the system */}
+              {/* Connection lines — draw outward in sync with chip arrival.
+                   Line draws from r=15 to r=47, "reaching for" the chip as it flies in. */}
               {services.map((chip, i) => {
                 const rad = (chip.angle * Math.PI) / 180;
-                const innerR = 38; // start at outermost arc
-                const outerR = 47; // stop just before chip
+                const innerR = 15;
+                const outerR = 47;
                 const x1 = innerR * Math.cos(rad);
                 const y1 = innerR * Math.sin(rad);
                 const x2 = outerR * Math.cos(rad);
                 const y2 = outerR * Math.sin(rad);
+                const chipDelay = 1.0 + i * 0.18;
                 return (
-                  <motion.g key={`wire-${chip.label}`}>
+                  <g key={`wire-${chip.label}`}>
                     <motion.line
                       x1={x1} y1={y1} x2={x2} y2={y2}
                       stroke={chip.dot}
-                      strokeOpacity={0.45}
-                      strokeWidth={0.35}
-                      strokeDasharray="0.8 1"
+                      strokeOpacity={0.5}
+                      strokeWidth={0.4}
+                      strokeDasharray="0.8 1.2"
                       strokeLinecap="round"
                       initial={{ pathLength: 0, opacity: 0 }}
-                      animate={{ pathLength: 1, opacity: 0.5 }}
-                      transition={{ duration: 0.6, delay: 1.2 + i * 0.11, ease: "easeOut" }}
-                    />
-                    {/* Tap-point dot at the inner end of the wire */}
-                    <motion.circle
-                      cx={x1} cy={y1} r={0.7}
-                      fill={chip.dot}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: [0.4, 0.9, 0.4], scale: 1 }}
+                      animate={{ pathLength: 1, opacity: 0.55 }}
                       transition={{
-                        opacity: { duration: 2.5, repeat: Infinity, delay: 1.4 + i * 0.15 },
-                        scale: { duration: 0.4, delay: 1.3 + i * 0.11 },
+                        pathLength: { duration: 0.7, delay: chipDelay, ease: [0.16, 1, 0.3, 1] },
+                        opacity: { duration: 0.4, delay: chipDelay },
                       }}
                     />
-                  </motion.g>
+                    {/* Tap-point dot at the inner end — pops with the line */}
+                    <motion.circle
+                      cx={x1} cy={y1} r={0.8}
+                      fill={chip.dot}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{
+                        opacity: [0, 1, 0.5],
+                        scale: [0, 1.3, 1],
+                      }}
+                      transition={{
+                        duration: 0.6,
+                        delay: chipDelay + 0.5,
+                        ease: [0.16, 1, 0.3, 1],
+                        times: [0, 0.4, 1],
+                      }}
+                    />
+                    {/* Ambient pulse on tap-point — starts after entry settles */}
+                    <motion.circle
+                      cx={x1} cy={y1} r={0.8}
+                      fill={chip.dot}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0.4, 0.9, 0.4] }}
+                      transition={{
+                        duration: 2.8,
+                        delay: 3.2 + i * 0.2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  </g>
                 );
               })}
 
-              {/* Center glow ping */}
-              <circle cx="0" cy="0" r="0.6" fill="#E8751A" opacity="0.7">
-                <animate attributeName="r" values="0.4;1.4;0.4" dur="3s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.4;0.9;0.4" dur="3s" repeatCount="indefinite" />
-              </circle>
+              {/* Center glow ping — bursts at boot, then settles into ambient pulse */}
+              <motion.circle
+                cx="0" cy="0"
+                fill="#E8751A"
+                initial={{ r: 0, opacity: 0 }}
+                animate={{
+                  r: [0, 2.4, 0.7, 0.7],
+                  opacity: [0, 1, 0.7, 0.7],
+                }}
+                transition={{
+                  duration: 1.2,
+                  delay: 0.45,
+                  times: [0, 0.3, 0.6, 1],
+                  ease: "easeOut",
+                }}
+              />
+              <motion.circle
+                cx="0" cy="0" r="0.7" fill="#E8751A"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0.4, 0.9, 0.4], r: [0.5, 1.4, 0.5] }}
+                transition={{
+                  duration: 3,
+                  delay: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+
+              {/* Confirmation pulse — all tap points flash brighter once when network completes */}
+              {services.map((chip, i) => {
+                const rad = (chip.angle * Math.PI) / 180;
+                const cx = 15 * Math.cos(rad);
+                const cy = 15 * Math.sin(rad);
+                return (
+                  <motion.circle
+                    key={`flash-${chip.label}`}
+                    cx={cx} cy={cy}
+                    fill="none"
+                    stroke={chip.dot}
+                    strokeOpacity={0.8}
+                    strokeWidth={0.5}
+                    initial={{ r: 0.5, opacity: 0 }}
+                    animate={{ r: [0.5, 4], opacity: [0, 0.9, 0] }}
+                    transition={{
+                      duration: 0.8,
+                      delay: 2.7,
+                      ease: "easeOut",
+                      times: [0, 0.3, 1],
+                    }}
+                  />
+                );
+              })}
             </svg>
 
             {/* Soft warm cast shadow under mascot */}
             <div className="absolute bottom-[16%] left-1/2 -translate-x-1/2 w-[42%] h-8 bg-brand-orange/35 rounded-full blur-2xl pointer-events-none" />
 
-            {/* Linksi mascot — smaller so chips have breathing room */}
+            {/* Linksi mascot — boots up (desaturated → full color), then settles into ambient bob */}
             <motion.div
-              initial={{ scale: 0.82, opacity: 0, y: 12 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ scale: 0.78, opacity: 0, y: 14, filter: "saturate(0.4) brightness(0.88)" }}
+              animate={{
+                scale: 1,
+                opacity: 1,
+                y: 0,
+                filter: "saturate(1) brightness(1)",
+              }}
+              transition={{
+                scale:   { duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
+                opacity: { duration: 0.6, delay: 0.2 },
+                y:       { duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
+                filter:  { duration: 0.8, delay: 0.6, ease: "easeOut" },
+              }}
               className="absolute inset-0 flex items-center justify-center"
             >
+              {/* Confirmation bounce — small "yes!" wiggle when network completes */}
               <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-[55%] md:w-[60%]"
+                animate={{
+                  scale: [1, 1.04, 1],
+                  rotate: [0, -1.5, 1.5, 0],
+                }}
+                transition={{
+                  duration: 0.6,
+                  delay: 2.7,
+                  ease: "easeOut",
+                  times: [0, 0.4, 0.7, 1],
+                }}
+                className="absolute inset-0 flex items-center justify-center"
               >
-                <Image
-                  src="/images/linksi-mascot.png"
-                  alt="Linksi — your guide to community services"
-                  width={520}
-                  height={520}
-                  priority
-                  className="w-full h-auto drop-shadow-[0_22px_36px_rgba(232,117,26,0.32)]"
-                />
+                {/* Ongoing ambient bob */}
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{
+                    duration: 5.5,
+                    delay: 3.2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="relative w-[55%] md:w-[60%]"
+                >
+                  <Image
+                    src="/images/linksi-mascot.png"
+                    alt="Linksi — your guide to community services"
+                    width={520}
+                    height={520}
+                    priority
+                    className="w-full h-auto drop-shadow-[0_22px_36px_rgba(232,117,26,0.32)]"
+                  />
+                </motion.div>
               </motion.div>
             </motion.div>
 
-            {/* Service chips — refined, small, badge-like; positioned outside mascot tentacle zone */}
+            {/* Service chips — fly in from outside along their angle, "reeled in" by connection lines */}
             {services.map((chip, i) => {
-              const radius = 50; // % from center
+              const radius = 50;
               const rad = (chip.angle * Math.PI) / 180;
-              const x = 50 + radius * Math.cos(rad);
-              const y = 50 + radius * Math.sin(rad);
+              const finalX = 50 + radius * Math.cos(rad);
+              const finalY = 50 + radius * Math.sin(rad);
+              const entryDistance = 240; // pixels offset along the angle
+              const entryDx = entryDistance * Math.cos(rad);
+              const entryDy = entryDistance * Math.sin(rad);
+              const chipDelay = 1.0 + i * 0.18;
               return (
-                <motion.div
+                <div
                   key={chip.label}
-                  initial={{ opacity: 0, scale: 0.75 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.45, delay: 1.5 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%, -50%)" }}
-                  className="absolute hidden md:flex bg-white/95 backdrop-blur-sm border border-slate-200/60 shadow-[0_2px_8px_rgba(15,15,20,0.06)] rounded-full px-2.5 py-1 items-center gap-1.5 whitespace-nowrap"
+                  style={{ left: `${finalX}%`, top: `${finalY}%`, transform: "translate(-50%, -50%)" }}
+                  className="absolute hidden md:block"
                 >
-                  <span
-                    className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: chip.dot, boxShadow: `0 0 6px ${chip.dot}99` }}
-                  />
-                  <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-slate-700 font-medium">
-                    {chip.label}
-                  </span>
-                </motion.div>
+                  <motion.div
+                    initial={{ x: entryDx, y: entryDy, opacity: 0, scale: 0.5 }}
+                    animate={{ x: 0, y: 0, opacity: 1, scale: 1 }}
+                    transition={{
+                      x:       { duration: 0.85, delay: chipDelay, ease: [0.34, 1.56, 0.64, 1] },
+                      y:       { duration: 0.85, delay: chipDelay, ease: [0.34, 1.56, 0.64, 1] },
+                      opacity: { duration: 0.4, delay: chipDelay },
+                      scale:   { duration: 0.85, delay: chipDelay, ease: [0.34, 1.56, 0.64, 1] },
+                    }}
+                  >
+                    <motion.div
+                      animate={{ scale: [1, 1.08, 1] }}
+                      transition={{ duration: 0.5, delay: 2.7, times: [0, 0.5, 1], ease: "easeOut" }}
+                      className="bg-white/95 backdrop-blur-sm border border-slate-200/60 shadow-[0_2px_8px_rgba(15,15,20,0.06)] rounded-full px-2.5 py-1 flex items-center gap-1.5 whitespace-nowrap"
+                    >
+                      <span
+                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: chip.dot, boxShadow: `0 0 6px ${chip.dot}99` }}
+                      />
+                      <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-slate-700 font-medium">
+                        {chip.label}
+                      </span>
+                    </motion.div>
+                  </motion.div>
+                </div>
               );
             })}
           </div>

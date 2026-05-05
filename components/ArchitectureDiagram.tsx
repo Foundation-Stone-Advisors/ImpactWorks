@@ -41,7 +41,7 @@ export default function ArchitectureDiagram() {
         <text x="326" y="48" textAnchor="middle" fill="#64748B" fontSize="11" fontWeight="500" fontFamily="sans-serif">listings</text>
       </svg>
 
-      {/* LINKSY AI HUB */}
+      {/* LINKSI AI HUB */}
       <motion.div
         className="max-w-[280px] mx-auto"
         initial={{ opacity: 0, scale: 0.8 }}
@@ -52,7 +52,7 @@ export default function ArchitectureDiagram() {
         <div className="relative">
           <div className="absolute -inset-3 bg-brand-green/10 rounded-3xl blur-md" />
           <div className="relative bg-gradient-to-br from-brand-green to-emerald-600 rounded-2xl px-8 py-6 text-center text-white shadow-2xl border-2 border-white/20">
-            <p className="font-display font-extrabold text-xl md:text-2xl">Linksy AI</p>
+            <p className="font-display font-extrabold text-xl md:text-2xl">Linksi AI</p>
             <p className="text-white/75 text-sm mt-1">Intelligent Matching Engine</p>
           </div>
         </div>

@@ -97,7 +97,7 @@ export default function Impact() {
           </ScrollReveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { title: "Veteran Finds Housing Support", desc: "After months of searching, a local veteran was connected to housing assistance within 24 hours through Linksy.", category: "Housing", color: "border-l-brand-blue bg-brand-blue" },
+              { title: "Veteran Finds Housing Support", desc: "After months of searching, a local veteran was connected to housing assistance within 24 hours through Linksi.", category: "Housing", color: "border-l-brand-blue bg-brand-blue" },
               { title: "Parent Finds Childcare Resources", desc: "A single parent found affordable childcare options through the platform, enabling them to maintain employment.", category: "Childcare", color: "border-l-brand-orange bg-brand-orange" },
               { title: "Senior Receives Healthcare Referral", desc: "An elderly resident was matched with a healthcare provider offering specialized services close to home.", category: "Healthcare", color: "border-l-brand-green bg-brand-green" },
             ].map((story, i) => (

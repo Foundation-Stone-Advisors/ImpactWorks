@@ -32,7 +32,7 @@ export default function Home() {
               Impact Works develops data-driven solutions that make it easier for people to find the help they need while strengthening collaboration between organizations that serve the community.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex flex-wrap gap-4">
-              <Link href="/platform" className="btn-primary">Explore Linksy <span>&rarr;</span></Link>
+              <Link href="/platform" className="btn-primary">Explore Linksi <span>&rarr;</span></Link>
               <Link href="/impact" className="btn-ghost">See Community Impact</Link>
             </motion.div>
           </div>
@@ -80,18 +80,18 @@ export default function Home() {
         <div className="max-w-site mx-auto">
           <ScrollReveal className="text-center mb-12">
             <p className="eyebrow mb-4">The Solution</p>
-            <h2 className="heading-section text-slate-800 mb-4">How <span className="gradient-text-blue">Linksy</span> Works</h2>
+            <h2 className="heading-section text-slate-800 mb-4">How <span className="gradient-text-blue">Linksi</span> Works</h2>
             <p className="body-text-muted max-w-2xl mx-auto">A smarter path from need to help — in three simple steps.</p>
           </ScrollReveal>
 
           <ScrollReveal className="mb-12">
-            <Image src="/images/linksyprocessmap.png" alt="Linksy 3-step process" width={960} height={320} className="w-full max-w-4xl mx-auto" />
+            <Image src="/images/linksiprocessmap.png" alt="Linksi 3-step process" width={960} height={320} className="w-full max-w-4xl mx-auto" />
           </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { step: "01", title: "Ask for Help", desc: "Residents simply ask Linksy what they need — in plain language, on any device.", color: "bg-brand-blue" },
-              { step: "02", title: "Smart Matching", desc: "Linksy analyzes available services and identifies the best organizations to help.", color: "bg-brand-orange" },
+              { step: "01", title: "Ask for Help", desc: "Residents simply ask Linksi what they need — in plain language, on any device.", color: "bg-brand-blue" },
+              { step: "02", title: "Smart Matching", desc: "Linksi analyzes available services and identifies the best organizations to help.", color: "bg-brand-orange" },
               { step: "03", title: "Instant Referral", desc: "The request is routed directly to the provider — no waiting, no paperwork.", color: "bg-brand-green" },
             ].map((item, i) => (
               <ScrollReveal key={item.step} delay={i * 0.1}>
@@ -249,7 +249,7 @@ export default function Home() {
                       Partner With Us <span>&rarr;</span>
                     </Link>
                     <Link href="/platform" className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 text-white font-display font-semibold px-8 py-4 rounded-xl hover:bg-white/25 active:scale-[0.98] transition-all duration-300 cursor-pointer">
-                      Learn About Linksy
+                      Learn About Linksi
                     </Link>
                   </div>
                 </div>

@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import CountUp from "@/components/CountUp";
 import ScrollReveal from "@/components/ScrollReveal";
 import HeroArcs from "@/components/HeroArcs";
-import HeroNetworkSVG from "@/components/HeroNetworkSVG";
 
 export default function Home() {
   return (
@@ -30,35 +29,35 @@ export default function Home() {
               <Link href="/impact" className="btn-ghost">Explore the Community Operating System</Link>
             </motion.div>
           </div>
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} className="relative flex justify-center">
-            <HeroNetworkSVG />
+          {/* Linksi mascot — main hero visual */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="relative flex justify-center"
+          >
+            <motion.div
+              animate={{ y: [0, -14, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="relative"
+            >
+              {/* Soft glow halo */}
+              <div className="absolute inset-0 bg-brand-orange/20 rounded-full blur-3xl scale-90" />
+              <Image
+                src="/images/linksi-mascot.png"
+                alt="Linksi — your guide to community services"
+                width={520}
+                height={520}
+                priority
+                className="relative w-full max-w-[360px] md:max-w-[440px] lg:max-w-[520px] mx-auto drop-shadow-[0_20px_40px_rgba(232,117,26,0.35)]"
+              />
+            </motion.div>
           </motion.div>
         </div>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
           <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="w-5 h-8 border border-white/30 rounded-full flex justify-center pt-1.5">
             <div className="w-1 h-1.5 bg-brand-orange rounded-full" />
-          </motion.div>
-        </motion.div>
-
-        {/* Linksi mascot — small friendly peek in bottom-right */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.6, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="hidden md:block absolute bottom-6 right-6 lg:right-12 z-20 pointer-events-none"
-        >
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Image
-              src="/images/linksi-mascot.png"
-              alt="Linksi mascot"
-              width={140}
-              height={140}
-              className="drop-shadow-[0_8px_24px_rgba(232,117,26,0.35)]"
-            />
           </motion.div>
         </motion.div>
       </section>

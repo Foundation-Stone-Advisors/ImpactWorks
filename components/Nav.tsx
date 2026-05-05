@@ -27,9 +27,8 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Home now has a cream hero (dark text needed). Other pages still use dark heros (white text).
-  const isLightHero = pathname === "/";
-  const textColor = scrolled || isLightHero ? "text-slate-800" : "text-white";
+  // All pages have dark hero backgrounds — nav text is white when not scrolled, slate-800 when scrolled
+  const textColor = scrolled ? "text-slate-800" : "text-white";
   const activeColor = "text-brand-orange";
 
   return (
@@ -89,17 +88,17 @@ export default function Nav() {
           <div className="w-5 flex flex-col gap-[5px]">
             <motion.span
               animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-              className={`block h-[1.5px] w-full origin-center ${scrolled || isLightHero ? "bg-slate-800" : "bg-white"}`}
+              className={`block h-[1.5px] w-full origin-center ${scrolled ? "bg-slate-800" : "bg-white"}`}
               transition={{ duration: 0.25 }}
             />
             <motion.span
               animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-              className={`block h-[1.5px] w-full ${scrolled || isLightHero ? "bg-slate-800" : "bg-white"}`}
+              className={`block h-[1.5px] w-full ${scrolled ? "bg-slate-800" : "bg-white"}`}
               transition={{ duration: 0.15 }}
             />
             <motion.span
               animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-              className={`block h-[1.5px] w-full origin-center ${scrolled || isLightHero ? "bg-slate-800" : "bg-white"}`}
+              className={`block h-[1.5px] w-full origin-center ${scrolled ? "bg-slate-800" : "bg-white"}`}
               transition={{ duration: 0.25 }}
             />
           </div>

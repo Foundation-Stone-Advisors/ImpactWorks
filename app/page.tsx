@@ -22,31 +22,72 @@ export default function Home() {
     <div>
       {/* ━━━ HERO — Deep Editorial Operating System (warm navy) ━━━ */}
       <section className="relative overflow-hidden">
-        {/* Layered warm-tinted dark base — cinematic depth, not flat navy */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#141228] via-[#0E1126] to-[#0A0F1F]" />
+        {/* Clean dark base — vertical gradient for natural depth, no overlapping color zones */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#15132C] via-[#0E1126] to-[#080B1A]" />
 
-        {/* Atmospheric color mesh — single warm sun centered on mascot, no halo container */}
+        {/* Single warm sun behind mascot — one decisive light source, no competing orbs */}
         <div className="absolute inset-0 pointer-events-none">
-          {/* The "sun" — MASSIVE warm orb centered exactly on mascot. No visible edge because gradient bleeds well beyond the viewport. */}
-          <div className="absolute top-1/2 right-[18%] -translate-y-1/2 w-[1600px] h-[1600px] bg-gradient-radial from-brand-orange/30 via-brand-orange/12 via-30% to-transparent to-65% rounded-full blur-3xl" />
-          {/* Secondary inner brightness — sits behind the mascot's body */}
-          <div className="absolute top-1/2 right-[20%] -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-brand-gold/20 via-brand-orange/8 to-transparent rounded-full blur-3xl" />
-          {/* Top-right amber wash for cinematic depth */}
-          <div className="absolute -top-[20%] -right-[15%] w-[1000px] h-[1000px] bg-gradient-radial from-[#3A2614]/50 via-[#3A2614]/15 to-transparent rounded-full blur-3xl" />
-          {/* Bottom-right gold accent */}
-          <div className="absolute -bottom-[15%] right-[22%] w-[600px] h-[600px] bg-gradient-radial from-brand-gold/16 via-brand-gold/5 to-transparent rounded-full blur-3xl" />
-
-          {/* Cool side — top-left brand-blue */}
-          <div className="absolute -top-[10%] -left-[8%] w-[750px] h-[750px] bg-gradient-radial from-brand-blue/26 via-brand-blue/9 to-transparent rounded-full blur-3xl" />
-          {/* Cool side — bottom-left deeper navy-blue */}
-          <div className="absolute -bottom-[22%] -left-[14%] w-[900px] h-[900px] bg-gradient-radial from-[#1A4A78]/42 via-[#1A4A78]/13 to-transparent rounded-full blur-3xl" />
-          {/* Mid-left subtle blue pop behind copy */}
-          <div className="absolute top-[35%] left-[3%] w-[500px] h-[500px] bg-gradient-radial from-brand-blue/20 via-brand-blue/6 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-1/2 right-[12%] -translate-y-1/2 w-[1100px] h-[1100px] bg-gradient-radial from-brand-orange/30 via-brand-orange/8 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-1/2 right-[18%] -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-brand-gold/28 to-transparent rounded-full blur-3xl" />
         </div>
 
-        {/* Grain texture — screen blend on dark for subtle film feel */}
+        {/* Brand swoosh — slow rotating arcs in deep background, ties to logo DNA */}
+        <svg
+          className="absolute -top-[40%] -right-[40%] w-[180%] h-[180%] pointer-events-none opacity-[0.16]"
+          viewBox="-50 -50 100 100"
+          aria-hidden="true"
+        >
+          <motion.ellipse
+            cx="0" cy="0" rx="48" ry="44"
+            fill="none"
+            stroke="#E8751A"
+            strokeWidth="0.3"
+            strokeDasharray="60 220"
+            strokeLinecap="round"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 240, repeat: Infinity, ease: "linear" }}
+            style={{ transformOrigin: "0 0" }}
+          />
+          <motion.ellipse
+            cx="0" cy="0" rx="44" ry="42"
+            fill="none"
+            stroke="#F5A623"
+            strokeWidth="0.25"
+            strokeDasharray="40 280"
+            strokeLinecap="round"
+            animate={{ rotate: -360 }}
+            transition={{ duration: 300, repeat: Infinity, ease: "linear" }}
+            style={{ transformOrigin: "0 0" }}
+          />
+          <motion.ellipse
+            cx="0" cy="0" rx="40" ry="38"
+            fill="none"
+            stroke="#2E8BC0"
+            strokeWidth="0.22"
+            strokeDasharray="25 360"
+            strokeLinecap="round"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 360, repeat: Infinity, ease: "linear" }}
+            style={{ transformOrigin: "0 0" }}
+          />
+        </svg>
+
+        {/* Dot grid — subtle network/system texture across the whole bg */}
         <div
-          className="absolute inset-0 opacity-[0.06] pointer-events-none mix-blend-screen"
+          className="absolute inset-0 pointer-events-none opacity-60"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+
+        {/* Vignette — slight darkening at edges for cinematic focus */}
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_transparent_45%,_rgba(0,0,0,0.45)_100%)]" />
+
+        {/* Film grain */}
+        <div
+          className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-screen"
           style={{
             backgroundImage:
               "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
@@ -502,17 +543,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ━━━ STATS — warm dark navy, matches hero direction ━━━ */}
+      {/* ━━━ STATS — same clean dark language as hero ━━━ */}
       <section className="section-pad relative overflow-hidden">
-        {/* Same warm-tinted dark base as hero for visual rhythm */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#141228] via-[#0E1126] to-[#0A0F1F]" />
-        {/* Atmospheric mesh — multi-orb to match hero richness */}
+        {/* Same dark base as hero */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#15132C] via-[#0E1126] to-[#080B1A]" />
+        {/* Single centered warm glow */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-[15%] left-[5%] w-[700px] h-[700px] bg-gradient-radial from-brand-orange/18 via-brand-orange/5 to-transparent rounded-full blur-3xl" />
-          <div className="absolute -top-[10%] right-[10%] w-[550px] h-[550px] bg-gradient-radial from-brand-blue/20 via-brand-blue/6 to-transparent rounded-full blur-3xl" />
-          <div className="absolute -bottom-[20%] left-[40%] w-[600px] h-[600px] bg-gradient-radial from-brand-gold/14 via-brand-gold/4 to-transparent rounded-full blur-3xl" />
-          <div className="absolute -bottom-[15%] -right-[8%] w-[500px] h-[500px] bg-gradient-radial from-[#1A4A78]/35 via-[#1A4A78]/10 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[600px] bg-gradient-radial from-brand-orange/14 via-brand-orange/4 to-transparent blur-3xl" />
         </div>
+        {/* Dot grid */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-50"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+        {/* Vignette */}
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_transparent_50%,_rgba(0,0,0,0.4)_100%)]" />
         {/* Editorial top + bottom hairlines — brighter on dark */}
         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent" />
         <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent" />

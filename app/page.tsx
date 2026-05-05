@@ -8,12 +8,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 import HeroArcs from "@/components/HeroArcs";
 import HeroNetworkSVG from "@/components/HeroNetworkSVG";
 
-const sectors = [
-  "Housing", "Food", "Healthcare",
-  "Mental Health", "Jobs", "Education",
-  "Transportation", "Childcare", "Legal",
-];
-
 export default function Home() {
   return (
     <div>
@@ -26,14 +20,14 @@ export default function Home() {
           <div>
             <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="eyebrow mb-5">Community Impact Platform</motion.p>
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white mb-6">
-              Connecting Communities to{" "}<span className="gradient-text-orange">Critical Services</span>
+              An Innovative Community Operating System Connecting Communities to{" "}<span className="gradient-text-orange">Critical Services</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }} className="body-text text-slate-300 max-w-lg mb-10">
-              Impact Works develops data-driven solutions that make it easier for people to find the help they need while strengthening collaboration between organizations that serve the community.
+              Impact Works develops data-driven solutions, making it easier for people to find the help they need while strengthening funding and collaboration among organizations serving the community.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex flex-wrap gap-4">
               <Link href="/platform" className="btn-primary">Explore Linksi <span>&rarr;</span></Link>
-              <Link href="/impact" className="btn-ghost">See Community Impact</Link>
+              <Link href="/impact" className="btn-ghost">Explore the Community Operating System</Link>
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} className="relative flex justify-center">
@@ -44,6 +38,27 @@ export default function Home() {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
           <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="w-5 h-8 border border-white/30 rounded-full flex justify-center pt-1.5">
             <div className="w-1 h-1.5 bg-brand-orange rounded-full" />
+          </motion.div>
+        </motion.div>
+
+        {/* Linksi mascot — small friendly peek in bottom-right */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.6, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="hidden md:block absolute bottom-6 right-6 lg:right-12 z-20 pointer-events-none"
+        >
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Image
+              src="/images/linksi-mascot.png"
+              alt="Linksi mascot"
+              width={140}
+              height={140}
+              className="drop-shadow-[0_8px_24px_rgba(232,117,26,0.35)]"
+            />
           </motion.div>
         </motion.div>
       </section>
@@ -79,8 +94,16 @@ export default function Home() {
       <section className="section-pad section-light-alt">
         <div className="max-w-site mx-auto">
           <ScrollReveal className="text-center mb-12">
-            <p className="eyebrow mb-4">The Solution</p>
-            <h2 className="heading-section text-slate-800 mb-4">How <span className="gradient-text-blue">Linksi</span> Works</h2>
+            <p className="eyebrow mb-6">The Solution</p>
+            <Image
+              src="/images/linksi-full.png"
+              alt="Linksi"
+              width={400}
+              height={267}
+              className="w-full max-w-xs sm:max-w-sm mx-auto mb-4"
+              priority={false}
+            />
+            <h2 className="heading-section text-slate-800 mb-4">How It Works</h2>
             <p className="body-text-muted max-w-2xl mx-auto">A smarter path from need to help — in three simple steps.</p>
           </ScrollReveal>
 
@@ -107,90 +130,6 @@ export default function Home() {
                 </div>
               </ScrollReveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ━━━ ECOSYSTEM — bento grid with visual hierarchy ━━━ */}
-      <section className="section-pad section-light">
-        <div className="max-w-site mx-auto">
-          <ScrollReveal className="mb-12">
-            <p className="eyebrow mb-4">The Ecosystem</p>
-            <h2 className="heading-section text-slate-800 mb-4">Collaboration Across <span className="gradient-text-blue">Sectors</span></h2>
-            <p className="body-text-muted max-w-2xl">Impact Works brings together organizations across sectors to build a coordinated network of services.</p>
-          </ScrollReveal>
-
-          {/* Bento grid — asymmetric, visual hierarchy */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {/* Primary sectors — larger, colored */}
-            <ScrollReveal className="md:col-span-2 md:row-span-2">
-              <div className="bg-brand-blue rounded-2xl p-8 h-full text-white group hover:shadow-xl transition-all duration-300 relative overflow-hidden">
-                <div className="absolute -bottom-8 -right-8 w-32 h-32 border-2 border-white/10 rounded-full" />
-                <p className="font-mono text-xs text-white/50 mb-3">01</p>
-                <h3 className="font-display text-2xl font-bold mb-2">Housing</h3>
-                <p className="text-white/70 text-sm leading-relaxed">Connecting residents with safe, affordable housing assistance and shelter programs.</p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.05}>
-              <div className="bg-brand-green rounded-2xl p-6 text-white group hover:shadow-xl transition-all duration-300 h-full">
-                <p className="font-mono text-xs text-white/50 mb-2">02</p>
-                <h3 className="font-display text-lg font-bold">Food</h3>
-                <p className="text-white/60 text-xs mt-1">Food banks & nutrition</p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.1}>
-              <div className="bg-brand-orange rounded-2xl p-6 text-white group hover:shadow-xl transition-all duration-300 h-full">
-                <p className="font-mono text-xs text-white/50 mb-2">03</p>
-                <h3 className="font-display text-lg font-bold">Healthcare</h3>
-                <p className="text-white/60 text-xs mt-1">Medical access</p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.15}>
-              <div className="bg-brand-gold rounded-2xl p-6 text-white group hover:shadow-xl transition-all duration-300 h-full">
-                <p className="font-mono text-xs text-white/50 mb-2">04</p>
-                <h3 className="font-display text-lg font-bold">Jobs</h3>
-                <p className="text-white/60 text-xs mt-1">Employment services</p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.2}>
-              <div className="bg-slate-800 rounded-2xl p-6 text-white group hover:shadow-xl transition-all duration-300 h-full">
-                <p className="font-mono text-xs text-white/40 mb-2">05</p>
-                <h3 className="font-display text-lg font-bold">Mental Health</h3>
-                <p className="text-white/50 text-xs mt-1">Counseling & crisis</p>
-              </div>
-            </ScrollReveal>
-
-            {/* Secondary sectors — compact row */}
-            <ScrollReveal delay={0.08} className="md:col-span-2">
-              <div className="grid grid-cols-2 gap-4 h-full">
-                <div className="bg-gray-50 rounded-2xl p-5 border border-slate-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-                  <p className="font-mono text-[10px] text-slate-400 mb-1">06</p>
-                  <h3 className="font-display text-sm font-bold text-slate-800">Education</h3>
-                </div>
-                <div className="bg-gray-50 rounded-2xl p-5 border border-slate-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-                  <p className="font-mono text-[10px] text-slate-400 mb-1">07</p>
-                  <h3 className="font-display text-sm font-bold text-slate-800">Transportation</h3>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.12}>
-              <div className="bg-gray-50 rounded-2xl p-5 border border-slate-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 h-full">
-                <p className="font-mono text-[10px] text-slate-400 mb-1">08</p>
-                <h3 className="font-display text-sm font-bold text-slate-800">Childcare</h3>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.15}>
-              <div className="bg-gray-50 rounded-2xl p-5 border border-slate-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 h-full">
-                <p className="font-mono text-[10px] text-slate-400 mb-1">09</p>
-                <h3 className="font-display text-sm font-bold text-slate-800">Legal</h3>
-              </div>
-            </ScrollReveal>
           </div>
         </div>
       </section>

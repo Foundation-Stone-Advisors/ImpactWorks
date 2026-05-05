@@ -22,16 +22,32 @@ export default function Impact() {
               Real numbers, real stories — how Impact Works is changing lives across Clay County.
             </motion.p>
           </div>
-          {/* Page-specific visual: oversized hero stat — the "Impact" page deserves to lead with a number */}
-          <motion.div initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} className="md:col-span-5 hidden md:flex flex-col items-center justify-center text-center">
-            <div className="relative">
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-orange mb-3">Residents Connected</p>
-              <p className="font-mono font-extrabold text-7xl lg:text-8xl text-white tabular-nums leading-none">
-                <CountUp end={1500} suffix="+" />
-              </p>
-              <p className="font-display text-sm text-slate-400 mt-4 max-w-[200px] mx-auto">and growing every week</p>
-              {/* Decorative glow behind */}
-              <div className="absolute inset-0 bg-brand-orange/15 blur-3xl -z-10 scale-110" />
+          {/* Page-specific visual: editorial story-snippet card — emotional angle, NOT the same numbers shown in the orange stats strip below */}
+          <motion.div initial={{ opacity: 0, y: 16, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} className="md:col-span-5 hidden md:flex justify-center">
+            <div className="relative w-full max-w-[360px] bg-white/[0.05] backdrop-blur-md border border-white/12 rounded-2xl p-7 shadow-2xl">
+              {/* Quote mark */}
+              <svg className="absolute top-5 left-6 w-10 h-10 text-brand-orange/30" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z" />
+              </svg>
+
+              <div className="relative pt-8">
+                <p className="font-display text-lg leading-snug text-white font-semibold">
+                  Connected to housing assistance within <span className="text-brand-orange">24 hours</span>.
+                </p>
+                <div className="flex items-center justify-between pt-5 mt-5 border-t border-white/10">
+                  <div>
+                    <p className="font-display text-xs text-slate-300">Anonymous resident</p>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500 mt-0.5">Clay County, FL</p>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75 animate-ping" />
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-green" />
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-green font-semibold">Verified</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

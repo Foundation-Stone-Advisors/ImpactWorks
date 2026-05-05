@@ -29,27 +29,47 @@ export default function Partners() {
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 mt-6 max-w-xl">Organizations working together to strengthen access to services.</motion.p>
           </div>
-          {/* Page-specific visual: stacked partner-category badges with brand colors */}
-          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} className="md:col-span-5 hidden md:flex flex-col items-end gap-2.5">
-            {[
-              { label: "Nonprofits",        dot: "#E8751A" },
-              { label: "Healthcare",        dot: "#3DAA5C" },
-              { label: "Government",        dot: "#2E8BC0" },
-              { label: "Faith Orgs",        dot: "#F5A623" },
-              { label: "Community Initiatives", dot: "#4DA8D9" },
-              { label: "Education",         dot: "#5EC87A" },
-            ].map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.5 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className="flex items-center gap-2.5 bg-white/[0.06] backdrop-blur-md border border-white/15 rounded-full px-4 py-2 shadow-lg"
-              >
-                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: item.dot, boxShadow: `0 0 8px ${item.dot}` }} />
-                <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate-100 font-medium">{item.label}</span>
-              </motion.div>
-            ))}
+          {/* Page-specific visual: partner-growth timeline — narrative angle, NOT the categorical grid below */}
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} className="md:col-span-5 hidden md:flex justify-center">
+            <div className="relative w-full max-w-[340px] bg-white/[0.05] backdrop-blur-md border border-white/12 rounded-2xl p-6 shadow-2xl">
+              <div className="flex items-baseline justify-between pb-4 border-b border-white/10 mb-5">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-orange font-semibold">Network Growth</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">2022 → Today</span>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  { year: "2022", count: 5,   width: "10%", color: "#475569" },
+                  { year: "2023", count: 18,  width: "36%", color: "#2E8BC0" },
+                  { year: "2024", count: 35,  width: "70%", color: "#3DAA5C" },
+                  { year: "2025", count: 50,  width: "100%", color: "#E8751A", live: true },
+                ].map((row, i) => (
+                  <div key={row.year} className="flex items-center gap-3">
+                    <span className="font-mono text-[11px] text-slate-400 w-10 flex-shrink-0">{row.year}</span>
+                    <div className="flex-1 h-2 bg-white/[0.05] rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: row.width }}
+                        transition={{ duration: 1.0, delay: 0.6 + i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                        className="h-full rounded-full"
+                        style={{ backgroundColor: row.color, boxShadow: row.live ? `0 0 10px ${row.color}` : "none" }}
+                      />
+                    </div>
+                    <span className="font-mono text-xs font-bold text-white tabular-nums w-10 text-right flex-shrink-0">
+                      {row.count}{row.live ? "+" : ""}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-2 pt-5 mt-5 border-t border-white/10">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75 animate-ping" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-orange" />
+                </span>
+                <span className="font-display text-xs text-slate-300">Adding new partners every quarter</span>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>

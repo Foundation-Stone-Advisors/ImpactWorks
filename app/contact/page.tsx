@@ -3,23 +3,45 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
-import HeroArcs from "@/components/HeroArcs";
+import DarkBackdrop from "@/components/DarkBackdrop";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
     <div>
-      <section className="relative min-h-[50vh] flex items-center section-dark overflow-hidden">
-        <HeroArcs />
-        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40">
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Get in Touch</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white max-w-3xl">
-            Contact Impact<span className="gradient-text-orange">Works</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 mt-6 max-w-xl">
-            Questions about partnerships, Linksi access, or collaboration?
-          </motion.p>
+      <section className="relative min-h-[50vh] flex items-center overflow-hidden text-white">
+        <DarkBackdrop variant="hero-symmetric" />
+        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 grid md:grid-cols-12 gap-10 items-center w-full">
+          <div className="md:col-span-7">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Get in Touch</motion.p>
+            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white">
+              Let&apos;s <span className="gradient-text-orange">Connect</span>
+            </motion.h1>
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 mt-6 max-w-xl">
+              Questions about partnerships, Linksi access, or collaboration?
+            </motion.p>
+          </div>
+          {/* Page-specific visual: small floating envelope-style card */}
+          <motion.div initial={{ opacity: 0, scale: 0.85, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} className="md:col-span-5 hidden md:flex justify-center">
+            <div className="relative w-full max-w-[320px]">
+              {/* Envelope card */}
+              <div className="bg-white/[0.06] backdrop-blur-md border border-white/15 rounded-2xl p-6 shadow-2xl">
+                <div className="flex items-center gap-2 pb-4 border-b border-white/10 mb-4">
+                  <div className="w-2 h-2 rounded-full bg-red-400" />
+                  <div className="w-2 h-2 rounded-full bg-yellow-400" />
+                  <div className="w-2 h-2 rounded-full bg-green-400" />
+                  <span className="font-mono text-[10px] text-slate-400 ml-2">message.draft</span>
+                </div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-orange mb-2">To</p>
+                <p className="font-display text-sm text-white mb-4">Impact Works Team</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-orange mb-2">Subject</p>
+                <p className="font-display text-sm text-white">Partnership inquiry</p>
+              </div>
+              {/* Decorative circle behind */}
+              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-brand-orange/20 rounded-full blur-xl pointer-events-none" />
+            </div>
+          </motion.div>
         </div>
       </section>
 

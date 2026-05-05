@@ -47,8 +47,29 @@
     @apply font-display text-hero font-extrabold;
   }
 
+  /* Smaller hero heading for long copy that won't fit at heading-hero scale */
+  .heading-hero-sm {
+    @apply font-display font-extrabold text-4xl md:text-5xl lg:text-6xl xl:text-[4.25rem] leading-[1.05] tracking-[-0.025em];
+  }
+
   .heading-section {
     @apply font-display text-section font-bold;
+  }
+
+  /* Editorial eyebrow with rule lines on either side — for hero + key sections only */
+  .eyebrow-editorial {
+    @apply inline-flex items-center justify-center gap-3;
+  }
+
+  .eyebrow-editorial::before,
+  .eyebrow-editorial::after {
+    content: "";
+    @apply block w-8 h-px bg-brand-orange;
+  }
+
+  /* Section boundary hairline — thin orange/30 rule between major sections */
+  .section-rule {
+    @apply h-px bg-gradient-to-r from-transparent via-brand-orange/25 to-transparent;
   }
 
   .body-text {

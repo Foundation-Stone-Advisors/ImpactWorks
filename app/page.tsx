@@ -5,44 +5,404 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import CountUp from "@/components/CountUp";
 import ScrollReveal from "@/components/ScrollReveal";
-import HeroArcs from "@/components/HeroArcs";
-import HeroNetworkSVG from "@/components/HeroNetworkSVG";
-
-const sectors = [
-  "Housing", "Food", "Healthcare",
-  "Mental Health", "Jobs", "Education",
-  "Transportation", "Childcare", "Legal",
-];
+import DarkBackdrop from "@/components/DarkBackdrop";
 
 export default function Home() {
+  // Angles tuned to avoid mascot tentacle peaks. innerRadius lets specific chips
+  // place their tap-point deeper into the mascot body to stay hidden when the
+  // chip's angle puts the standard radius outside the silhouette.
+  const services = [
+    { label: "Housing",       dot: "#2E8BC0", angle: -95                    },
+    { label: "Healthcare",    dot: "#E8751A", angle: -45                    },
+    { label: "Food",          dot: "#3DAA5C", angle: 45                     },
+    { label: "Jobs",          dot: "#F5A623", angle: 95                     },
+    { label: "Mental Health", dot: "#475569", angle: 165, innerRadius: 7   },
+    { label: "Childcare",     dot: "#4DA8D9", angle: 225                    },
+  ];
+
   return (
     <div>
-      {/* ━━━ HERO ━━━ */}
-      <section className="relative min-h-screen flex items-center section-dark overflow-hidden">
-        <HeroArcs />
-        <div className="absolute top-1/2 right-[10%] -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-brand-blue/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      {/* ━━━ HERO — Deep Editorial Operating System (warm navy) ━━━ */}
+      <section className="relative overflow-hidden">
+        {/* Clean dark base — vertical gradient for natural depth, no overlapping color zones */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#15132C] via-[#0E1126] to-[#080B1A]" />
 
-        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 grid md:grid-cols-2 gap-12 items-center w-full">
-          <div>
-            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="eyebrow mb-5">Community Impact Platform</motion.p>
-            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white mb-6">
-              Connecting Communities to{" "}<span className="gradient-text-orange">Critical Services</span>
-            </motion.h1>
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }} className="body-text text-slate-300 max-w-lg mb-10">
-              Impact Works develops data-driven solutions that make it easier for people to find the help they need while strengthening collaboration between organizations that serve the community.
-            </motion.p>
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex flex-wrap gap-4">
-              <Link href="/platform" className="btn-primary">Explore Linksi <span>&rarr;</span></Link>
-              <Link href="/impact" className="btn-ghost">See Community Impact</Link>
-            </motion.div>
-          </div>
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} className="relative flex justify-center">
-            <HeroNetworkSVG />
-          </motion.div>
+        {/* Paired circles — top-left only (matches hero-asymmetric variant; bottom-right would clash with the mascot composition) */}
+        <div className="absolute -top-44 -left-44 w-[720px] h-[720px] border-[2px] border-[#212749]/60 rounded-full pointer-events-none" />
+        <div className="absolute -top-24 -left-24 w-[480px] h-[480px] border-[2px] border-[#212749]/35 rounded-full pointer-events-none" />
+
+        {/* Warm sun centered on mascot — both orbs share the SAME center point via translate */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-[70%] -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[1100px] bg-gradient-radial from-brand-orange/30 via-brand-orange/8 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-[70%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-brand-gold/28 to-transparent rounded-full blur-3xl" />
         </div>
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="w-5 h-8 border border-white/30 rounded-full flex justify-center pt-1.5">
+        {/* Vignette — slight darkening at edges for cinematic focus */}
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_transparent_45%,_rgba(0,0,0,0.45)_100%)]" />
+
+        {/* Editorial top hairline — sits just below nav bar */}
+        <div className="absolute top-[72px] inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/40 to-transparent z-[5]" />
+
+        {/* Content grid */}
+        <div className="relative z-[5] max-w-site mx-auto px-6 pt-32 pb-20 md:pt-36 md:pb-24 lg:pt-40 lg:pb-28 grid md:grid-cols-12 gap-10 lg:gap-16 items-center min-h-[88vh]">
+          {/* COPY COLUMN */}
+          <div className="md:col-span-7 relative">
+            {/* Vertical accent rule (desktop only) — brighter on dark */}
+            <motion.div
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              transition={{ duration: 0.9, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="hidden lg:block absolute -left-6 top-2 bottom-32 w-[2px] bg-gradient-to-b from-brand-orange via-brand-orange/60 to-transparent origin-top shadow-[0_0_12px_rgba(232,117,26,0.4)]"
+            />
+
+            {/* Lead-in */}
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-xl md:text-2xl lg:text-[1.875rem] font-medium text-slate-300 mb-5 leading-snug tracking-[-0.01em]"
+            >
+              An Innovative Community Operating System
+            </motion.p>
+
+            {/* Main H1 — controlled wrap via block span */}
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display font-extrabold text-white mb-8 text-4xl md:text-5xl lg:text-[4.25rem] xl:text-[5rem] leading-[0.98] tracking-[-0.035em]"
+            >
+              Connecting Communities
+              <span className="block">
+                to <span className="gradient-text-orange">Critical Services</span>
+              </span>
+            </motion.h1>
+
+            {/* Body */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              className="font-display text-base md:text-[17px] text-slate-300 max-w-md leading-[1.65] mb-10"
+            >
+              Impact Works develops data-driven solutions, making it easier for people to find the help they need while strengthening funding and collaboration among organizations serving the community.
+            </motion.p>
+
+            {/* CTAs — editorial pairing */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="flex flex-wrap items-center gap-x-7 gap-y-4"
+            >
+              <Link
+                href="/platform"
+                className="group inline-flex items-center gap-2 bg-brand-orange text-white font-display font-bold px-7 py-3.5 rounded-xl hover:bg-brand-orange-light hover:shadow-[0_8px_28px_-4px_rgba(232,117,26,0.55)] active:scale-[0.97] transition-all duration-300 cursor-pointer"
+              >
+                Explore Linksi
+                <span className="transition-transform duration-300 group-hover:translate-x-0.5">&rarr;</span>
+              </Link>
+              <Link
+                href="/impact"
+                className="group inline-flex items-center gap-1.5 font-display font-semibold text-slate-200 text-[15px] hover:text-brand-orange transition-colors duration-300"
+              >
+                <span className="relative">
+                  Explore the Community Operating System
+                  <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-current scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                </span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* MASCOT COLUMN — choreographed boot sequence */}
+          <div className="md:col-span-5 relative aspect-square w-full max-w-md md:max-w-none mx-auto">
+            {/* Single SVG canvas — boot sequence + ambient state */}
+            <svg
+              className="absolute inset-0 w-full h-full overflow-visible"
+              viewBox="-50 -50 100 100"
+              aria-hidden="true"
+            >
+              {/* Wake-up energy burst — expands outward at 0.5s as Linksi boots */}
+              <motion.circle
+                cx="0" cy="0"
+                fill="none"
+                stroke="#E8751A"
+                strokeOpacity={0}
+                strokeWidth={0.6}
+                initial={{ r: 0, strokeOpacity: 0 }}
+                animate={{ r: [0, 18, 38], strokeOpacity: [0, 0.7, 0] }}
+                transition={{ duration: 1.4, delay: 0.4, ease: "easeOut", times: [0, 0.4, 1] }}
+              />
+              <motion.circle
+                cx="0" cy="0"
+                fill="none"
+                stroke="#F5A623"
+                strokeOpacity={0}
+                strokeWidth={0.4}
+                initial={{ r: 0, strokeOpacity: 0 }}
+                animate={{ r: [0, 22, 44], strokeOpacity: [0, 0.5, 0] }}
+                transition={{ duration: 1.6, delay: 0.55, ease: "easeOut", times: [0, 0.4, 1] }}
+              />
+
+              {/* Faint outer system ring — appears AFTER the network establishes */}
+              <motion.circle
+                cx="0" cy="0" r="48"
+                fill="none"
+                stroke="#E8751A"
+                strokeOpacity={0.18}
+                strokeWidth={0.25}
+                strokeDasharray="0.8 1.5"
+                initial={{ opacity: 0, rotate: 0 }}
+                animate={{ opacity: 0.6, rotate: 360 }}
+                transition={{
+                  rotate: { duration: 200, repeat: Infinity, ease: "linear" },
+                  opacity: { duration: 1.0, delay: 2.7 },
+                }}
+                style={{ transformOrigin: "0px 0px" }}
+              />
+
+              {/* Concentric warm arcs — fade in during wake-up phase */}
+              {[
+                { r: 38, color: "#E8751A", dasharray: "8 14", strokeWidth: 0.40, rotation: 0,   duration: 60 },
+                { r: 33, color: "#F5A623", dasharray: "4 10", strokeWidth: 0.32, rotation: 45,  duration: 80 },
+                { r: 28, color: "#2E8BC0", dasharray: "6 16", strokeWidth: 0.36, rotation: 90,  duration: 70 },
+                { r: 23, color: "#3DAA5C", dasharray: "3 12", strokeWidth: 0.28, rotation: 135, duration: 90 },
+              ].map((arc, i) => (
+                <motion.circle
+                  key={`arc-${i}`}
+                  cx="0" cy="0"
+                  r={arc.r}
+                  fill="none"
+                  stroke={arc.color}
+                  strokeOpacity={0.55}
+                  strokeWidth={arc.strokeWidth}
+                  strokeDasharray={arc.dasharray}
+                  strokeLinecap="round"
+                  initial={{ rotate: arc.rotation, opacity: 0 }}
+                  animate={{ rotate: arc.rotation + 360, opacity: 0.6 }}
+                  transition={{
+                    rotate: { duration: arc.duration, repeat: Infinity, ease: "linear" },
+                    opacity: { duration: 1.2, delay: 0.7 + i * 0.1 },
+                  }}
+                  style={{ transformOrigin: "0px 0px" }}
+                />
+              ))}
+
+              {/* Connection lines — draw outward in sync with chip arrival.
+                   innerR per-chip lets specific chips tuck their tap-point deeper
+                   into the mascot body when their angle puts the standard radius
+                   outside the silhouette (e.g. Mental Health on the lower-left). */}
+              {services.map((chip, i) => {
+                const rad = (chip.angle * Math.PI) / 180;
+                const innerR = chip.innerRadius ?? 15;
+                const outerR = 47;
+                const x1 = innerR * Math.cos(rad);
+                const y1 = innerR * Math.sin(rad);
+                const x2 = outerR * Math.cos(rad);
+                const y2 = outerR * Math.sin(rad);
+                const chipDelay = 1.0 + i * 0.18;
+                return (
+                  <g key={`wire-${chip.label}`}>
+                    <motion.line
+                      x1={x1} y1={y1} x2={x2} y2={y2}
+                      stroke={chip.dot}
+                      strokeOpacity={0.5}
+                      strokeWidth={0.4}
+                      strokeDasharray="0.8 1.2"
+                      strokeLinecap="round"
+                      initial={{ pathLength: 0, opacity: 0 }}
+                      animate={{ pathLength: 1, opacity: 0.55 }}
+                      transition={{
+                        pathLength: { duration: 0.7, delay: chipDelay, ease: [0.16, 1, 0.3, 1] },
+                        opacity: { duration: 0.4, delay: chipDelay },
+                      }}
+                    />
+                    {/* Tap-point dot at the inner end — pops with the line */}
+                    <motion.circle
+                      cx={x1} cy={y1} r={0.8}
+                      fill={chip.dot}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{
+                        opacity: [0, 1, 0.5],
+                        scale: [0, 1.3, 1],
+                      }}
+                      transition={{
+                        duration: 0.6,
+                        delay: chipDelay + 0.5,
+                        ease: [0.16, 1, 0.3, 1],
+                        times: [0, 0.4, 1],
+                      }}
+                    />
+                    {/* Ambient pulse on tap-point — starts after entry settles */}
+                    <motion.circle
+                      cx={x1} cy={y1} r={0.8}
+                      fill={chip.dot}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0.4, 0.9, 0.4] }}
+                      transition={{
+                        duration: 2.8,
+                        delay: 3.2 + i * 0.2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  </g>
+                );
+              })}
+
+              {/* Center glow ping — bursts at boot, then settles into ambient pulse */}
+              <motion.circle
+                cx="0" cy="0"
+                fill="#E8751A"
+                initial={{ r: 0, opacity: 0 }}
+                animate={{
+                  r: [0, 2.4, 0.7, 0.7],
+                  opacity: [0, 1, 0.7, 0.7],
+                }}
+                transition={{
+                  duration: 1.2,
+                  delay: 0.45,
+                  times: [0, 0.3, 0.6, 1],
+                  ease: "easeOut",
+                }}
+              />
+              <motion.circle
+                cx="0" cy="0" r="0.7" fill="#E8751A"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0.4, 0.9, 0.4], r: [0.5, 1.4, 0.5] }}
+                transition={{
+                  duration: 3,
+                  delay: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+
+              {/* Confirmation pulse — all tap points flash brighter once when network completes */}
+              {services.map((chip, i) => {
+                const rad = (chip.angle * Math.PI) / 180;
+                const innerR = chip.innerRadius ?? 15;
+                const cx = innerR * Math.cos(rad);
+                const cy = innerR * Math.sin(rad);
+                return (
+                  <motion.circle
+                    key={`flash-${chip.label}`}
+                    cx={cx} cy={cy}
+                    fill="none"
+                    stroke={chip.dot}
+                    strokeOpacity={0.8}
+                    strokeWidth={0.5}
+                    initial={{ r: 0.5, opacity: 0 }}
+                    animate={{ r: [0.5, 4], opacity: [0, 0.9, 0] }}
+                    transition={{
+                      duration: 0.8,
+                      delay: 2.7,
+                      ease: "easeOut",
+                      times: [0, 0.3, 1],
+                    }}
+                  />
+                );
+              })}
+            </svg>
+
+            {/* Soft warm cast shadow under mascot */}
+            <div className="absolute bottom-[16%] left-1/2 -translate-x-1/2 w-[42%] h-8 bg-brand-orange/35 rounded-full blur-2xl pointer-events-none" />
+
+            {/* Linksi mascot — fades in clean, then settles into ambient bob */}
+            <motion.div
+              initial={{ scale: 0.78, opacity: 0, y: 14 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              transition={{
+                scale:   { duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
+                opacity: { duration: 0.6, delay: 0.2 },
+                y:       { duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
+              }}
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              {/* Ongoing ambient bob */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{
+                  duration: 5.5,
+                  delay: 3.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="relative w-[55%] md:w-[60%]"
+              >
+                <Image
+                  src="/images/linksi-mascot.png"
+                  alt="Linksi — your guide to community services"
+                  width={520}
+                  height={520}
+                  priority
+                  className="w-full h-auto drop-shadow-[0_22px_36px_rgba(232,117,26,0.32)]"
+                />
+              </motion.div>
+            </motion.div>
+
+            {/* Service chips — fly in from outside along their angle, "reeled in" by connection lines */}
+            {services.map((chip, i) => {
+              const radius = 50;
+              const rad = (chip.angle * Math.PI) / 180;
+              const finalX = 50 + radius * Math.cos(rad);
+              const finalY = 50 + radius * Math.sin(rad);
+              const entryDistance = 240; // pixels offset along the angle
+              const entryDx = entryDistance * Math.cos(rad);
+              const entryDy = entryDistance * Math.sin(rad);
+              const chipDelay = 1.0 + i * 0.18;
+              return (
+                <div
+                  key={chip.label}
+                  style={{ left: `${finalX}%`, top: `${finalY}%`, transform: "translate(-50%, -50%)" }}
+                  className="absolute hidden md:block"
+                >
+                  <motion.div
+                    initial={{ x: entryDx, y: entryDy, opacity: 0, scale: 0.5 }}
+                    animate={{ x: 0, y: 0, opacity: 1, scale: 1 }}
+                    transition={{
+                      x:       { duration: 0.85, delay: chipDelay, ease: [0.34, 1.56, 0.64, 1] },
+                      y:       { duration: 0.85, delay: chipDelay, ease: [0.34, 1.56, 0.64, 1] },
+                      opacity: { duration: 0.4, delay: chipDelay },
+                      scale:   { duration: 0.85, delay: chipDelay, ease: [0.34, 1.56, 0.64, 1] },
+                    }}
+                  >
+                    <motion.div
+                      animate={{ scale: [1, 1.08, 1] }}
+                      transition={{ duration: 0.5, delay: 2.7, times: [0, 0.5, 1], ease: "easeOut" }}
+                      className="bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_2px_12px_rgba(0,0,0,0.3)] rounded-full px-2.5 py-1 flex items-center gap-1.5 whitespace-nowrap"
+                    >
+                      <span
+                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: chip.dot, boxShadow: `0 0 8px ${chip.dot}` }}
+                      />
+                      <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-slate-100 font-medium">
+                        {chip.label}
+                      </span>
+                    </motion.div>
+                  </motion.div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Bottom hairline + soft fade into next section (dark → white) */}
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent z-[5]" />
+
+        {/* Scroll indicator — light on dark */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.8 }}
+          className="hidden md:block absolute bottom-6 left-1/2 -translate-x-1/2 z-[6]"
+        >
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity }}
+            className="w-5 h-8 border border-white/30 rounded-full flex justify-center pt-1.5"
+          >
             <div className="w-1 h-1.5 bg-brand-orange rounded-full" />
           </motion.div>
         </motion.div>
@@ -80,12 +440,12 @@ export default function Home() {
         <div className="max-w-site mx-auto">
           <ScrollReveal className="text-center mb-12">
             <p className="eyebrow mb-4">The Solution</p>
-            <h2 className="heading-section text-slate-800 mb-4">How <span className="gradient-text-blue">Linksi</span> Works</h2>
+            <h2 className="heading-section text-slate-800 mb-4">How It Works</h2>
             <p className="body-text-muted max-w-2xl mx-auto">A smarter path from need to help — in three simple steps.</p>
           </ScrollReveal>
 
           <ScrollReveal className="mb-12">
-            <Image src="/images/linksiprocessmap.png" alt="Linksi 3-step process" width={960} height={320} className="w-full max-w-4xl mx-auto" />
+            <Image src="/images/linksiprocessmap.png" alt="Linksi 3-step process: resident requests help, Linksi matches services, organization receives referral" width={2100} height={749} className="w-full max-w-5xl mx-auto" />
           </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -111,99 +471,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ━━━ ECOSYSTEM — bento grid with visual hierarchy ━━━ */}
-      <section className="section-pad section-light">
-        <div className="max-w-site mx-auto">
-          <ScrollReveal className="mb-12">
-            <p className="eyebrow mb-4">The Ecosystem</p>
-            <h2 className="heading-section text-slate-800 mb-4">Collaboration Across <span className="gradient-text-blue">Sectors</span></h2>
-            <p className="body-text-muted max-w-2xl">Impact Works brings together organizations across sectors to build a coordinated network of services.</p>
-          </ScrollReveal>
+      {/* ━━━ STATS — shared DarkBackdrop (stats variant) ━━━ */}
+      <section className="section-pad relative overflow-hidden">
+        <DarkBackdrop variant="stats" />
 
-          {/* Bento grid — asymmetric, visual hierarchy */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {/* Primary sectors — larger, colored */}
-            <ScrollReveal className="md:col-span-2 md:row-span-2">
-              <div className="bg-brand-blue rounded-2xl p-8 h-full text-white group hover:shadow-xl transition-all duration-300 relative overflow-hidden">
-                <div className="absolute -bottom-8 -right-8 w-32 h-32 border-2 border-white/10 rounded-full" />
-                <p className="font-mono text-xs text-white/50 mb-3">01</p>
-                <h3 className="font-display text-2xl font-bold mb-2">Housing</h3>
-                <p className="text-white/70 text-sm leading-relaxed">Connecting residents with safe, affordable housing assistance and shelter programs.</p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.05}>
-              <div className="bg-brand-green rounded-2xl p-6 text-white group hover:shadow-xl transition-all duration-300 h-full">
-                <p className="font-mono text-xs text-white/50 mb-2">02</p>
-                <h3 className="font-display text-lg font-bold">Food</h3>
-                <p className="text-white/60 text-xs mt-1">Food banks & nutrition</p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.1}>
-              <div className="bg-brand-orange rounded-2xl p-6 text-white group hover:shadow-xl transition-all duration-300 h-full">
-                <p className="font-mono text-xs text-white/50 mb-2">03</p>
-                <h3 className="font-display text-lg font-bold">Healthcare</h3>
-                <p className="text-white/60 text-xs mt-1">Medical access</p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.15}>
-              <div className="bg-brand-gold rounded-2xl p-6 text-white group hover:shadow-xl transition-all duration-300 h-full">
-                <p className="font-mono text-xs text-white/50 mb-2">04</p>
-                <h3 className="font-display text-lg font-bold">Jobs</h3>
-                <p className="text-white/60 text-xs mt-1">Employment services</p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.2}>
-              <div className="bg-slate-800 rounded-2xl p-6 text-white group hover:shadow-xl transition-all duration-300 h-full">
-                <p className="font-mono text-xs text-white/40 mb-2">05</p>
-                <h3 className="font-display text-lg font-bold">Mental Health</h3>
-                <p className="text-white/50 text-xs mt-1">Counseling & crisis</p>
-              </div>
-            </ScrollReveal>
-
-            {/* Secondary sectors — compact row */}
-            <ScrollReveal delay={0.08} className="md:col-span-2">
-              <div className="grid grid-cols-2 gap-4 h-full">
-                <div className="bg-gray-50 rounded-2xl p-5 border border-slate-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-                  <p className="font-mono text-[10px] text-slate-400 mb-1">06</p>
-                  <h3 className="font-display text-sm font-bold text-slate-800">Education</h3>
-                </div>
-                <div className="bg-gray-50 rounded-2xl p-5 border border-slate-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-                  <p className="font-mono text-[10px] text-slate-400 mb-1">07</p>
-                  <h3 className="font-display text-sm font-bold text-slate-800">Transportation</h3>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.12}>
-              <div className="bg-gray-50 rounded-2xl p-5 border border-slate-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 h-full">
-                <p className="font-mono text-[10px] text-slate-400 mb-1">08</p>
-                <h3 className="font-display text-sm font-bold text-slate-800">Childcare</h3>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.15}>
-              <div className="bg-gray-50 rounded-2xl p-5 border border-slate-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 h-full">
-                <p className="font-mono text-[10px] text-slate-400 mb-1">09</p>
-                <h3 className="font-display text-sm font-bold text-slate-800">Legal</h3>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ━━━ STATS ━━━ */}
-      <section className="section-pad section-dark relative overflow-hidden">
-        <HeroArcs />
         <div className="relative z-10 max-w-site mx-auto">
           <ScrollReveal className="text-center mb-16">
-            <p className="eyebrow mb-4">Our Reach</p>
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <span className="block w-8 h-px bg-brand-orange" />
+              <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-brand-orange font-medium">Our Reach</p>
+              <span className="block w-8 h-px bg-brand-orange" />
+            </div>
             <h2 className="heading-section text-white">Community <span className="gradient-text-orange">Impact</span></h2>
           </ScrollReveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
             {[
               { value: 1500, suffix: "+", label: "Residents Connected" },
               { value: 50, suffix: "+", label: "Partner Organizations" },
@@ -211,7 +492,7 @@ export default function Home() {
               { value: 100, suffix: "%", label: "Real-Time Data Access" },
             ].map((stat, i) => (
               <ScrollReveal key={stat.label} delay={i * 0.1}>
-                <div className="card-dark p-6 md:p-8 text-center">
+                <div className="bg-white/[0.04] backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8 text-center hover:bg-white/[0.07] hover:border-white/20 hover:shadow-[0_8px_28px_-4px_rgba(232,117,26,0.30)] transition-all duration-300">
                   <p className="font-mono text-3xl md:text-4xl lg:text-5xl text-brand-orange font-bold tabular-nums">
                     <CountUp end={stat.value} suffix={stat.suffix} />
                   </p>

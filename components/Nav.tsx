@@ -9,8 +9,8 @@ import { motion, AnimatePresence } from "framer-motion";
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/platform", label: "Platform" },
-  { href: "/impact", label: "Impact" },
+  { href: "/platform", label: "Linksi Platform" },
+  { href: "/impact", label: "Collaboration" },
   { href: "/partners", label: "Partners" },
   { href: "/expansion", label: "Expansion" },
   { href: "/contact", label: "Contact" },
@@ -27,7 +27,7 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // All pages have dark hero backgrounds, so nav text should be white when not scrolled
+  // All pages have dark hero backgrounds — nav text is white when not scrolled, slate-800 when scrolled
   const textColor = scrolled ? "text-slate-800" : "text-white";
   const activeColor = "text-brand-orange";
 
@@ -75,7 +75,7 @@ export default function Nav() {
             </Link>
           ))}
           <Link href="/contact" className="ml-4 btn-primary !py-2.5 !px-5 text-sm !rounded-lg">
-            Get Started
+            Join Us
           </Link>
         </div>
 

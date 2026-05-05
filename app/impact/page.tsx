@@ -4,22 +4,52 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import CountUp from "@/components/CountUp";
 import ScrollReveal from "@/components/ScrollReveal";
-import HeroArcs from "@/components/HeroArcs";
+import DarkBackdrop from "@/components/DarkBackdrop";
 
 export default function Impact() {
   return (
     <div>
       {/* Hero — dark, compact */}
-      <section className="relative min-h-[55vh] flex items-center section-dark overflow-hidden">
-        <HeroArcs />
-        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40">
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Measurable Results</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white max-w-3xl">
-            Community <span className="gradient-text-orange">Impact</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 mt-6 max-w-xl">
-            Real numbers, real stories — how Impact Works is changing lives across Clay County.
-          </motion.p>
+      <section className="relative min-h-[55vh] flex items-center overflow-hidden text-white">
+        <DarkBackdrop variant="hero-symmetric" />
+        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 grid md:grid-cols-12 gap-10 items-center w-full">
+          <div className="md:col-span-7">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Measurable Results</motion.p>
+            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white">
+              Community <span className="gradient-text-orange">Impact</span>
+            </motion.h1>
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 mt-6 max-w-xl">
+              Real numbers, real stories — how Impact Works is changing lives across Clay County.
+            </motion.p>
+          </div>
+          {/* Page-specific visual: editorial story-snippet card — emotional angle, NOT the same numbers shown in the orange stats strip below */}
+          <motion.div initial={{ opacity: 0, y: 16, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} className="md:col-span-5 hidden md:flex justify-center">
+            <div className="relative w-full max-w-[360px] bg-white/[0.05] backdrop-blur-md border border-white/12 rounded-2xl p-7 shadow-2xl">
+              {/* Quote mark */}
+              <svg className="absolute top-5 left-6 w-10 h-10 text-brand-orange/30" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z" />
+              </svg>
+
+              <div className="relative pt-8">
+                <p className="font-display text-lg leading-snug text-white font-semibold">
+                  Connected to housing assistance within <span className="text-brand-orange">24 hours</span>.
+                </p>
+                <div className="flex items-center justify-between pt-5 mt-5 border-t border-white/10">
+                  <div>
+                    <p className="font-display text-xs text-slate-300">Anonymous resident</p>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500 mt-0.5">Clay County, FL</p>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75 animate-ping" />
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-green" />
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-green font-semibold">Verified</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

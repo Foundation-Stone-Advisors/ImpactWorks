@@ -15,11 +15,24 @@ export default function Home() {
         <HeroArcs />
         <div className="absolute top-1/2 right-[10%] -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-brand-blue/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 grid md:grid-cols-2 gap-12 items-center w-full">
-          <div>
+        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 grid md:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
+          <div className="md:col-span-7">
             <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="eyebrow mb-5">Community Impact Platform</motion.p>
-            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white mb-6">
-              An Innovative Community Operating System Connecting Communities to{" "}<span className="gradient-text-orange">Critical Services</span>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold text-slate-300 mb-3 leading-tight"
+            >
+              An Innovative Community Operating System
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display font-extrabold text-white mb-6 text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight"
+            >
+              Connecting Communities to{" "}<span className="gradient-text-orange">Critical Services</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }} className="body-text text-slate-300 max-w-lg mb-10">
               Impact Works develops data-driven solutions, making it easier for people to find the help they need while strengthening funding and collaboration among organizations serving the community.
@@ -34,7 +47,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.85, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative flex justify-center"
+            className="md:col-span-5 relative flex justify-center"
           >
             <motion.div
               animate={{ y: [0, -14, 0] }}

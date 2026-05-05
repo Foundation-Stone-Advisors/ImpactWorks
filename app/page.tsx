@@ -25,11 +25,23 @@ export default function Home() {
         {/* Layered warm-tinted dark base — cinematic depth, not flat navy */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#141228] via-[#0E1126] to-[#0A0F1F]" />
 
-        {/* Atmospheric color mesh — warm amber + cool blue + central orange glow */}
+        {/* Atmospheric color mesh — layered warm-right / cool-left directional wash */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-[12%] -right-[8%] w-[750px] h-[750px] bg-gradient-radial from-[#3A2614]/55 via-[#3A2614]/15 to-transparent rounded-full blur-3xl" />
-          <div className="absolute -bottom-[18%] -left-[10%] w-[700px] h-[700px] bg-gradient-radial from-brand-blue/22 via-brand-blue/6 to-transparent rounded-full blur-3xl" />
-          <div className="absolute top-[35%] left-[55%] w-[480px] h-[480px] bg-gradient-radial from-brand-orange/18 via-brand-orange/5 to-transparent rounded-full blur-3xl" />
+          {/* MASSIVE warm orange wash centered on mascot — bleeds across right half of hero */}
+          <div className="absolute top-1/2 right-[2%] -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-brand-orange/22 via-brand-orange/8 to-transparent rounded-full blur-3xl" />
+          {/* Secondary tighter warm core for sun-like brightness */}
+          <div className="absolute top-1/2 right-[8%] -translate-y-1/2 w-[700px] h-[700px] bg-gradient-radial from-brand-orange/18 via-brand-orange/6 to-transparent rounded-full blur-3xl" />
+          {/* Top-right amber wash for depth */}
+          <div className="absolute -top-[18%] -right-[12%] w-[950px] h-[950px] bg-gradient-radial from-[#3A2614]/55 via-[#3A2614]/15 to-transparent rounded-full blur-3xl" />
+          {/* Bottom-right gold accent */}
+          <div className="absolute -bottom-[12%] right-[25%] w-[550px] h-[550px] bg-gradient-radial from-brand-gold/14 via-brand-gold/4 to-transparent rounded-full blur-3xl" />
+
+          {/* Cool side — top-left brand-blue */}
+          <div className="absolute -top-[8%] -left-[6%] w-[700px] h-[700px] bg-gradient-radial from-brand-blue/24 via-brand-blue/8 to-transparent rounded-full blur-3xl" />
+          {/* Cool side — bottom-left deeper navy-blue */}
+          <div className="absolute -bottom-[20%] -left-[12%] w-[850px] h-[850px] bg-gradient-radial from-[#1A4A78]/40 via-[#1A4A78]/12 to-transparent rounded-full blur-3xl" />
+          {/* Mid-left subtle blue pop behind copy */}
+          <div className="absolute top-[35%] left-[5%] w-[480px] h-[480px] bg-gradient-radial from-brand-blue/18 via-brand-blue/5 to-transparent rounded-full blur-3xl" />
         </div>
 
         {/* Grain texture — screen blend on dark for subtle film feel */}
@@ -119,15 +131,26 @@ export default function Home() {
 
           {/* MASCOT COLUMN — choreographed boot sequence */}
           <div className="md:col-span-5 relative aspect-square w-full max-w-md md:max-w-none mx-auto">
-            {/* Soft halo container — brighter on dark */}
+            {/* Mascot halo — extends WELL beyond column boundary so glow blends into the broader atmosphere */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-[6%] rounded-full pointer-events-none"
+              className="absolute -inset-[20%] rounded-full pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(232,117,26,0.28) 0%, rgba(245,166,35,0.14) 40%, rgba(232,117,26,0.04) 70%, transparent 100%)",
+                  "radial-gradient(circle, rgba(232,117,26,0.38) 0%, rgba(245,166,35,0.22) 25%, rgba(232,117,26,0.10) 50%, rgba(232,117,26,0.03) 75%, transparent 100%)",
+              }}
+            />
+            {/* Inner concentrated glow right at the mascot's body */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-[15%] rounded-full pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(245,166,35,0.30) 0%, rgba(232,117,26,0.15) 50%, transparent 100%)",
               }}
             />
 
@@ -494,10 +517,12 @@ export default function Home() {
       <section className="section-pad relative overflow-hidden">
         {/* Same warm-tinted dark base as hero for visual rhythm */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#141228] via-[#0E1126] to-[#0A0F1F]" />
-        {/* Atmospheric mesh — same language as hero */}
+        {/* Atmospheric mesh — multi-orb to match hero richness */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-[20%] left-[15%] w-[500px] h-[500px] bg-gradient-radial from-brand-orange/15 to-transparent rounded-full blur-3xl" />
-          <div className="absolute -bottom-[20%] right-[10%] w-[450px] h-[450px] bg-gradient-radial from-brand-blue/12 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -top-[15%] left-[5%] w-[700px] h-[700px] bg-gradient-radial from-brand-orange/18 via-brand-orange/5 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -top-[10%] right-[10%] w-[550px] h-[550px] bg-gradient-radial from-brand-blue/20 via-brand-blue/6 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -bottom-[20%] left-[40%] w-[600px] h-[600px] bg-gradient-radial from-brand-gold/14 via-brand-gold/4 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -bottom-[15%] -right-[8%] w-[500px] h-[500px] bg-gradient-radial from-[#1A4A78]/35 via-[#1A4A78]/10 to-transparent rounded-full blur-3xl" />
         </div>
         {/* Editorial top + bottom hairlines — brighter on dark */}
         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent" />

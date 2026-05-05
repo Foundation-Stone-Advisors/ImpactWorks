@@ -5,6 +5,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import CountUp from "@/components/CountUp";
 import ScrollReveal from "@/components/ScrollReveal";
+import HeroArcs from "@/components/HeroArcs";
+
 export default function Home() {
   const services = [
     { label: "Housing",       dot: "#2E8BC0", angle: -90 },

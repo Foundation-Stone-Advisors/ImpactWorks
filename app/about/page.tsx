@@ -28,7 +28,7 @@ export default function About() {
           <div className="md:col-span-7">
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Our Story</motion.p>
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white">
-              About <span className="gradient-text-orange">Impact Works</span>
+              About <span className="gradient-text-orange whitespace-nowrap">Impact Works</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 mt-6 max-w-lg">
               Technology for Stronger Communities

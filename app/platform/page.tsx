@@ -35,29 +35,50 @@ export default function Platform() {
               <Link href="#demo" className="btn-primary">See How It Works <span>&darr;</span></Link>
             </motion.div>
           </div>
-          {/* Page-specific visual: small floating chat-bubble preview teasing the demo below */}
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }} className="md:col-span-5 hidden md:flex justify-center">
-            <div className="relative w-full max-w-[340px] space-y-3">
-              {/* Incoming bubble */}
-              <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 }} className="flex justify-start">
-                <div className="bg-white/[0.08] backdrop-blur-md border border-white/15 text-slate-100 text-sm px-4 py-2.5 rounded-xl rounded-bl-sm max-w-[260px]">
-                  &ldquo;I need help with food assistance.&rdquo;
+          {/* Page-specific visual: system-status panel — credibility/tech angle, NOT a demo preview */}
+          <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }} className="md:col-span-5 hidden md:flex justify-center">
+            <div className="relative w-full max-w-[340px] bg-white/[0.05] backdrop-blur-md border border-white/12 rounded-2xl p-6 shadow-2xl space-y-5">
+              {/* Live status header */}
+              <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75 animate-ping" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-green" style={{ boxShadow: "0 0 8px #3DAA5C" }} />
+                  </span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-green font-semibold">Live</span>
                 </div>
-              </motion.div>
-              {/* Outgoing bubble — Linksi reply */}
-              <motion.div initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.1 }} className="flex justify-end">
-                <div className="bg-brand-blue text-white text-sm px-4 py-2.5 rounded-xl rounded-br-sm max-w-[260px] shadow-lg">
-                  Found 3 organizations within 5 miles.
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">Linksi · v1.0</span>
+              </div>
+
+              {/* Match accuracy with progress bar */}
+              <div>
+                <div className="flex items-baseline justify-between mb-2">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">Match Accuracy</span>
+                  <span className="font-mono text-sm font-bold text-white tabular-nums">92%</span>
                 </div>
-              </motion.div>
-              {/* Typing indicator */}
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="flex justify-end">
-                <div className="bg-white/[0.06] backdrop-blur-sm border border-white/10 px-3 py-2 rounded-full flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-bounce" style={{ animationDelay: "0ms" }} />
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-bounce" style={{ animationDelay: "150ms" }} />
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-bounce" style={{ animationDelay: "300ms" }} />
+                <div className="h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
+                  <motion.div initial={{ width: 0 }} animate={{ width: "92%" }} transition={{ duration: 1.4, delay: 0.8, ease: [0.16, 1, 0.3, 1] }} className="h-full bg-gradient-to-r from-brand-blue to-brand-blue-light rounded-full" />
                 </div>
-              </motion.div>
+              </div>
+
+              {/* Avg response time */}
+              <div>
+                <div className="flex items-baseline justify-between mb-2">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">Avg Response</span>
+                  <span className="font-mono text-sm font-bold text-white tabular-nums">~1.2s</span>
+                </div>
+                <div className="h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
+                  <motion.div initial={{ width: 0 }} animate={{ width: "85%" }} transition={{ duration: 1.4, delay: 1.0, ease: [0.16, 1, 0.3, 1] }} className="h-full bg-gradient-to-r from-brand-orange to-brand-gold rounded-full" />
+                </div>
+              </div>
+
+              {/* Privacy badge */}
+              <div className="flex items-center gap-2.5 pt-3 border-t border-white/10">
+                <svg className="w-4 h-4 text-brand-blue flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span className="font-display text-xs text-slate-200">End-to-end private · No data stored</span>
+              </div>
             </div>
           </motion.div>
         </div>

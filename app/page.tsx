@@ -7,15 +7,16 @@ import CountUp from "@/components/CountUp";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
-  // Angles tuned to avoid mascot tentacle peaks — leans toward verticals/diagonals
-  // 12 o'clock, 2, 5, 7, 10, plus 8 — uneven on purpose for editorial asymmetry
+  // Angles tuned to avoid mascot tentacle peaks. innerRadius lets specific chips
+  // place their tap-point deeper into the mascot body to stay hidden when the
+  // chip's angle puts the standard radius outside the silhouette.
   const services = [
-    { label: "Housing",       dot: "#2E8BC0", angle: -95  },
-    { label: "Healthcare",    dot: "#E8751A", angle: -45  },
-    { label: "Food",          dot: "#3DAA5C", angle: 45   },
-    { label: "Jobs",          dot: "#F5A623", angle: 95   },
-    { label: "Mental Health", dot: "#475569", angle: 165  },
-    { label: "Childcare",     dot: "#4DA8D9", angle: 225  },
+    { label: "Housing",       dot: "#2E8BC0", angle: -95                    },
+    { label: "Healthcare",    dot: "#E8751A", angle: -45                    },
+    { label: "Food",          dot: "#3DAA5C", angle: 45                     },
+    { label: "Jobs",          dot: "#F5A623", angle: 95                     },
+    { label: "Mental Health", dot: "#475569", angle: 165, innerRadius: 7   },
+    { label: "Childcare",     dot: "#4DA8D9", angle: 225                    },
   ];
 
   return (
@@ -25,78 +26,17 @@ export default function Home() {
         {/* Clean dark base — vertical gradient for natural depth, no overlapping color zones */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#15132C] via-[#0E1126] to-[#080B1A]" />
 
-        {/* Single warm sun behind mascot — one decisive light source, no competing orbs */}
+        {/* Single warm sun centered on mascot — both orbs share the same center point now */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 right-[12%] -translate-y-1/2 w-[1100px] h-[1100px] bg-gradient-radial from-brand-orange/30 via-brand-orange/8 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-1/2 right-[3%] -translate-y-1/2 w-[1100px] h-[1100px] bg-gradient-radial from-brand-orange/30 via-brand-orange/8 to-transparent rounded-full blur-3xl" />
           <div className="absolute top-1/2 right-[18%] -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-brand-gold/28 to-transparent rounded-full blur-3xl" />
         </div>
-
-        {/* Brand swoosh — slow rotating arcs in deep background, ties to logo DNA */}
-        <svg
-          className="absolute -top-[40%] -right-[40%] w-[180%] h-[180%] pointer-events-none opacity-[0.16]"
-          viewBox="-50 -50 100 100"
-          aria-hidden="true"
-        >
-          <motion.ellipse
-            cx="0" cy="0" rx="48" ry="44"
-            fill="none"
-            stroke="#E8751A"
-            strokeWidth="0.3"
-            strokeDasharray="60 220"
-            strokeLinecap="round"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 240, repeat: Infinity, ease: "linear" }}
-            style={{ transformOrigin: "0 0" }}
-          />
-          <motion.ellipse
-            cx="0" cy="0" rx="44" ry="42"
-            fill="none"
-            stroke="#F5A623"
-            strokeWidth="0.25"
-            strokeDasharray="40 280"
-            strokeLinecap="round"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 300, repeat: Infinity, ease: "linear" }}
-            style={{ transformOrigin: "0 0" }}
-          />
-          <motion.ellipse
-            cx="0" cy="0" rx="40" ry="38"
-            fill="none"
-            stroke="#2E8BC0"
-            strokeWidth="0.22"
-            strokeDasharray="25 360"
-            strokeLinecap="round"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 360, repeat: Infinity, ease: "linear" }}
-            style={{ transformOrigin: "0 0" }}
-          />
-        </svg>
-
-        {/* Dot grid — subtle network/system texture across the whole bg */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-60"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)",
-            backgroundSize: "28px 28px",
-          }}
-        />
 
         {/* Vignette — slight darkening at edges for cinematic focus */}
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_transparent_45%,_rgba(0,0,0,0.45)_100%)]" />
 
-        {/* Film grain */}
-        <div
-          className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-screen"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-            backgroundSize: "180px 180px",
-          }}
-        />
-
-        {/* Editorial top hairline */}
-        <div className="absolute top-24 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/40 to-transparent z-[5]" />
+        {/* Editorial top hairline — sits just below nav bar */}
+        <div className="absolute top-[72px] inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/40 to-transparent z-[5]" />
 
         {/* Content grid */}
         <div className="relative z-[5] max-w-site mx-auto px-6 pt-32 pb-20 md:pt-36 md:pb-24 lg:pt-40 lg:pb-28 grid md:grid-cols-12 gap-10 lg:gap-16 items-center min-h-[88vh]">
@@ -172,18 +112,6 @@ export default function Home() {
 
           {/* MASCOT COLUMN — choreographed boot sequence */}
           <div className="md:col-span-5 relative aspect-square w-full max-w-md md:max-w-none mx-auto">
-            {/* Inner concentrated glow only — small, tucked at mascot body, no visible outer boundary */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-[22%] rounded-full pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(245,166,35,0.25) 0%, rgba(232,117,26,0.10) 60%, transparent 100%)",
-              }}
-            />
-
             {/* Single SVG canvas — boot sequence + ambient state */}
             <svg
               className="absolute inset-0 w-full h-full overflow-visible"
@@ -257,10 +185,12 @@ export default function Home() {
               ))}
 
               {/* Connection lines — draw outward in sync with chip arrival.
-                   Line draws from r=15 to r=47, "reaching for" the chip as it flies in. */}
+                   innerR per-chip lets specific chips tuck their tap-point deeper
+                   into the mascot body when their angle puts the standard radius
+                   outside the silhouette (e.g. Mental Health on the lower-left). */}
               {services.map((chip, i) => {
                 const rad = (chip.angle * Math.PI) / 180;
-                const innerR = 15;
+                const innerR = chip.innerRadius ?? 15;
                 const outerR = 47;
                 const x1 = innerR * Math.cos(rad);
                 const y1 = innerR * Math.sin(rad);
@@ -347,8 +277,9 @@ export default function Home() {
               {/* Confirmation pulse — all tap points flash brighter once when network completes */}
               {services.map((chip, i) => {
                 const rad = (chip.angle * Math.PI) / 180;
-                const cx = 15 * Math.cos(rad);
-                const cy = 15 * Math.sin(rad);
+                const innerR = chip.innerRadius ?? 15;
+                const cx = innerR * Math.cos(rad);
+                const cy = innerR * Math.sin(rad);
                 return (
                   <motion.circle
                     key={`flash-${chip.label}`}
@@ -551,15 +482,6 @@ export default function Home() {
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[600px] bg-gradient-radial from-brand-orange/14 via-brand-orange/4 to-transparent blur-3xl" />
         </div>
-        {/* Dot grid */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-50"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)",
-            backgroundSize: "28px 28px",
-          }}
-        />
         {/* Vignette */}
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_transparent_50%,_rgba(0,0,0,0.4)_100%)]" />
         {/* Editorial top + bottom hairlines — brighter on dark */}

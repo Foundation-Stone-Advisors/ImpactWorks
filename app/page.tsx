@@ -25,23 +25,23 @@ export default function Home() {
         {/* Layered warm-tinted dark base — cinematic depth, not flat navy */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#141228] via-[#0E1126] to-[#0A0F1F]" />
 
-        {/* Atmospheric color mesh — layered warm-right / cool-left directional wash */}
+        {/* Atmospheric color mesh — single warm sun centered on mascot, no halo container */}
         <div className="absolute inset-0 pointer-events-none">
-          {/* MASSIVE warm orange wash centered on mascot — bleeds across right half of hero */}
-          <div className="absolute top-1/2 right-[2%] -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-brand-orange/22 via-brand-orange/8 to-transparent rounded-full blur-3xl" />
-          {/* Secondary tighter warm core for sun-like brightness */}
-          <div className="absolute top-1/2 right-[8%] -translate-y-1/2 w-[700px] h-[700px] bg-gradient-radial from-brand-orange/18 via-brand-orange/6 to-transparent rounded-full blur-3xl" />
-          {/* Top-right amber wash for depth */}
-          <div className="absolute -top-[18%] -right-[12%] w-[950px] h-[950px] bg-gradient-radial from-[#3A2614]/55 via-[#3A2614]/15 to-transparent rounded-full blur-3xl" />
+          {/* The "sun" — MASSIVE warm orb centered exactly on mascot. No visible edge because gradient bleeds well beyond the viewport. */}
+          <div className="absolute top-1/2 right-[18%] -translate-y-1/2 w-[1600px] h-[1600px] bg-gradient-radial from-brand-orange/30 via-brand-orange/12 via-30% to-transparent to-65% rounded-full blur-3xl" />
+          {/* Secondary inner brightness — sits behind the mascot's body */}
+          <div className="absolute top-1/2 right-[20%] -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-brand-gold/20 via-brand-orange/8 to-transparent rounded-full blur-3xl" />
+          {/* Top-right amber wash for cinematic depth */}
+          <div className="absolute -top-[20%] -right-[15%] w-[1000px] h-[1000px] bg-gradient-radial from-[#3A2614]/50 via-[#3A2614]/15 to-transparent rounded-full blur-3xl" />
           {/* Bottom-right gold accent */}
-          <div className="absolute -bottom-[12%] right-[25%] w-[550px] h-[550px] bg-gradient-radial from-brand-gold/14 via-brand-gold/4 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -bottom-[15%] right-[22%] w-[600px] h-[600px] bg-gradient-radial from-brand-gold/16 via-brand-gold/5 to-transparent rounded-full blur-3xl" />
 
           {/* Cool side — top-left brand-blue */}
-          <div className="absolute -top-[8%] -left-[6%] w-[700px] h-[700px] bg-gradient-radial from-brand-blue/24 via-brand-blue/8 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -top-[10%] -left-[8%] w-[750px] h-[750px] bg-gradient-radial from-brand-blue/26 via-brand-blue/9 to-transparent rounded-full blur-3xl" />
           {/* Cool side — bottom-left deeper navy-blue */}
-          <div className="absolute -bottom-[20%] -left-[12%] w-[850px] h-[850px] bg-gradient-radial from-[#1A4A78]/40 via-[#1A4A78]/12 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -bottom-[22%] -left-[14%] w-[900px] h-[900px] bg-gradient-radial from-[#1A4A78]/42 via-[#1A4A78]/13 to-transparent rounded-full blur-3xl" />
           {/* Mid-left subtle blue pop behind copy */}
-          <div className="absolute top-[35%] left-[5%] w-[480px] h-[480px] bg-gradient-radial from-brand-blue/18 via-brand-blue/5 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-[35%] left-[3%] w-[500px] h-[500px] bg-gradient-radial from-brand-blue/20 via-brand-blue/6 to-transparent rounded-full blur-3xl" />
         </div>
 
         {/* Grain texture — screen blend on dark for subtle film feel */}
@@ -131,26 +131,15 @@ export default function Home() {
 
           {/* MASCOT COLUMN — choreographed boot sequence */}
           <div className="md:col-span-5 relative aspect-square w-full max-w-md md:max-w-none mx-auto">
-            {/* Mascot halo — extends WELL beyond column boundary so glow blends into the broader atmosphere */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute -inset-[20%] rounded-full pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(232,117,26,0.38) 0%, rgba(245,166,35,0.22) 25%, rgba(232,117,26,0.10) 50%, rgba(232,117,26,0.03) 75%, transparent 100%)",
-              }}
-            />
-            {/* Inner concentrated glow right at the mascot's body */}
+            {/* Inner concentrated glow only — small, tucked at mascot body, no visible outer boundary */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-[15%] rounded-full pointer-events-none"
+              className="absolute inset-[22%] rounded-full pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(245,166,35,0.30) 0%, rgba(232,117,26,0.15) 50%, transparent 100%)",
+                  "radial-gradient(circle, rgba(245,166,35,0.25) 0%, rgba(232,117,26,0.10) 60%, transparent 100%)",
               }}
             />
 

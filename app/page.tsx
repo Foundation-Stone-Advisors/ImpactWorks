@@ -434,21 +434,13 @@ export default function Home() {
       <section className="section-pad section-light-alt">
         <div className="max-w-site mx-auto">
           <ScrollReveal className="text-center mb-12">
-            <p className="eyebrow mb-6">The Solution</p>
-            <Image
-              src="/images/linksi-full.png"
-              alt="Linksi"
-              width={400}
-              height={267}
-              className="w-full max-w-xs sm:max-w-sm mx-auto mb-4"
-              priority={false}
-            />
+            <p className="eyebrow mb-4">The Solution</p>
             <h2 className="heading-section text-slate-800 mb-4">How It Works</h2>
             <p className="body-text-muted max-w-2xl mx-auto">A smarter path from need to help — in three simple steps.</p>
           </ScrollReveal>
 
           <ScrollReveal className="mb-12">
-            <Image src="/images/linksiprocessmap.png" alt="Linksi 3-step process" width={960} height={320} className="w-full max-w-4xl mx-auto" />
+            <Image src="/images/linksiprocessmap.png" alt="Linksi 3-step process: resident requests help, Linksi matches services, organization receives referral" width={2100} height={749} className="w-full max-w-5xl mx-auto" />
           </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-6">

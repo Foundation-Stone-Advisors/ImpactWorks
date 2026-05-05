@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
-import HeroArcs from "@/components/HeroArcs";
+import DarkBackdrop from "@/components/DarkBackdrop";
 
 const team = [
   { name: "Connie Thomas", title: "Chief Executive Officer", photo: "/team/connie.jpg",
@@ -22,8 +22,8 @@ export default function About() {
   return (
     <div>
       {/* ━━━ HERO — matches site pattern ━━━ */}
-      <section className="relative min-h-[55vh] flex items-center section-dark overflow-hidden">
-        <HeroArcs />
+      <section className="relative min-h-[55vh] flex items-center overflow-hidden text-white">
+        <DarkBackdrop variant="hero-symmetric" />
         <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 grid md:grid-cols-2 gap-12 items-center w-full">
           <div>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Our Story</motion.p>

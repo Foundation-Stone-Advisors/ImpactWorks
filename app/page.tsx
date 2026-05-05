@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import CountUp from "@/components/CountUp";
 import ScrollReveal from "@/components/ScrollReveal";
+import DarkBackdrop from "@/components/DarkBackdrop";
 
 export default function Home() {
   // Angles tuned to avoid mascot tentacle peaks. innerRadius lets specific chips
@@ -26,11 +27,11 @@ export default function Home() {
         {/* Clean dark base — vertical gradient for natural depth, no overlapping color zones */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#15132C] via-[#0E1126] to-[#080B1A]" />
 
-        {/* Subtle paired background circles — opposite corners, two-stop opacity for layered depth */}
+        {/* Paired circles — left side only (right side has the mascot composition) */}
         <div className="absolute -top-44 -left-44 w-[720px] h-[720px] border-[2px] border-[#212749]/60 rounded-full pointer-events-none" />
         <div className="absolute -top-24 -left-24 w-[480px] h-[480px] border-[2px] border-[#212749]/35 rounded-full pointer-events-none" />
-        <div className="absolute -bottom-48 -right-48 w-[800px] h-[800px] border-[2px] border-[#212749]/60 rounded-full pointer-events-none" />
-        <div className="absolute -bottom-28 -right-28 w-[560px] h-[560px] border-[2px] border-[#212749]/35 rounded-full pointer-events-none" />
+        <div className="absolute -bottom-48 -left-44 w-[800px] h-[800px] border-[2px] border-[#212749]/60 rounded-full pointer-events-none" />
+        <div className="absolute -bottom-28 -left-24 w-[560px] h-[560px] border-[2px] border-[#212749]/35 rounded-full pointer-events-none" />
 
         {/* Warm sun centered on mascot — both orbs share the SAME center point via translate */}
         <div className="absolute inset-0 pointer-events-none">
@@ -472,19 +473,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ━━━ STATS — same clean dark language as hero ━━━ */}
+      {/* ━━━ STATS — shared DarkBackdrop (stats variant) ━━━ */}
       <section className="section-pad relative overflow-hidden">
-        {/* Same dark base as hero */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#15132C] via-[#0E1126] to-[#080B1A]" />
-        {/* Single centered warm glow */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[600px] bg-gradient-radial from-brand-orange/14 via-brand-orange/4 to-transparent blur-3xl" />
-        </div>
-        {/* Vignette */}
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_transparent_50%,_rgba(0,0,0,0.4)_100%)]" />
-        {/* Editorial top + bottom hairlines — brighter on dark */}
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent" />
+        <DarkBackdrop variant="stats" />
 
         <div className="relative z-10 max-w-site mx-auto">
           <ScrollReveal className="text-center mb-16">

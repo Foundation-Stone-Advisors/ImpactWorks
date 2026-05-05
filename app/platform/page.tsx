@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
-import HeroArcs from "@/components/HeroArcs";
+import DarkBackdrop from "@/components/DarkBackdrop";
 import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 
 const features = [
@@ -20,8 +20,8 @@ export default function Platform() {
   return (
     <div>
       {/* Hero — dark */}
-      <section className="relative min-h-[60vh] flex items-center section-dark overflow-hidden">
-        <HeroArcs />
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden text-white">
+        <DarkBackdrop variant="hero-asymmetric" />
         <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 text-center">
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Linksi Platform</motion.p>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white mb-6">

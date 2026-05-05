@@ -58,19 +58,6 @@ export default function Home() {
               className="hidden lg:block absolute -left-6 top-2 bottom-32 w-[2px] bg-gradient-to-b from-brand-orange via-brand-orange/40 to-transparent origin-top"
             />
 
-            {/* Eyebrow with horizontal rule */}
-            <motion.div
-              initial={{ opacity: 0, x: -16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center gap-3 mb-7"
-            >
-              <span className="block w-8 h-px bg-brand-orange" />
-              <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-brand-orange font-medium">
-                Community Impact Platform
-              </p>
-            </motion.div>
-
             {/* Lead-in */}
             <motion.p
               initial={{ opacity: 0, y: 14 }}
@@ -334,57 +321,36 @@ export default function Home() {
             {/* Soft warm cast shadow under mascot */}
             <div className="absolute bottom-[16%] left-1/2 -translate-x-1/2 w-[42%] h-8 bg-brand-orange/35 rounded-full blur-2xl pointer-events-none" />
 
-            {/* Linksi mascot — boots up (desaturated → full color), then settles into ambient bob */}
+            {/* Linksi mascot — fades in clean, then settles into ambient bob */}
             <motion.div
-              initial={{ scale: 0.78, opacity: 0, y: 14, filter: "saturate(0.4) brightness(0.88)" }}
-              animate={{
-                scale: 1,
-                opacity: 1,
-                y: 0,
-                filter: "saturate(1) brightness(1)",
-              }}
+              initial={{ scale: 0.78, opacity: 0, y: 14 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
               transition={{
                 scale:   { duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
                 opacity: { duration: 0.6, delay: 0.2 },
                 y:       { duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
-                filter:  { duration: 0.8, delay: 0.6, ease: "easeOut" },
               }}
               className="absolute inset-0 flex items-center justify-center"
             >
-              {/* Confirmation bounce — small "yes!" wiggle when network completes */}
+              {/* Ongoing ambient bob */}
               <motion.div
-                animate={{
-                  scale: [1, 1.04, 1],
-                  rotate: [0, -1.5, 1.5, 0],
-                }}
+                animate={{ y: [0, -10, 0] }}
                 transition={{
-                  duration: 0.6,
-                  delay: 2.7,
-                  ease: "easeOut",
-                  times: [0, 0.4, 0.7, 1],
+                  duration: 5.5,
+                  delay: 3.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
                 }}
-                className="absolute inset-0 flex items-center justify-center"
+                className="relative w-[55%] md:w-[60%]"
               >
-                {/* Ongoing ambient bob */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{
-                    duration: 5.5,
-                    delay: 3.2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="relative w-[55%] md:w-[60%]"
-                >
-                  <Image
-                    src="/images/linksi-mascot.png"
-                    alt="Linksi — your guide to community services"
-                    width={520}
-                    height={520}
-                    priority
-                    className="w-full h-auto drop-shadow-[0_22px_36px_rgba(232,117,26,0.32)]"
-                  />
-                </motion.div>
+                <Image
+                  src="/images/linksi-mascot.png"
+                  alt="Linksi — your guide to community services"
+                  width={520}
+                  height={520}
+                  priority
+                  className="w-full h-auto drop-shadow-[0_22px_36px_rgba(232,117,26,0.32)]"
+                />
               </motion.div>
             </motion.div>
 

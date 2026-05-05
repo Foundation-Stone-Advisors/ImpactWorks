@@ -3,8 +3,13 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-navy-900 text-white">
-      <div className="max-w-site mx-auto px-6 py-16">
+    <footer className="relative overflow-hidden text-white bg-gradient-to-b from-[#0E1126] via-[#080B1A] to-[#05070F]">
+      {/* Subtle paired circles — system-consistent atmospheric detail */}
+      <div className="absolute -top-32 -left-32 w-[480px] h-[480px] border-[2px] border-[#212749]/55 rounded-full pointer-events-none" />
+      <div className="absolute -top-16 -left-16 w-[320px] h-[320px] border-[2px] border-[#212749]/30 rounded-full pointer-events-none" />
+      <div className="absolute -bottom-40 -right-40 w-[560px] h-[560px] border-[2px] border-[#212749]/55 rounded-full pointer-events-none" />
+      <div className="absolute -bottom-24 -right-24 w-[380px] h-[380px] border-[2px] border-[#212749]/30 rounded-full pointer-events-none" />
+      <div className="relative z-10 max-w-site mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           <div className="md:col-span-5">
             <Link href="/" className="inline-block mb-6">

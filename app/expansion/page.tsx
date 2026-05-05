@@ -12,12 +12,42 @@ export default function Expansion() {
       {/* Hero */}
       <section className="relative min-h-[55vh] flex items-center overflow-hidden text-white">
         <DarkBackdrop variant="hero-symmetric" />
-        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40">
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Growth Strategy</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white max-w-4xl">
-            Scaling Community <span className="gradient-text-blue">Connections</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 mt-6 max-w-xl">From a single county pilot to a statewide network.</motion.p>
+        <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 grid md:grid-cols-12 gap-10 items-center w-full">
+          <div className="md:col-span-7">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Growth Strategy</motion.p>
+            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white">
+              Scaling Community <span className="gradient-text-blue">Connections</span>
+            </motion.h1>
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 mt-6 max-w-xl">From a single county pilot to a statewide network.</motion.p>
+          </div>
+          {/* Page-specific visual: phased growth scoreboard — Phase 1 → Phase 3 with status pulses */}
+          <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} className="md:col-span-5 hidden md:flex flex-col gap-3 items-stretch">
+            {[
+              { phase: "Phase 1", region: "Clay County", status: "Live", color: "#3DAA5C", active: true },
+              { phase: "Phase 2", region: "Northeast Florida", status: "2026", color: "#F5A623", active: false },
+              { phase: "Phase 3", region: "Statewide",       status: "Future", color: "#2E8BC0", active: false },
+            ].map((row, i) => (
+              <motion.div
+                key={row.phase}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-center justify-between gap-4 bg-white/[0.05] backdrop-blur-md border border-white/12 rounded-xl px-4 py-3"
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <span className="relative flex h-2 w-2 flex-shrink-0">
+                    {row.active && <span className="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping" style={{ backgroundColor: row.color }} />}
+                    <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: row.color, boxShadow: `0 0 8px ${row.color}` }} />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">{row.phase}</p>
+                    <p className="font-display text-sm text-white truncate">{row.region}</p>
+                  </div>
+                </div>
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-200 px-2 py-1 rounded bg-white/[0.07] border border-white/10 flex-shrink-0" style={{ color: row.color }}>{row.status}</span>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 

@@ -27,11 +27,9 @@ export default function Home() {
         {/* Clean dark base — vertical gradient for natural depth, no overlapping color zones */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#15132C] via-[#0E1126] to-[#080B1A]" />
 
-        {/* Paired circles — left side only (right side has the mascot composition) */}
+        {/* Paired circles — top-left only (matches hero-asymmetric variant; bottom-right would clash with the mascot composition) */}
         <div className="absolute -top-44 -left-44 w-[720px] h-[720px] border-[2px] border-[#212749]/60 rounded-full pointer-events-none" />
         <div className="absolute -top-24 -left-24 w-[480px] h-[480px] border-[2px] border-[#212749]/35 rounded-full pointer-events-none" />
-        <div className="absolute -bottom-48 -left-44 w-[800px] h-[800px] border-[2px] border-[#212749]/60 rounded-full pointer-events-none" />
-        <div className="absolute -bottom-28 -left-24 w-[560px] h-[560px] border-[2px] border-[#212749]/35 rounded-full pointer-events-none" />
 
         {/* Warm sun centered on mascot — both orbs share the SAME center point via translate */}
         <div className="absolute inset-0 pointer-events-none">

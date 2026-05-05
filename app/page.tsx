@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import CountUp from "@/components/CountUp";
 import ScrollReveal from "@/components/ScrollReveal";
-import HeroArcs from "@/components/HeroArcs";
 
 export default function Home() {
   // Angles tuned to avoid mascot tentacle peaks — leans toward verticals/diagonals
@@ -23,9 +22,6 @@ export default function Home() {
     <div>
       {/* ━━━ HERO — Sunlit Editorial Operating System ━━━ */}
       <section className="relative overflow-hidden bg-[#FAF6EE]">
-        {/* Top scrim — keeps nav readable on warm bg */}
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[rgba(15,10,3,0.45)] via-[rgba(15,10,3,0.18)] to-transparent z-10 pointer-events-none" />
-
         {/* Atmospheric color mesh */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-[10%] -right-[5%] w-[700px] h-[700px] bg-gradient-radial from-brand-orange/15 via-brand-orange/5 to-transparent rounded-full blur-3xl" />
@@ -492,15 +488,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ━━━ STATS ━━━ */}
-      <section className="section-pad section-dark relative overflow-hidden">
-        <HeroArcs />
+      {/* ━━━ STATS — warm cream, matches hero direction ━━━ */}
+      <section className="section-pad relative overflow-hidden bg-[#FAF6EE]">
+        {/* Subtle warm atmosphere — matches hero color mesh language */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-[20%] left-[15%] w-[500px] h-[500px] bg-gradient-radial from-brand-orange/10 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -bottom-[20%] right-[10%] w-[450px] h-[450px] bg-gradient-radial from-brand-blue/8 to-transparent rounded-full blur-3xl" />
+        </div>
+        {/* Editorial top + bottom hairlines */}
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/20 to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-orange/20 to-transparent" />
+
         <div className="relative z-10 max-w-site mx-auto">
           <ScrollReveal className="text-center mb-16">
-            <p className="eyebrow mb-4">Our Reach</p>
-            <h2 className="heading-section text-white">Community <span className="gradient-text-orange">Impact</span></h2>
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <span className="block w-8 h-px bg-brand-orange" />
+              <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-brand-orange font-medium">Our Reach</p>
+              <span className="block w-8 h-px bg-brand-orange" />
+            </div>
+            <h2 className="heading-section text-slate-900">Community <span className="gradient-text-orange">Impact</span></h2>
           </ScrollReveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
             {[
               { value: 1500, suffix: "+", label: "Residents Connected" },
               { value: 50, suffix: "+", label: "Partner Organizations" },
@@ -508,11 +516,11 @@ export default function Home() {
               { value: 100, suffix: "%", label: "Real-Time Data Access" },
             ].map((stat, i) => (
               <ScrollReveal key={stat.label} delay={i * 0.1}>
-                <div className="card-dark p-6 md:p-8 text-center">
+                <div className="bg-white/70 backdrop-blur-sm border border-slate-200/60 rounded-2xl p-6 md:p-8 text-center hover:bg-white hover:shadow-[0_8px_24px_-8px_rgba(232,117,26,0.20)] transition-all duration-300">
                   <p className="font-mono text-3xl md:text-4xl lg:text-5xl text-brand-orange font-bold tabular-nums">
                     <CountUp end={stat.value} suffix={stat.suffix} />
                   </p>
-                  <p className="text-sm text-slate-400 mt-3">{stat.label}</p>
+                  <p className="text-sm text-slate-600 mt-3">{stat.label}</p>
                 </div>
               </ScrollReveal>
             ))}

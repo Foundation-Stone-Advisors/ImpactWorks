@@ -7,6 +7,8 @@ import DarkBackdrop from "@/components/DarkBackdrop";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   return (
     <div>
@@ -50,10 +52,6 @@ export default function Contact() {
           <ScrollReveal className="md:col-span-2">
             <div className="space-y-8">
               <div>
-                <p className="font-mono text-xs text-brand-orange uppercase tracking-[0.2em] mb-2">Email</p>
-                <a href="mailto:hello@impactworks.dev" className="text-slate-800 hover:text-brand-blue transition-colors font-semibold">hello@impactworks.dev</a>
-              </div>
-              <div>
                 <p className="font-mono text-xs text-brand-orange uppercase tracking-[0.2em] mb-2">Location</p>
                 <p className="text-slate-600">Clay County, Florida</p>
               </div>
@@ -74,7 +72,33 @@ export default function Contact() {
                 <p className="text-slate-500">Thank you for reaching out. We&apos;ll get back to you soon.</p>
               </motion.div>
             ) : (
-              <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="card-light p-8 md:p-10">
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  setLoading(true);
+                  setError("");
+                  const form = e.currentTarget;
+                  const data = {
+                    name: (form.elements.namedItem("name") as HTMLInputElement).value,
+                    email: (form.elements.namedItem("email") as HTMLInputElement).value,
+                    message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+                  };
+                  try {
+                    const res = await fetch("/api/contact", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify(data),
+                    });
+                    if (!res.ok) throw new Error();
+                    setSubmitted(true);
+                  } catch {
+                    setError("Something went wrong. Please try again.");
+                  } finally {
+                    setLoading(false);
+                  }
+                }}
+                className="card-light p-8 md:p-10"
+              >
                 <div className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">Name</label>
@@ -88,7 +112,10 @@ export default function Contact() {
                     <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">Message</label>
                     <textarea id="message" name="message" rows={5} required className="w-full bg-gray-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue transition-all resize-none" placeholder="Tell us how we can help..." />
                   </div>
-                  <button type="submit" className="btn-primary w-full">Send Message <span>&rarr;</span></button>
+                  {error && <p className="text-sm text-red-500">{error}</p>}
+                  <button type="submit" disabled={loading} className="btn-primary w-full disabled:opacity-60 disabled:cursor-not-allowed">
+                    {loading ? "Sending…" : <>Send Message <span>&rarr;</span></>}
+                  </button>
                 </div>
               </form>
             )}

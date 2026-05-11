@@ -526,9 +526,9 @@ export default function Home() {
                     Join the growing network of organizations using Impact Works to connect people with the services they need.
                   </p>
                   <div className="flex flex-wrap justify-center gap-4">
-                    <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-brand-orange font-display font-bold px-8 py-4 rounded-xl hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
+                    <a href="https://linksy.impact-works.us/join/provider" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white text-brand-orange font-display font-bold px-8 py-4 rounded-xl hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
                       Partner With Us <span>&rarr;</span>
-                    </Link>
+                    </a>
                     <Link href="/platform" className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 text-white font-display font-semibold px-8 py-4 rounded-xl hover:bg-white/25 active:scale-[0.98] transition-all duration-300 cursor-pointer">
                       Learn About Linksi
                     </Link>

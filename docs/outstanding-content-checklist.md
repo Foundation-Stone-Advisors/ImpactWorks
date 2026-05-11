@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-05-05
+**Last updated:** 2026-05-11
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred from the May 4 update list because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the May 4 scope.
@@ -161,6 +161,20 @@ The current About page has:
 - Timeline section (currently 2024 + 2025 milestones — could expand back further once history copy is provided)
 - Team grid (Connie, Michelle, Heather)
 - Vision + Mission cards
+
+---
+
+### 9. Contact form email delivery — SMTP credentials needed
+
+**Status:** Form is built and wired up but email delivery is not yet active. Blocked on SMTP credentials from the client.
+
+**What's needed from the client (IT contact or domain/email administrator):**
+- [ ] **SMTP Host** — the outgoing mail server address for the impactclay.org email account (e.g. `smtp.office365.com`, `smtp.gmail.com`, `mail.impactclay.org`)
+- [ ] **SMTP Port** — usually `587`
+- [ ] **Sending email address** — the account the form will send *from* (e.g. `noreply@impactclay.org`)
+- [ ] **Password for that account** — or an app password if the account uses two-factor authentication (Microsoft 365 and Google both issue app passwords for this)
+
+Once received, these go into Vercel as environment variables and the Resend dependency gets removed in favor of a direct nodemailer connection.
 
 ---
 

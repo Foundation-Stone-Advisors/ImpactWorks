@@ -13,7 +13,7 @@ const team = [
   { name: "Michelle Reaves", title: "Chief Operating Officer", photo: "/team/michelle.jpg",
     objectPosition: "center 25%",
     bio: "Michelle Reaves brings expertise in project coordination, administrative operations, and grant writing. Certified in Six Sigma Lean Black Belt and Change Management, she previously secured critical funding and led process improvement at the Clay County Sheriff\u2019s Office." },
-  { name: "Heather Johnson", title: "Data & Systems Analyst", photo: "/team/heather.jpg",
+  { name: "Heather Johnston", title: "Data & Systems Analyst", photo: "/team/heather.jpg",
     objectPosition: "center 8%",
     bio: "Heather brings 20+ years of administrative experience across for-profit, nonprofit, and military settings as a Navy veteran. She holds a BA in Psychology from UNF and serves as a licensed Pastoral Care Lay Leader for the Diocese of North Florida." },
 ];

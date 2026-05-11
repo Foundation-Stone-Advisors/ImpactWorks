@@ -74,7 +74,7 @@ export default function Nav() {
               )}
             </Link>
           ))}
-          <Link href="/contact" className="ml-4 btn-primary !py-2.5 !px-5 text-sm !rounded-lg">
+          <Link href="/join" className="ml-4 btn-primary !py-2.5 !px-5 text-sm !rounded-lg">
             Join Us
           </Link>
         </div>
@@ -136,6 +136,20 @@ export default function Nav() {
                   </Link>
                 </motion.div>
               ))}
+              <motion.div
+                initial={{ opacity: 0, x: -16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: links.length * 0.04 }}
+                className="pt-2"
+              >
+                <Link
+                  href="/join"
+                  className="btn-primary w-full justify-center !py-3 !text-sm !rounded-lg"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Join Us
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}

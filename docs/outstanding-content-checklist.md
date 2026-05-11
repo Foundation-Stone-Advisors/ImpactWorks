@@ -17,7 +17,7 @@ For reference, these May-4-list items have landed in production:
   - Ecosystem section removed
   - Linksi logo refreshed in the "How It Works" section (process map illustration)
 - **Linksy → Linksi rebrand** — every page, every image filename
-- **Heather Johnson title** → "Data & Systems Analyst"
+- **Heather Johnston title** → "Data & Systems Analyst"
 - **Connie Thomas headshot** → replaced with new professional photo
 - **Platform page** — mascot now wearing Impact Works branded headphones (auto via asset swap)
 - **Navigation tabs**

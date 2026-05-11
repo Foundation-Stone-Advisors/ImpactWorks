@@ -44,9 +44,9 @@ export default function Footer() {
               <li><a href="mailto:hello@impactworks.dev" className="hover:text-brand-blue transition-colors">hello@impactworks.dev</a></li>
               <li>Clay County, Florida</li>
             </ul>
-            <Link href="/contact" className="inline-flex items-center gap-2 text-sm text-brand-orange hover:text-brand-orange-light mt-6 transition-colors group">
+            <a href="https://linksy.impact-works.us/join/provider" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-brand-orange hover:text-brand-orange-light mt-6 transition-colors group">
               Partner with us <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
-            </Link>
+            </a>
           </div>
         </div>
 

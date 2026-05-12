@@ -1,29 +1,36 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-05-11
-**Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred from the May 4 update list because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
+**Last updated:** 2026-05-12
+**Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
-This file is the single source of truth for what's still needed to fully complete the May 4 scope.
+This file is the single source of truth for what's still needed to fully complete the site.
 
 ---
 
 ## ✅ What's already shipped
 
-For reference, these May-4-list items have landed in production:
-
+### May 4 scope
 - **Home page**
   - New headline, subhead, secondary CTA copy
   - Small Linksi mascot added (now full mascot composition with chip orbits)
   - Ecosystem section removed
   - Linksi logo refreshed in the "How It Works" section (process map illustration)
 - **Linksy → Linksi rebrand** — every page, every image filename
-- **Heather Johnston title** → "Data & Systems Analyst"
+- **Heather Johnston name correction** — was "Johnson" across about page and docs
 - **Connie Thomas headshot** → replaced with new professional photo
 - **Platform page** — mascot now wearing Impact Works branded headphones (auto via asset swap)
 - **Navigation tabs**
   - "Platform" → "Linksi Platform"
   - "Impact" → "Collaboration"
   - "Get Started" CTA → "Join Us"
+
+### May 11–12 scope
+- **`/join` page** — new dedicated page replacing the `/contact` redirect for "Join Us"; four portal pathway cards: Sign In, Register Your Organization, Redeem an Invitation, Request Access
+- **"Join Us" nav button** — desktop + mobile now routes to `/join`
+- **Footer "Partner with us" link** → `https://linksy.impact-works.us/join/provider` (opens in new tab)
+- **Homepage "Partner With Us" CTA** (beneath "Strengthen Your Community") → `https://linksy.impact-works.us/join/provider`
+- **Contact page** — visible email address removed from sidebar
+- **Contact form** — wired to `/api/contact` route; delivery pending SMTP credentials (see item #8 below)
 
 ---
 
@@ -159,14 +166,14 @@ The current About page has:
 - "Our Story" hero
 - Bento "Who We Are" + Vision/Stats
 - Timeline section (currently 2024 + 2025 milestones — could expand back further once history copy is provided)
-- Team grid (Connie, Michelle, Heather)
+- Team grid (Connie, Michelle, Heather Johnston)
 - Vision + Mission cards
 
 ---
 
-### 9. Contact form email delivery — SMTP credentials needed
+### 8. Contact form email delivery — SMTP credentials needed
 
-**Status:** Form is built and wired up but email delivery is not yet active. Blocked on SMTP credentials from the client.
+**Status:** Form is built and wired to `/api/contact` but delivery is not yet active. Blocked on SMTP credentials from the client.
 
 **What's needed from the client (IT contact or domain/email administrator):**
 - [ ] **SMTP Host** — the outgoing mail server address for the impactclay.org email account (e.g. `smtp.office365.com`, `smtp.gmail.com`, `mail.impactclay.org`)
@@ -174,15 +181,15 @@ The current About page has:
 - [ ] **Sending email address** — the account the form will send *from* (e.g. `noreply@impactclay.org`)
 - [ ] **Password for that account** — or an app password if the account uses two-factor authentication (Microsoft 365 and Google both issue app passwords for this)
 
-Once received, these go into Vercel as environment variables and the Resend dependency gets removed in favor of a direct nodemailer connection.
+Once received: add as Vercel environment variables, swap Resend for nodemailer, and form submissions will deliver to eric@impactclay.org.
 
 ---
 
-### 8. Tab rename consideration: "Collaboration"
+### 9. Tab rename consideration: "Collaboration"
 
 **Status:** Renamed in nav (was "Impact"). The page heading still reads "Community Impact" — was the May 4 intent to also rename the page heading?
 
-**What's needed from:**
+**What's needed from you:**
 - [ ] Confirm: should the `/impact` page H1 ("Community Impact") also become "Collaboration" or "Impact Communities Network"? Currently:
   - Nav label: "Collaboration" ✅
   - URL: `/impact` (kept stable to avoid breaking links)

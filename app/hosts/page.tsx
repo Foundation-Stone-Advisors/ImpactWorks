@@ -74,33 +74,35 @@ export default function Hosts() {
         </div>
       </section>
 
-      {/* Linksi embed */}
+      {/* Linksi access */}
       <section className="section-pad bg-gray-50">
         <div className="max-w-site mx-auto">
-          <ScrollReveal className="text-center mb-8">
+          <ScrollReveal className="text-center mb-10">
             <p className="font-mono text-xs text-brand-orange uppercase tracking-[0.2em] mb-3">Access Linksi</p>
             <h2 className="font-display text-3xl md:text-4xl font-extrabold text-slate-800 mb-4">Find Help Through Linksi</h2>
-            <p className="text-slate-500 max-w-xl mx-auto mb-2">
-              Know Linksi by name? Access the platform directly below, or open it in a new tab.
+            <p className="text-slate-500 max-w-xl mx-auto">
+              Know Linksi by name? Access the platform directly to find services, connect with providers, or manage your community network.
             </p>
-            <a
-              href="https://linksy.impact-works.us"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-brand-blue hover:text-brand-orange transition-colors"
-            >
-              Open Linksi in a new tab <span>&rarr;</span>
-            </a>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-white">
-              <iframe
-                src="https://linksy.impact-works.us"
-                title="Linksi Platform"
-                className="w-full"
-                style={{ height: "640px", border: "none" }}
-                loading="lazy"
-              />
+            <div className="max-w-2xl mx-auto card-light p-10 text-center border border-slate-200 rounded-2xl shadow-sm">
+              <div className="w-16 h-16 rounded-2xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </div>
+              <h3 className="font-display text-2xl font-bold text-slate-800 mb-3">Open Linksi</h3>
+              <p className="text-slate-500 mb-8">
+                The Linksi platform opens in a new tab — connecting Clay County residents to local services in real time.
+              </p>
+              <a
+                href="https://linksy.impact-works.us"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary inline-flex items-center justify-center gap-2"
+              >
+                Go to Linksi <span>&rarr;</span>
+              </a>
             </div>
           </ScrollReveal>
         </div>

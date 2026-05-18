@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-05-12
+**Last updated:** 2026-05-18
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -21,177 +21,113 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page** — mascot now wearing Impact Works branded headphones (auto via asset swap)
 - **Navigation tabs**
   - "Platform" → "Linksi Platform"
-  - "Impact" → "Collaboration"
   - "Get Started" CTA → "Join Us"
 
 ### May 11–12 scope
-- **`/join` page** — new dedicated page replacing the `/contact` redirect for "Join Us"; four portal pathway cards: Sign In, Register Your Organization, Redeem an Invitation, Request Access
-- **"Join Us" nav button** — desktop + mobile now routes to `/join`
-- **Footer "Partner with us" link** → `https://linksy.impact-works.us/join/provider` (opens in new tab)
-- **Homepage "Partner With Us" CTA** (beneath "Strengthen Your Community") → `https://linksy.impact-works.us/join/provider`
+- **`/join` page** — new dedicated page for "Join Us" nav button
+- **"Join Us" nav button** — desktop + mobile routes to `/join`
+- **Footer "Partner with us" link** → `https://linksy.impact-works.us/join/provider`
+- **Homepage "Partner With Us" CTA** → `https://linksy.impact-works.us/join/provider`
 - **Contact page** — visible email address removed from sidebar
-- **Contact form** — wired to `/api/contact` route; delivery pending SMTP credentials (see item #8 below)
+- **Contact form** — wired to `/api/contact` via Resend
+
+### May 18 scope
+- **Contact form — reason dropdown** — "Reason for contact" is now the first required field with four options; "I Need Help Finding Services" replaces the form with a find-help panel linking to `https://linksy.impact-works.us/find-help`
+- **Contact form — response time** — updated to "2 business days" on page and in confirmation email
+- **Contact form — reason in admin email** — reason field now included in notification to eric@impactclay.org
+- **Footer** — `mailto:hello@impactworks.dev` link removed
+- **Nav** — "Collaboration" renamed back to "Impact"
+- **`/providers` page** — new page for service-delivering organizations (Nonprofits, Healthcare Systems, Faith Organizations, Community Initiatives, Educational Institutions); CTA links to Linksi provider signup
+- **`/hosts` page** — new page for hosting organizations (Government Agencies); includes Linksi access card and hosting sites directory (placeholder, ready to populate)
+- **`/partners`** — 301 redirect to `/providers`
+- **Nav + Footer** — "Partners" replaced by "Providers" and "Hosts" as separate top-level items
+- **Expansion page** — Phase 2 description updated to include Putnam County (now lists Duval, St. Johns, Nassau, Baker, and Putnam); stale "See Our Partners" CTA updated to "See Our Providers"
+- **Impact page** — community service dashboard section removed
+- **Platform page** — "Closed-Loop Referrals" added to Capabilities section (Equity angle: surfaces where residents fall through the cracks so communities can close service gaps)
+- **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
+- **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
 
 ---
 
 ## 🚧 Outstanding items
 
-Organized by what's blocking each one — content/copy, decisions, numbers, or new pages.
-
 ### 1. Foundation page (NEW route) — `/foundation`
 
-**Status:** Not built yet. Blocked on content + donation flow decision.
+**Status:** Deferred. Connie confirmed the Foundation tab should be removed from the nav for now to keep nav manageable. Page not built — blocked on content + donation flow decision.
 
 **What's needed from you:**
-- [ ] **Page copy** — what does the Foundation page say? You mentioned it should "further explain the community operating system." Is the explanation the same as `/platform` content, or different framing?
+- [ ] **Page copy** — what does the Foundation page say?
 - [ ] **Donation flow decision** — pick one:
-  - **Option A:** Stripe Checkout (we build a custom donation flow with amount selector, processing fees toggle, recurring vs one-time)
-  - **Option B:** External link to a third-party donation platform (Givebutter, Donorbox, PayPal Giving, GoFundMe Charity)
-  - **Option C:** Just a "Donate" button that links to a contact form for now
-- [ ] **Donation amounts** — if Stripe or custom: suggested amount tiers ($25, $50, $100, $500, custom?), recurring options (monthly, annually)?
-- [ ] **501(c)(3) status** — is Impact Works a registered nonprofit? Affects how donation language is written and what tax-deduction notice appears
-
-**Where it goes in the nav:**
-- [ ] Position before Expansion (per May 4 list) — confirmed
-- [ ] Add to main desktop nav, mobile menu, AND footer's Navigate column
-
-**Suggested rough structure** (for you to confirm):
-1. Hero with "Impact Works Foundation" headline + subhead about mission
-2. Section explaining the Community Operating System (could reuse / adapt /platform copy)
-3. Why donate / where the money goes (3-5 buckets — staff, tech, partner support, expansion?)
-4. Donation tab/section (TBD based on flow decision above)
-5. Transparency / tax-deduction notice
-6. CTA ("Other ways to support" → /contact)
+  - **Option A:** Stripe Checkout (custom donation flow)
+  - **Option B:** External link to a third-party donation platform (Givebutter, Donorbox, PayPal Giving)
+  - **Option C:** Just a "Donate" button linking to the contact form for now
+- [ ] **Donation amounts** — suggested tiers and recurring options
+- [ ] **501(c)(3) status** — registered nonprofit? Affects donation language and tax-deduction notice
+- [ ] **Nav placement** — footer-only for now, or add back to main nav when page is ready?
 
 ---
 
-### 2. Partners page split → `/providers` + `/hosts`
+### 2. Hosting sites directory — `/hosts` page
 
-**Status:** Not built yet. Blocked on how to divide the existing /partners content.
+**Status:** Directory section is built and ready. Blocked on the list of hosting sites.
 
 **What's needed from you:**
-- [ ] **Definition** — what's the difference between a Provider and a Host in your model? Quick definitions so I can draft copy:
-  - **Providers** — likely organizations that *deliver* services (nonprofits, healthcare, faith orgs)?
-  - **Hosts** — likely organizations that *host the platform* in their region (governments, anchor institutions)?
-- [ ] **Existing /partners content split** — current categories on `/partners`:
-  - Nonprofits
-  - Healthcare Systems
-  - Government Agencies
-  - Faith Organizations
-  - Community Initiatives
-  - Educational Institutions
-  Which of these go on Providers, which go on Hosts? (or do both pages list overlapping categories with different framing?)
-- [ ] **Should `/partners` redirect somewhere?** Two options:
-  - Keep `/partners` as a landing/index page that links to both `/providers` and `/hosts`
-  - Delete `/partners` and 301-redirect to `/providers` (or `/hosts`)
-- [ ] **Nav placement** — both as separate top-level nav items? Or one nested?
+- [ ] List of current hosting sites with name, location, and URL — Connie confirmed this is being built and will grow over time. Update the `hostingSites` array in `app/hosts/page.tsx` as sites are confirmed.
 
 ---
 
-### 3. Foundation page placement in nav (related to #1)
+### 3. Stats refresh — Clay County numbers (`/expansion` page)
+
+**Status:** Not updated. Blocked on having the new numbers. Connie raised whether these are live from Linksi — pending confirmation from Eric.
 
 **What's needed from you:**
-- [ ] Confirm final nav order. Current option per May 4 list:
-  ```
-  Home / About / Linksi Platform / Collaboration / Providers / Hosts / Foundation / Expansion / Contact
-  ```
-  That's **9 desktop nav items** — getting tight on smaller desktop viewports. Considerations:
-  - Could group Providers + Hosts under a "Partners" dropdown
-  - Could move Foundation to a footer-only link
-  - Could trim something less essential (e.g., consolidate Expansion into Foundation since it's expansion strategy)
-  Pick a direction.
-
----
-
-### 4. Stats refresh — Clay County numbers (`/expansion` page)
-
-**Status:** Not updated. Blocked on having the new numbers.
-
-**What's needed from you:**
-- [ ] Updated Clay County stats. Current numbers showing on the page:
+- [ ] Updated stats. Currently showing:
   - 67 FL Counties
   - 22.6M Residents
   - 50+ Partners Today
   - 3 Growth Phases
-  Are these still accurate? If not, what should they be?
+  Are these still accurate?
 
 ---
 
-### 5. Stats refresh — Impact page orange ribbon
+### 4. Stats refresh — Impact page orange ribbon
 
-**Status:** Not updated. Blocked on having the new numbers.
+**Status:** Not updated. Blocked on having the new numbers. Same question about live data from Linksi (see item #3).
 
 **What's needed from you:**
-- [ ] Updated stats for the orange ribbon strip on `/impact`. Currently showing:
+- [ ] Updated stats for the orange ribbon on `/impact`. Currently showing:
   - 1,500+ Residents Connected
   - 50+ Partner Organizations
   - 4,000+ Referrals Made
   - 100% Real-Time Data
-  Latest numbers? Any new metric that should replace one of these?
 
 ---
 
-### 6. Closed-loop referral verbiage — `/platform` Capabilities section
+### 5. Live stats from Linksi — pending Eric
 
-**Status:** Not added. Blocked on whether you want me to draft or someone is providing copy.
+**Status:** Drafted a message to Eric requesting read-only Dataverse API access. If granted, stats on `/expansion` and `/impact` can be pulled live from the Linksi system.
+
+**What's needed:**
+- [ ] Eric to provide: Dataverse environment URL, Azure AD app credentials (Client ID, Secret, Tenant ID), and table/field names for the three key counts
+- [ ] Once received: wire up server-side API calls in Next.js to replace hardcoded numbers
+
+---
+
+### 6. About page history content
+
+**Status:** Not added. Copy is coming from the team.
 
 **What's needed from you:**
-- [ ] Decision: do you want me to draft 2–3 options of closed-loop referral copy, or is the team providing the copy?
+- [ ] Founding story, key milestones, or "why we built this" narrative
+- [ ] Any photos/visuals to accompany the history
 
-**If you want me to draft**, here's a starting option for you to react to:
-
-> **Closed-Loop Referrals**
-> Every match Linksi makes is tracked end-to-end. We confirm whether the resident was successfully connected to a service, where the gaps are, and what's missing in your community — so you can fill them. No more "we made a referral and don't know what happened."
-
-Three angles to choose between:
-- **Operational** — emphasizes tracking, verification, data integrity (above)
-- **Equity** — emphasizes finding service gaps, ensuring no one falls through the cracks
-- **Outcomes** — emphasizes results, success rates, verified connections
+The current About page has a Timeline section (2024 + 2025 milestones) ready to expand once copy is provided.
 
 ---
 
-### 7. About page history content
+### 7. Contact form delivery — confirm Resend API key
 
-**Status:** Not added. Per the May 4 list, "they will provide history" — implying copy is coming from your team.
+**Status:** Form is fully built and wired. Uses Resend (`noreply@impact-works.us`) to send admin notification to eric@impactclay.org and a confirmation to the submitter. Delivery is live **only if** `RESEND_API_KEY` is set in Vercel.
 
-**What's needed from you:**
-- [ ] Copy for the About page history section. Could be:
-  - Founding story
-  - Key milestones with dates
-  - "Why we built this" narrative
-  - Any combination of the above
-- [ ] Any photos/visuals to accompany the history (early team photos, key moments)?
-
-The current About page has:
-- "Our Story" hero
-- Bento "Who We Are" + Vision/Stats
-- Timeline section (currently 2024 + 2025 milestones — could expand back further once history copy is provided)
-- Team grid (Connie, Michelle, Heather Johnston)
-- Vision + Mission cards
-
----
-
-### 8. Contact form email delivery — SMTP credentials needed
-
-**Status:** Form is built and wired to `/api/contact` but delivery is not yet active. Blocked on SMTP credentials from the client.
-
-**What's needed from the client (IT contact or domain/email administrator):**
-- [ ] **SMTP Host** — the outgoing mail server address for the impactclay.org email account (e.g. `smtp.office365.com`, `smtp.gmail.com`, `mail.impactclay.org`)
-- [ ] **SMTP Port** — usually `587`
-- [ ] **Sending email address** — the account the form will send *from* (e.g. `noreply@impactclay.org`)
-- [ ] **Password for that account** — or an app password if the account uses two-factor authentication (Microsoft 365 and Google both issue app passwords for this)
-
-Once received: add as Vercel environment variables, swap Resend for nodemailer, and form submissions will deliver to eric@impactclay.org.
-
----
-
-### 9. Tab rename consideration: "Collaboration"
-
-**Status:** Renamed in nav (was "Impact"). The page heading still reads "Community Impact" — was the May 4 intent to also rename the page heading?
-
-**What's needed from you:**
-- [ ] Confirm: should the `/impact` page H1 ("Community Impact") also become "Collaboration" or "Impact Communities Network"? Currently:
-  - Nav label: "Collaboration" ✅
-  - URL: `/impact` (kept stable to avoid breaking links)
-  - H1 on the page: "Community Impact" ❓
-  - Eyebrow: "Measurable Results"
+**What's needed:**
+- [ ] Verify `RESEND_API_KEY` is configured in Vercel environment variables. If not set, contact form submissions will silently fail.

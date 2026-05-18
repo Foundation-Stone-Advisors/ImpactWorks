@@ -41,7 +41,6 @@ export default function Footer() {
           <div className="md:col-span-4">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-slate-500 mb-4">Contact</p>
             <ul className="space-y-2.5 text-sm text-slate-400">
-              <li><a href="mailto:hello@impactworks.dev" className="hover:text-brand-blue transition-colors">hello@impactworks.dev</a></li>
               <li>Clay County, Florida</li>
             </ul>
             <a href="https://linksy.impact-works.us/join/provider" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-brand-orange hover:text-brand-orange-light mt-6 transition-colors group">

@@ -100,8 +100,8 @@ export default function Expansion() {
                   <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-brand-orange font-display font-bold px-8 py-4 rounded-xl hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
                     Get in Touch <span>&rarr;</span>
                   </Link>
-                  <Link href="/partners" className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white font-display font-semibold px-8 py-4 rounded-xl hover:bg-white/25 active:scale-[0.98] transition-all duration-300 cursor-pointer">
-                    See Our Partners
+                  <Link href="/providers" className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white font-display font-semibold px-8 py-4 rounded-xl hover:bg-white/25 active:scale-[0.98] transition-all duration-300 cursor-pointer">
+                    See Our Providers
                   </Link>
                 </div>
               </div>

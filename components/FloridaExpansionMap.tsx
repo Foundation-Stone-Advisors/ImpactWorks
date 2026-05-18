@@ -41,7 +41,7 @@ const phases = [
     coverage: "5 counties",
     distance: "30 mi from Clay County",
     stats: null,
-    desc: "Expanding to Duval, St. Johns, Nassau, and Baker counties — building regional partnerships to serve a broader population.",
+    desc: "Expanding to Duval, St. Johns, Nassau, Baker, and Putnam counties — building regional partnerships to serve a broader population.",
     isActive: false,
   },
   {

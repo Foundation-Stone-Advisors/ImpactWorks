@@ -14,6 +14,7 @@ const features = [
   { title: "Provider Collaboration", desc: "Organizations coordinate seamlessly through shared data.", color: "border-brand-gold" },
   { title: "Analytics Dashboard", desc: "Track service needs and measure community impact.", color: "border-brand-blue" },
   { title: "Community Directory", desc: "Centralized, searchable database of all services.", color: "border-brand-green" },
+  { title: "Closed-Loop Referrals", desc: "Every referral is tracked end-to-end. We surface where residents fall through the cracks so communities can close service gaps — and ensure no one is left without help.", color: "border-brand-orange" },
 ];
 
 export default function Platform() {

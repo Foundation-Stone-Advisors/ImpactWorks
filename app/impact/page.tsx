@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import CountUp from "@/components/CountUp";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -105,18 +104,6 @@ export default function Impact() {
         </div>
       </section>
 
-      {/* Dashboard */}
-      <section className="section-pad section-light-alt">
-        <div className="max-w-site mx-auto">
-          <ScrollReveal className="text-center mb-12">
-            <p className="eyebrow mb-4">Live Dashboard</p>
-            <h2 className="heading-section text-slate-800">Data <span className="gradient-text-orange">Dashboard</span></h2>
-          </ScrollReveal>
-          <ScrollReveal>
-            <Image src="/images/datadashboard.png" alt="Community Service Dashboard" width={1120} height={640} className="w-full rounded-2xl shadow-xl border border-slate-200" />
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* Stories — with colored left border and quote-style */}
       <section className="section-pad section-light">

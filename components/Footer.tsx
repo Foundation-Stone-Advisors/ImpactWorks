@@ -28,7 +28,8 @@ export default function Footer() {
                 { href: "/about", label: "About" },
                 { href: "/platform", label: "Linksi Platform" },
                 { href: "/impact", label: "Impact" },
-                { href: "/partners", label: "Partners" },
+                { href: "/providers", label: "Providers" },
+                { href: "/hosts", label: "Hosts" },
                 { href: "/expansion", label: "Expansion" },
               ].map((link) => (
                 <li key={link.href}>

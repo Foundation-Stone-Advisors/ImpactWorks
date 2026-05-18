@@ -10,7 +10,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/platform", label: "Linksi Platform" },
-  { href: "/impact", label: "Collaboration" },
+  { href: "/impact", label: "Impact" },
   { href: "/partners", label: "Partners" },
   { href: "/expansion", label: "Expansion" },
   { href: "/contact", label: "Contact" },

@@ -11,34 +11,14 @@ const fetchStats = unstable_cache(
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
     );
 
-    const [referralsResult, individualsRaw, partnersResult] = await Promise.all([
-      sb
-        .from("linksy_tickets")
-        .select("id", { count: "exact", head: true })
-        .or("is_test.is.null,is_test.eq.false"),
-      sb
-        .from("linksy_tickets")
-        .select("client_email, client_phone")
-        .or("is_test.is.null,is_test.eq.false"),
-      sb
-        .from("linksy_providers")
-        .select("id", { count: "exact", head: true })
-        .eq("is_active", true)
-        .eq("provider_status", "active"),
-    ]);
+    const { data, error } = await sb.rpc("get_impact_stats");
 
-    const seen = new Set<string>();
-    for (const row of individualsRaw.data ?? []) {
-      const key = row.client_email
-        ? row.client_email.toLowerCase()
-        : row.client_phone;
-      if (key) seen.add(key);
-    }
+    if (error) throw new Error(error.message);
 
     return {
-      referrals: referralsResult.count ?? 0,
-      individuals: seen.size,
-      partnerOrganizations: partnersResult.count ?? 0,
+      referrals: data.referrals ?? 0,
+      individuals: data.individuals ?? 0,
+      partnerOrganizations: data.partner_organizations ?? 0,
     };
   },
   ["impact-stats"],

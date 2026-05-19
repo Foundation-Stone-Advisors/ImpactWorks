@@ -13,6 +13,7 @@ const links = [
   { href: "/impact", label: "Impact" },
   { href: "/providers", label: "Providers" },
   { href: "/hosts", label: "Hosts" },
+  { href: "/foundation", label: "Foundation" },
   { href: "/expansion", label: "Expansion" },
   { href: "/contact", label: "Contact" },
 ];

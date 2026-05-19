@@ -125,6 +125,10 @@
   .gradient-text-blue {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-brand-blue-light;
   }
+
+  .gradient-text-green {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-green to-emerald-400;
+  }
 }
 
 ::-webkit-scrollbar { width: 6px; }

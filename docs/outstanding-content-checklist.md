@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-05-18
+**Last updated:** 2026-05-19
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -31,6 +31,13 @@ This file is the single source of truth for what's still needed to fully complet
 - **Contact page** — visible email address removed from sidebar
 - **Contact form** — wired to `/api/contact` via Resend
 
+### May 19 scope
+- **`/foundation` page** — built with full COS DNA framework content, grant disbursement model, funding & allocation flow, 100% provider pledge section
+- **`/foundation` donation section** — amount tiers ($25/$50/$100/$500/custom), frequency toggle (one-time/monthly/annually); donate button disabled pending GiveButter account; Give by Mail address card; collapsible Legal & Tax Information accordion with 501(c)(3) notice, EIN 41-5141462, and all required legal disclosures
+- **Nav** — "Foundation" added between Hosts and Expansion (desktop + mobile)
+- **Footer** — "Foundation" added to Navigate column
+- **`gradient-text-green` utility** — added to globals.css
+
 ### May 18 scope
 - **Contact form — reason dropdown** — "Reason for contact" is now the first required field with four options; "I Need Help Finding Services" replaces the form with a find-help panel linking to `https://linksy.impact-works.us/find-help`
 - **Contact form — response time** — updated to "2 business days" on page and in confirmation email
@@ -51,19 +58,20 @@ This file is the single source of truth for what's still needed to fully complet
 
 ## 🚧 Outstanding items
 
-### 1. Foundation page (NEW route) — `/foundation`
+### 1. Foundation page — `/foundation`
 
-**Status:** Deferred. Connie confirmed the Foundation tab should be removed from the nav for now to keep nav manageable. Page not built — blocked on content + donation flow decision.
+**Status:** ✅ Page built and live in nav. One remaining item below.
 
-**What's needed from you:**
-- [ ] **Page copy** — what does the Foundation page say?
-- [ ] **Donation flow decision** — pick one:
-  - **Option A:** Stripe Checkout (custom donation flow)
-  - **Option B:** External link to a third-party donation platform (Givebutter, Donorbox, PayPal Giving)
-  - **Option C:** Just a "Donate" button linking to the contact form for now
-- [ ] **Donation amounts** — suggested tiers and recurring options
-- [ ] **501(c)(3) status** — registered nonprofit? Affects donation language and tax-deduction notice
-- [ ] **Nav placement** — footer-only for now, or add back to main nav when page is ready?
+**Shipped (2026-05-19):**
+- Full page with COS DNA framework, grant disbursement model, funding & allocation flow, 100% provider pledge
+- Donation widget with $25/$50/$100/$500/custom tiers and one-time/monthly/annually frequency toggle
+- Donate button UI complete — **disabled** pending GiveButter account setup (see item below)
+- Give by Mail card: Impact Works / Attn: Foundation / 151 College Dr Ste 1 / Orange Park, FL 32065
+- Collapsible Legal & Tax Information accordion with 501(c)(3), EIN 41-5141462, and all required disclosures
+- Nav placement: between Hosts and Expansion
+
+**Still needed:**
+- [ ] **GiveButter account setup** — once the account is live, wire the donate button to GiveButter (embed or redirect link). Update `app/foundation/page.tsx`: replace the disabled `<button>` with an `<a>` linking to the GiveButter campaign URL.
 
 ---
 

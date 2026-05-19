@@ -30,6 +30,7 @@ export default function Footer() {
                 { href: "/impact", label: "Impact" },
                 { href: "/providers", label: "Providers" },
                 { href: "/hosts", label: "Hosts" },
+                { href: "/foundation", label: "Foundation" },
                 { href: "/expansion", label: "Expansion" },
               ].map((link) => (
                 <li key={link.href}>

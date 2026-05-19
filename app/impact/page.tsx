@@ -84,7 +84,7 @@ export default function Impact() {
             <ScrollReveal key={stat.label} delay={i * 0.1}>
               <div className="text-center">
                 <p className="font-mono text-3xl md:text-4xl lg:text-5xl text-white font-bold tabular-nums">
-                  <CountUp end={stat.value} suffix={stat.suffix} />
+                  <CountUp key={stat.value} end={stat.value} suffix={stat.suffix} />
                 </p>
                 <p className="text-sm text-white/70 mt-2">{stat.label}</p>
               </div>

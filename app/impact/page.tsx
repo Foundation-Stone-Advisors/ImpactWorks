@@ -1,11 +1,31 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import CountUp from "@/components/CountUp";
 import ScrollReveal from "@/components/ScrollReveal";
 import DarkBackdrop from "@/components/DarkBackdrop";
 
+interface ImpactStats {
+  referrals: number;
+  individuals: number;
+  partnerOrganizations: number;
+}
+
 export default function Impact() {
+  const [stats, setStats] = useState<ImpactStats>({
+    referrals: 0,
+    individuals: 0,
+    partnerOrganizations: 0,
+  });
+
+  useEffect(() => {
+    fetch("/api/impact-stats")
+      .then((r) => r.json())
+      .then((data: ImpactStats) => setStats(data))
+      .catch(() => {});
+  }, []);
+
   return (
     <div>
       {/* Hero — dark, compact */}
@@ -56,9 +76,9 @@ export default function Impact() {
       <section className="bg-brand-orange py-12 px-6">
         <div className="max-w-site mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {[
-            { value: 1500, suffix: "+", label: "Residents Connected" },
-            { value: 50, suffix: "+", label: "Partner Organizations" },
-            { value: 4000, suffix: "+", label: "Referrals Made" },
+            { value: stats.individuals, suffix: "+", label: "Residents Connected" },
+            { value: stats.partnerOrganizations, suffix: "+", label: "Partner Organizations" },
+            { value: stats.referrals, suffix: "+", label: "Referrals Made" },
             { value: 100, suffix: "%", label: "Real-Time Data" },
           ].map((stat, i) => (
             <ScrollReveal key={stat.label} delay={i * 0.1}>

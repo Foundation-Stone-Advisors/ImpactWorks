@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Impact Clay//Linksi 2.0 Press Rollout//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:20260308T020000
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:linksi-2-0-rollout-20260615@impact-works.us
+DTSTAMP:20260528T120000Z
+DTSTART;TZID=America/New_York:20260615T153000
+DTEND;TZID=America/New_York:20260615T163000
+SUMMARY:Linksi 2.0 Press Rollout & Scholarship Announcement
+LOCATION:Town of Orange Park Town Hall Chambers, 2042 Park Avenue, Orange Park, Florida
+DESCRIPTION:Hosted by Impact Clay — the official Linksi 2.0 Press Rollout and the launch of the new Linksi Host Scholarships. We hope you will join us for this important milestone as we celebrate innovation, collaboration, and community impact together.
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

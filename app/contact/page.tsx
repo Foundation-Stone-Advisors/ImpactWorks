@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
 import DarkBackdrop from "@/components/DarkBackdrop";
@@ -21,6 +21,14 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const r = params.get("reason");
+    if (r && (REASONS as readonly string[]).includes(r)) {
+      setReason(r as Reason);
+    }
+  }, []);
 
   const showFindHelp = reason === "I Need Help Finding Services";
   const showFormFields = reason !== "" && !showFindHelp;

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
 import DarkBackdrop from "@/components/DarkBackdrop";
@@ -52,6 +53,20 @@ const whyHost = [
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
     ),
   },
+  {
+    title: "Geographic Relevance",
+    desc: "Linksi already operates at the county level. Zip code and geographic filtering are coming, automatically increasing accuracy without any work on your end.",
+    icon: (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+    ),
+  },
+  {
+    title: "Credibility and Visibility",
+    desc: "Hosting signals that your organization is connected, neutral, and aligned with broader community impact infrastructure. Public recognition as a community connector comes standard.",
+    icon: (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+    ),
+  },
 ];
 
 const howOptions = [
@@ -84,37 +99,37 @@ const howOptions = [
 const sectors = [
   {
     name: "Nonprofits",
-    desc: "Become a trusted place where people can find help — even when the solution isn't provided by your organization.",
+    desc: "Your website becomes a place where people find help — even if it is not with you.",
     color: "border-brand-blue",
   },
   {
     name: "Government Agencies",
-    desc: "Offer residents a consistent, county-wide resource without building new technology infrastructure.",
+    desc: "One consistent access point for residents without building new technology infrastructure.",
     color: "border-brand-orange",
   },
   {
-    name: "Healthcare Organizations",
-    desc: "Support discharge planning, care coordination, and community health initiatives with reliable referral pathways.",
+    name: "Hospitals & Health Systems",
+    desc: "Discharge planning and community health teams gain a reliable referral surface.",
     color: "border-brand-green",
   },
   {
     name: "United Ways & Foundations",
-    desc: "Guide individuals to services across the entire community while strengthening regional collaboration.",
+    desc: "Guide people to services across the region, not just one organization.",
     color: "border-brand-gold",
   },
   {
     name: "Schools, Colleges & Universities",
-    desc: "Connect students, families, and staff to critical resources quickly and discreetly.",
+    desc: "Connect students, families, and members to support quietly and immediately.",
     color: "border-brand-blue",
   },
   {
     name: "Faith Communities",
-    desc: "Extend care beyond your congregation by helping people find the support they need.",
+    desc: "Connect congregation members and neighbors to support quietly and immediately.",
     color: "border-brand-orange",
   },
   {
     name: "Employers",
-    desc: "Provide employees access to community resources without handling sensitive personal information.",
+    desc: "Support employees by connecting them to help without handling sensitive data.",
     color: "border-brand-green",
   },
 ];
@@ -179,8 +194,39 @@ export default function Hosts() {
         </div>
       </section>
 
-      {/* Why Host Linksi */}
+      {/* What Hosting Means */}
       <section className="section-pad section-light">
+        <div className="max-w-site mx-auto">
+          <ScrollReveal className="mb-10 text-center">
+            <p className="eyebrow mb-4">What Hosting Means</p>
+            <h2 className="heading-section text-slate-800">
+              Your Organization Becomes the <span className="gradient-text-blue">Starting Point</span>
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <div className="max-w-3xl mx-auto grid sm:grid-cols-2 gap-4">
+              {[
+                { icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />, text: "Linksi embedded on your website or accessible via QR code" },
+                { icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />, text: "Visitors find help without leaving your space" },
+                { icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />, text: "Anonymized data on what your community needs" },
+                { icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />, text: "Public recognition as a community connector" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-4 bg-white border border-slate-100 rounded-xl p-5 shadow-sm">
+                  <div className="w-9 h-9 rounded-lg bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-4 h-4 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      {item.icon}
+                    </svg>
+                  </div>
+                  <p className="text-sm text-slate-600 leading-relaxed pt-1">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Why Host Linksi */}
+      <section className="section-pad bg-gray-50">
         <div className="max-w-site mx-auto">
           <ScrollReveal className="mb-12">
             <p className="eyebrow mb-4">Why Host Linksi?</p>
@@ -354,14 +400,12 @@ export default function Hosts() {
             <p className="text-blue-100 max-w-xl mx-auto mb-8">
               Join the growing network of organizations helping connect people to verified community resources. Together, we can make it easier for every resident to find the help they need — when they need it most.
             </p>
-            <a
-              href="https://linksy.impact-works.us/join/provider"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/contact?reason=I%27m+interested+in+becoming+a+Linksi+Host+or+partner+organization"
               className="inline-flex items-center justify-center gap-2 bg-white text-brand-blue font-semibold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors"
             >
-              Become a Linksi Host <span>&rarr;</span>
-            </a>
+              Get in Touch <span>&rarr;</span>
+            </Link>
           </ScrollReveal>
         </div>
       </section>

@@ -9,19 +9,133 @@ const hostingSites: { name: string; location: string; url: string }[] = [
   // { name: "Example County Agency", location: "Clay County, FL", url: "https://example.gov" },
 ];
 
+const whyHost = [
+  {
+    title: "Become the Front Door to Community Support",
+    desc: "People already trust your organization. Hosting Linksi allows them to begin their search for help right where they are — without leaving your website or facility. Instead of sending visitors elsewhere, you become the starting point for solutions.",
+    icon: (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+    ),
+  },
+  {
+    title: "Reduce Misrouted Requests",
+    desc: "Your staff shouldn't have to act as a community switchboard. Linksi helps direct people to the right services before they call, email, or walk through your doors — reducing interruptions and improving efficiency.",
+    icon: (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+    ),
+  },
+  {
+    title: "Extend Your Impact",
+    desc: "Support individuals beyond the services you directly provide. Linksi connects people with resources across your entire community, allowing your organization to create greater impact without increasing workload.",
+    icon: (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+    ),
+  },
+  {
+    title: "Gain Meaningful Community Insights",
+    desc: "As a Linksi Host, you'll receive anonymized reporting to better understand community needs — most requested service categories, emerging trends, resource gaps, and utilization patterns. These insights strengthen strategic planning, board reporting, and grant applications.",
+    icon: (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    ),
+  },
+  {
+    title: "No Data Management Required",
+    desc: "Linksi operates as a shared community platform. Service providers maintain their own information and referrals, while Linksi manages the technology infrastructure. You don't collect personal information, maintain databases, or administer the system.",
+    icon: (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    ),
+  },
+  {
+    title: "Strengthen Community Leadership",
+    desc: "Hosting Linksi demonstrates your organization's commitment to collaboration, accessibility, and community impact. It positions you as a trusted connector helping residents navigate available resources more effectively.",
+    icon: (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+    ),
+  },
+];
+
+const howOptions = [
+  {
+    num: "01",
+    title: "Website Integration",
+    desc: "Embed Linksi directly into your website, allowing visitors to search for local services without leaving your online presence.",
+    icon: (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+    ),
+  },
+  {
+    num: "02",
+    title: "QR Code Access",
+    desc: "Display a Linksi QR code in your office, lobby, waiting room, classroom, community center, or event space for instant access from any smartphone.",
+    icon: (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+    ),
+  },
+  {
+    num: "03",
+    title: "Multiple Access Points",
+    desc: "Combine website integration and physical access points to maximize community reach.",
+    icon: (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+    ),
+  },
+];
+
+const sectors = [
+  {
+    name: "Nonprofits",
+    desc: "Become a trusted place where people can find help — even when the solution isn't provided by your organization.",
+    color: "border-brand-blue",
+  },
+  {
+    name: "Government Agencies",
+    desc: "Offer residents a consistent, county-wide resource without building new technology infrastructure.",
+    color: "border-brand-orange",
+  },
+  {
+    name: "Healthcare Organizations",
+    desc: "Support discharge planning, care coordination, and community health initiatives with reliable referral pathways.",
+    color: "border-brand-green",
+  },
+  {
+    name: "United Ways & Foundations",
+    desc: "Guide individuals to services across the entire community while strengthening regional collaboration.",
+    color: "border-brand-gold",
+  },
+  {
+    name: "Schools, Colleges & Universities",
+    desc: "Connect students, families, and staff to critical resources quickly and discreetly.",
+    color: "border-brand-blue",
+  },
+  {
+    name: "Faith Communities",
+    desc: "Extend care beyond your congregation by helping people find the support they need.",
+    color: "border-brand-orange",
+  },
+  {
+    name: "Employers",
+    desc: "Provide employees access to community resources without handling sensitive personal information.",
+    color: "border-brand-green",
+  },
+];
+
 export default function Hosts() {
   return (
     <div>
+      {/* Hero */}
       <section className="relative min-h-[55vh] flex items-center overflow-hidden text-white">
         <DarkBackdrop variant="hero-symmetric" />
         <div className="relative z-10 max-w-site mx-auto px-6 py-32 md:py-40 grid md:grid-cols-12 gap-10 items-center w-full">
           <div className="md:col-span-7">
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="eyebrow mb-5">Hosting Organizations</motion.p>
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="heading-hero text-white">
-              Linksi <span className="gradient-text-orange">Hosts</span>
+              Help Begins <span className="gradient-text-orange">With You</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="body-text text-slate-300 mt-6 max-w-xl">
-              Government agencies and anchor institutions that bring the Linksi platform to their communities — connecting residents to services at scale.
+              Every day, people turn to organizations they already trust when they need help. By becoming a Linksi Host, you transform your website, office, or community space into a trusted gateway to verified local services.
+            </motion.p>
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }} className="font-mono text-xs text-slate-400 mt-4 tracking-wide">
+              No additional staff.&nbsp;&nbsp;No complicated systems.&nbsp;&nbsp;No data management.
             </motion.p>
           </div>
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} className="md:col-span-5 hidden md:flex justify-center">
@@ -32,10 +146,10 @@ export default function Hosts() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                 </div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blue font-semibold">Host Model</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blue font-semibold">Become a Host</span>
               </div>
               <div className="space-y-3">
-                {["Deploy Linksi in your region", "Manage local provider network", "Access real-time community data", "Drive measurable outcomes"].map((item) => (
+                {["Serve your community better", "Reduce misrouted requests", "Gain anonymized insights", "No data management required", "Strengthen community leadership"].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-orange mt-1.5 flex-shrink-0" />
                     <p className="font-display text-xs text-slate-300 leading-relaxed">{item}</p>
@@ -47,29 +161,106 @@ export default function Hosts() {
         </div>
       </section>
 
-      {/* What is a Host */}
+      {/* What is Linksi */}
+      <section className="section-pad bg-brand-blue">
+        <div className="max-w-site mx-auto text-center">
+          <ScrollReveal>
+            <p className="eyebrow text-blue-200 mb-4">What is Linksi?</p>
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold text-white mb-5">
+              An AI-Powered Community Resource Platform
+            </h2>
+            <p className="text-blue-100 max-w-2xl mx-auto leading-relaxed mb-3">
+              Linksi connects individuals to verified health and human services available in their county. With simple, plain-language search, anyone can find the support they need — without creating an account or navigating complex directories.
+            </p>
+            <p className="font-mono text-xs text-blue-200 tracking-widest uppercase">
+              Free for community members.&nbsp;&nbsp;Free for service providers.&nbsp;&nbsp;Built for communities.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Why Host Linksi */}
       <section className="section-pad section-light">
         <div className="max-w-site mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <ScrollReveal>
-              <p className="font-mono text-xs text-brand-orange uppercase tracking-[0.2em] mb-3">Who Hosts Linksi</p>
-              <h2 className="font-display text-3xl md:text-4xl font-extrabold text-slate-800 mb-5">Government Agencies</h2>
-              <p className="text-slate-500 leading-relaxed mb-4">
-                Hosts are local and state government agencies — and anchor institutions like hospitals and universities — that deploy the Linksi platform across their region. They manage the local provider network and ensure residents can find and access services at scale.
-              </p>
-              <p className="text-slate-500 leading-relaxed">
-                By hosting Linksi, these organizations gain real-time visibility into community needs, track referral outcomes, and coordinate cross-sector response — all in one platform.
-              </p>
-            </ScrollReveal>
-            <ScrollReveal delay={0.15}>
-              <div className="card-light p-8 border-l-4 border-brand-blue">
-                <span className="font-mono text-xs text-slate-400">01</span>
-                <h3 className="font-display text-xl font-bold text-slate-800 mt-2 mb-3">Government Agencies</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">
-                  Local and state agencies managing public assistance and social programs — deploying Linksi to coordinate community-wide service delivery.
-                </p>
-              </div>
-            </ScrollReveal>
+          <ScrollReveal className="mb-12">
+            <p className="eyebrow mb-4">Why Host Linksi?</p>
+            <h2 className="heading-section text-slate-800">
+              Six Reasons to <span className="gradient-text-blue">Get Started</span>
+            </h2>
+          </ScrollReveal>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {whyHost.map((item, i) => (
+              <ScrollReveal key={item.title} delay={i * 0.08}>
+                <div className="card-light p-6 h-full flex flex-col gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      {item.icon}
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-base font-bold text-slate-800 mb-2">{item.title}</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How Hosting Works */}
+      <section className="section-pad bg-gray-50">
+        <div className="max-w-site mx-auto">
+          <ScrollReveal className="mb-12">
+            <p className="eyebrow mb-4">How It Works</p>
+            <h2 className="heading-section text-slate-800">
+              Three Ways to <span className="gradient-text-orange">Host Linksi</span>
+            </h2>
+          </ScrollReveal>
+          <div className="grid md:grid-cols-3 gap-6">
+            {howOptions.map((opt, i) => (
+              <ScrollReveal key={opt.title} delay={i * 0.1}>
+                <div className="card-light p-8 h-full border-t-4 border-brand-orange flex flex-col gap-4">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs text-slate-400">{opt.num}</span>
+                    <div className="w-9 h-9 rounded-lg bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        {opt.icon}
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-lg font-bold text-slate-800 mb-2">{opt.title}</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed">{opt.desc}</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Designed for Every Sector */}
+      <section className="section-pad section-light">
+        <div className="max-w-site mx-auto">
+          <ScrollReveal className="mb-12">
+            <p className="eyebrow mb-4">Who Can Host</p>
+            <h2 className="heading-section text-slate-800">
+              Designed for <span className="gradient-text-blue">Every Sector</span>
+            </h2>
+            <p className="body-text-muted mt-3 max-w-2xl">
+              Any organization that serves the community — in any sector — can become a Linksi Host.
+            </p>
+          </ScrollReveal>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {sectors.map((sector, i) => (
+              <ScrollReveal key={sector.name} delay={i * 0.07}>
+                <div className={`card-light p-6 h-full border-l-4 ${sector.color}`}>
+                  <h3 className="font-display text-base font-bold text-slate-800 mb-2">{sector.name}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{sector.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
@@ -78,7 +269,7 @@ export default function Hosts() {
       <section className="section-pad bg-gray-50">
         <div className="max-w-site mx-auto">
           <ScrollReveal className="text-center mb-10">
-            <p className="font-mono text-xs text-brand-orange uppercase tracking-[0.2em] mb-3">Access Linksi</p>
+            <p className="eyebrow mb-3">Access Linksi</p>
             <h2 className="font-display text-3xl md:text-4xl font-extrabold text-slate-800 mb-4">Find Help Through Linksi</h2>
             <p className="text-slate-500 max-w-xl mx-auto">
               Know Linksi by name? Access the platform directly to find services, connect with providers, or manage your community network.
@@ -112,7 +303,7 @@ export default function Hosts() {
       <section className="section-pad section-light">
         <div className="max-w-site mx-auto">
           <ScrollReveal className="mb-10">
-            <p className="font-mono text-xs text-brand-orange uppercase tracking-[0.2em] mb-3">Directory</p>
+            <p className="eyebrow mb-3">Directory</p>
             <h2 className="font-display text-3xl md:text-4xl font-extrabold text-slate-800 mb-4">Hosting Sites</h2>
             <p className="text-slate-500 max-w-2xl">
               Organizations currently hosting the Linksi platform in their region. This directory grows as new hosts come online.
@@ -149,6 +340,29 @@ export default function Hosts() {
               </div>
             </ScrollReveal>
           )}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-pad bg-brand-blue">
+        <div className="max-w-site mx-auto text-center">
+          <ScrollReveal>
+            <p className="eyebrow text-blue-200 mb-4">Ready to Host?</p>
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold text-white mb-5">
+              Host Linksi. Strengthen Connections.<br className="hidden md:block" /> Increase Community Impact.
+            </h2>
+            <p className="text-blue-100 max-w-xl mx-auto mb-8">
+              Join the growing network of organizations helping connect people to verified community resources. Together, we can make it easier for every resident to find the help they need — when they need it most.
+            </p>
+            <a
+              href="https://linksy.impact-works.us/join/provider"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-white text-brand-blue font-semibold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors"
+            >
+              Become a Linksi Host <span>&rarr;</span>
+            </a>
+          </ScrollReveal>
         </div>
       </section>
     </div>

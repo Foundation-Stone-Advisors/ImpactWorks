@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-05-19
+**Last updated:** 2026-06-08
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -54,6 +54,20 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
 
+### June 8 scope
+- **`/hosts` page — full rebuild** — expanded from Government Agencies only to all sectors; sourced from *Become a Linksi Host* and *Linksi Host Benefits Overview* PDFs:
+  - New "What Hosting Means" quick-reference box (4 bullet points)
+  - "Why Host Linksi" — 8 benefit cards (added Geographic Relevance and Credibility & Visibility)
+  - "How Hosting Works" — 3 options (Website Integration, QR Code, Multiple Access Points)
+  - "Designed for Every Sector" — 7 cards; Healthcare Organizations renamed to Hospitals & Health Systems; all descriptions updated to match Benefits Overview copy
+  - Closing CTA "Get in Touch" deep-links to `/contact` with reason pre-selected
+- **Contact form — deep-link support** — `/contact?reason=...` now pre-populates the reason dropdown; used by the `/hosts` CTA
+- **Footer — social media icons** — Facebook (`facebook.com/impactworksfl`), Instagram (`instagram.com/impactworksfl`), YouTube (`youtube.com/@ImpactWorksFL`) added to Contact column
+- **Live stats — Supabase integration** — `app/api/impact-stats/route.ts` calls Supabase RPC `get_impact_stats` (cached 10 min); `/impact` page fetches and animates live numbers into the orange stats ribbon via CountUp
+- **Linksi 2.0 rollout calendar invite** — `public/events/linksi-2.0-rollout.ics` added; `next.config.mjs` serves it with `Content-Disposition: attachment` so iOS shows "Add Event" not "Subscribe to Calendar"
+- **New Linksi co-brand images** — `linksi-powered-by-impactworks` in PNG, WebP, and transparent WebP variants
+- **Favicon refresh** — new `app/favicon.ico`, `apple-icon.png`, and `icon.png`
+
 ---
 
 ## 🚧 Outstanding items
@@ -86,7 +100,7 @@ This file is the single source of truth for what's still needed to fully complet
 
 ### 3. Stats refresh — Clay County numbers (`/expansion` page)
 
-**Status:** Not updated. Blocked on having the new numbers. Connie raised whether these are live from Linksi — pending confirmation from Eric.
+**Status:** Not updated. Blocked on having the new numbers.
 
 **What's needed from you:**
 - [ ] Updated stats. Currently showing:
@@ -98,30 +112,17 @@ This file is the single source of truth for what's still needed to fully complet
 
 ---
 
-### 4. Stats refresh — Impact page orange ribbon
+### 4. Live stats — Supabase (`/impact` page)
 
-**Status:** Not updated. Blocked on having the new numbers. Same question about live data from Linksi (see item #3).
-
-**What's needed from you:**
-- [ ] Updated stats for the orange ribbon on `/impact`. Currently showing:
-  - 1,500+ Residents Connected
-  - 50+ Partner Organizations
-  - 4,000+ Referrals Made
-  - 100% Real-Time Data
-
----
-
-### 5. Live stats from Linksi — pending Eric
-
-**Status:** Drafted a message to Eric requesting read-only Dataverse API access. If granted, stats on `/expansion` and `/impact` can be pulled live from the Linksi system.
+**Status:** Infrastructure complete. The `/impact` page pulls live from Supabase via `get_impact_stats` RPC (10-min cache). Stats will show zeros until the RPC and env vars are in place.
 
 **What's needed:**
-- [ ] Eric to provide: Dataverse environment URL, Azure AD app credentials (Client ID, Secret, Tenant ID), and table/field names for the three key counts
-- [ ] Once received: wire up server-side API calls in Next.js to replace hardcoded numbers
+- [ ] Confirm `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are set in Vercel environment variables
+- [ ] Confirm `get_impact_stats` RPC exists in Supabase and returns `{ referrals, individuals, partner_organizations }`
 
 ---
 
-### 6. About page history content
+### 5. About page history content
 
 **Status:** Not added. Copy is coming from the team.
 
@@ -133,7 +134,7 @@ The current About page has a Timeline section (2024 + 2025 milestones) ready to 
 
 ---
 
-### 7. Contact form delivery — confirm Resend API key
+### 6. Contact form delivery — confirm Resend API key
 
 **Status:** Form is fully built and wired. Uses Resend (`noreply@impact-works.us`) to send admin notification to eric@impactclay.org and a confirmation to the submitter. Delivery is live **only if** `RESEND_API_KEY` is set in Vercel.
 

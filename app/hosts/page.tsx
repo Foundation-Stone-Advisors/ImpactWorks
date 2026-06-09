@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
 import DarkBackdrop from "@/components/DarkBackdrop";
@@ -400,12 +399,14 @@ export default function Hosts() {
             <p className="text-blue-100 max-w-xl mx-auto mb-8">
               Join the growing network of organizations helping connect people to verified community resources. Together, we can make it easier for every resident to find the help they need — when they need it most.
             </p>
-            <Link
-              href="/contact?reason=I%27m+interested+in+becoming+a+Linksi+Host+or+partner+organization"
+            <a
+              href="https://linksi.impact-works.us/join/host"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-white text-brand-blue font-semibold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors"
             >
-              Get in Touch <span>&rarr;</span>
-            </Link>
+              Become a Host <span>&rarr;</span>
+            </a>
           </ScrollReveal>
         </div>
       </section>

@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-06-09
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -54,14 +54,19 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
 
+### June 9 scope
+- **`/hosts` page — CTA updated** — closing "Get in Touch" button replaced with direct link to `https://linksi.impact-works.us/join/host` ("Become a Host"), opens in new tab; no longer routes through the contact form
+- **`/foundation` page — Performance Model copy** — section heading changed from "Data-Driven Impact Assessment" to "Fueling the Changemakers"; body paragraph rewritten to friendlier, mission-forward language per Wesley/team feedback ("fuels the changemakers within the Linksi system…")
+
 ### June 8 scope
 - **`/hosts` page — full rebuild** — expanded from Government Agencies only to all sectors; sourced from *Become a Linksi Host* and *Linksi Host Benefits Overview* PDFs:
   - New "What Hosting Means" quick-reference box (4 bullet points)
   - "Why Host Linksi" — 8 benefit cards (added Geographic Relevance and Credibility & Visibility)
   - "How Hosting Works" — 3 options (Website Integration, QR Code, Multiple Access Points)
   - "Designed for Every Sector" — 7 cards; Healthcare Organizations renamed to Hospitals & Health Systems; all descriptions updated to match Benefits Overview copy
-  - Closing CTA "Get in Touch" deep-links to `/contact` with reason pre-selected
-- **Contact form — deep-link support** — `/contact?reason=...` now pre-populates the reason dropdown; used by the `/hosts` CTA
+  - Closing CTA "Become a Host" links directly to `https://linksi.impact-works.us/join/host` (opens new tab)
+- **Contact form — deep-link support**
+ — `/contact?reason=...` now pre-populates the reason dropdown; used by the `/hosts` CTA
 - **Footer — social media icons** — Facebook (`facebook.com/impactworksfl`), Instagram (`instagram.com/impactworksfl`), YouTube (`youtube.com/@ImpactWorksFL`) added to Contact column
 - **Live stats — Supabase integration** — `app/api/impact-stats/route.ts` calls Supabase RPC `get_impact_stats` (cached 10 min); `/impact` page fetches and animates live numbers into the orange stats ribbon via CountUp
 - **Linksi 2.0 rollout calendar invite** — `public/events/linksi-2.0-rollout.ics` added; `next.config.mjs` serves it with `Content-Disposition: attachment` so iOS shows "Add Event" not "Subscribe to Calendar"
@@ -85,7 +90,7 @@ This file is the single source of truth for what's still needed to fully complet
 - Nav placement: between Hosts and Expansion
 
 **Still needed:**
-- [ ] **GiveButter account setup** — once the account is live, wire the donate button to GiveButter (embed or redirect link). Update `app/foundation/page.tsx`: replace the disabled `<button>` with an `<a>` linking to the GiveButter campaign URL.
+- [ ] **GiveButter campaign URL** — Wesley (CFO, Wesley@impact-works.us) confirmed the account is live under Impact Works. Waiting on the shareable campaign link (GiveButter dashboard → campaign → Share tab). Once received, replace the disabled `<button>` in `app/foundation/page.tsx` with an `<a>` linking to that URL, opening in a new tab.
 
 ---
 

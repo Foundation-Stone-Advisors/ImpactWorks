@@ -193,13 +193,13 @@ export default function Foundation() {
           <ScrollReveal className="text-center mb-14">
             <p className="eyebrow mb-4">The Performance Model</p>
             <h2 className="heading-section text-slate-800">
-              Data-Driven <span className="gradient-text-blue">Impact Assessment</span>
+              Fueling the <span className="gradient-text-blue">Changemakers</span>
             </h2>
             <p className="body-text-muted max-w-2xl mx-auto mt-4">
-              At its core, the COS DNA leverages the Linksi platform to continuously monitor and evaluate the performance
-              of service providers — analyzing key metrics such as operational efficiency relative to available resources,
-              client reach, and overall platform engagement. This data-driven approach enables the Foundation to identify
-              which providers are delivering the greatest measurable impact within their communities.
+              Impact Works Foundation fuels the changemakers within the Linksi system — empowering providers to reach
+              further, serve deeper, and transform more lives. The COS DNA framework helps the Foundation understand
+              where community need is greatest and where providers are making a real difference, so every grant goes
+              to the organizations already doing the work.
             </p>
           </ScrollReveal>
 

@@ -80,16 +80,12 @@ export default function Nav() {
             href="https://linksi.impact-works.us/find-help"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 flex-shrink-0 hover:opacity-90 transition-opacity"
+            className="ml-2 flex-shrink-0 leading-tight text-center font-display font-extrabold text-[15px] uppercase tracking-wide text-brand-orange hover:text-brand-orange/80 transition-colors"
             aria-label="Find Help Now with Linksi"
           >
-            <Image
-              src="/images/find-help-now-linksi.png"
-              alt="Find Help Now with Linksi"
-              width={120}
-              height={120}
-              className="h-11 w-auto"
-            />
+            <span className="block">FIND</span>
+            <span className="block">HELP</span>
+            <span className="block">NOW</span>
           </a>
           <Link href="/join" className="ml-2 btn-primary !py-2.5 !px-5 text-sm !rounded-lg">
             Join Us

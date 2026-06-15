@@ -96,7 +96,7 @@ This file is the single source of truth for what's still needed to fully complet
 - Nav placement: between Hosts and Expansion
 
 **Still needed:**
-- [ ] **GiveButter campaign URL** — Wesley (CFO, Wesley@impact-works.us) confirmed the account is live under Impact Works. Waiting on the shareable campaign link (GiveButter dashboard → campaign → Share tab). Once received, replace the disabled `<button>` in `app/foundation/page.tsx` with an `<a>` linking to that URL, opening in a new tab.
+- [x] **GiveButter campaign URL** — wired to `https://givebutter.com/Linksi-Launch-bcdvbm`; donate button is now a live orange link opening in a new tab.
 
 ---
 

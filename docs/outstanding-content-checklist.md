@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-06-09
+**Last updated:** 2026-06-15
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -59,6 +59,7 @@ This file is the single source of truth for what's still needed to fully complet
 - **Find Help Now — Linksi Platform page** — callout band added below hero with supporting copy and the Find Help Now mascot image (`public/images/find-help-now-linksi.png`), linking to `https://linksi.impact-works.us/find-help`
 - **Find Help Now — Hosts page** — same callout band added below hero
 - **`/hosts` page — Provider/Host/Admin login card** — "Access Linksi" section relabeled as "Provider, Host & Admin Login"; copy updated to clarify it is for registered providers/hosts/admins only; button updated to "Sign In to Linksi"; URL corrected to `https://linksi.impact-works.us/dashboard`
+- **`/foundation` page — GiveButter donate button** — disabled placeholder replaced with live orange link to `https://givebutter.com/Linksi-Launch-bcdvbm`, opens in new tab; "coming soon" label removed
 
 ### June 9 scope
 - **`/hosts` page — CTA updated** — closing "Get in Touch" button replaced with direct link to `https://linksi.impact-works.us/join/host` ("Become a Host"), opens in new tab; no longer routes through the contact form
@@ -85,18 +86,15 @@ This file is the single source of truth for what's still needed to fully complet
 
 ### 1. Foundation page — `/foundation`
 
-**Status:** ✅ Page built and live in nav. One remaining item below.
+**Status:** ✅ Fully complete as of 2026-06-15.
 
-**Shipped (2026-05-19):**
+**Shipped:**
 - Full page with COS DNA framework, grant disbursement model, funding & allocation flow, 100% provider pledge
 - Donation widget with $25/$50/$100/$500/custom tiers and one-time/monthly/annually frequency toggle
-- Donate button UI complete — **disabled** pending GiveButter account setup (see item below)
+- Donate button live — links to `https://givebutter.com/Linksi-Launch-bcdvbm`, opens in new tab
 - Give by Mail card: Impact Works / Attn: Foundation / 151 College Dr Ste 1 / Orange Park, FL 32065
 - Collapsible Legal & Tax Information accordion with 501(c)(3), EIN 41-5141462, and all required disclosures
 - Nav placement: between Hosts and Expansion
-
-**Still needed:**
-- [x] **GiveButter campaign URL** — wired to `https://givebutter.com/Linksi-Launch-bcdvbm`; donate button is now a live orange link opening in a new tab.
 
 ---
 

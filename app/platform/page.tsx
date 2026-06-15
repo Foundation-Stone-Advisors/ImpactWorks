@@ -85,6 +85,30 @@ export default function Platform() {
         </div>
       </section>
 
+      {/* Find Help Now — CTA band */}
+      <section className="py-8 bg-white border-b border-slate-100">
+        <div className="max-w-site mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <p className="text-slate-600 text-lg font-display font-semibold text-center sm:text-left">
+            Need community resources?<br className="hidden sm:block" /> Connect directly through Linksi.
+          </p>
+          <a
+            href="https://linksi.impact-works.us/find-help"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-shrink-0 hover:opacity-90 transition-opacity"
+            aria-label="Find Help Now with Linksi"
+          >
+            <Image
+              src="/images/find-help-now-linksi.png"
+              alt="Find Help Now with Linksi"
+              width={200}
+              height={200}
+              className="h-36 w-auto"
+            />
+          </a>
+        </div>
+      </section>
+
       {/* Linksi Mascot + Demo — light */}
       <section id="demo" className="section-pad section-light">
         <div className="max-w-site mx-auto grid md:grid-cols-2 gap-12 items-center">

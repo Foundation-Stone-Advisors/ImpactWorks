@@ -76,7 +76,22 @@ export default function Nav() {
               )}
             </Link>
           ))}
-          <Link href="/join" className="ml-4 btn-primary !py-2.5 !px-5 text-sm !rounded-lg">
+          <a
+            href="https://linksi.impact-works.us/find-help"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2 flex-shrink-0 hover:opacity-90 transition-opacity"
+            aria-label="Find Help Now with Linksi"
+          >
+            <Image
+              src="/images/find-help-now-linksi.png"
+              alt="Find Help Now with Linksi"
+              width={120}
+              height={120}
+              className="h-11 w-auto"
+            />
+          </a>
+          <Link href="/join" className="ml-2 btn-primary !py-2.5 !px-5 text-sm !rounded-lg">
             Join Us
           </Link>
         </div>
@@ -142,8 +157,24 @@ export default function Nav() {
                 initial={{ opacity: 0, x: -16 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: links.length * 0.04 }}
-                className="pt-2"
+                className="pt-2 flex flex-col gap-3"
               >
+                <a
+                  href="https://linksi.impact-works.us/find-help"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex justify-center hover:opacity-90 transition-opacity"
+                  onClick={() => setMenuOpen(false)}
+                  aria-label="Find Help Now with Linksi"
+                >
+                  <Image
+                    src="/images/find-help-now-linksi.png"
+                    alt="Find Help Now with Linksi"
+                    width={160}
+                    height={160}
+                    className="h-16 w-auto"
+                  />
+                </a>
                 <Link
                   href="/join"
                   className="btn-primary w-full justify-center !py-3 !text-sm !rounded-lg"

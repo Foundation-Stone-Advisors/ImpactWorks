@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
 import DarkBackdrop from "@/components/DarkBackdrop";
@@ -102,23 +101,37 @@ export default function Providers() {
                 <div className="absolute -top-20 -right-20 w-[400px] h-[400px] border-[3px] border-white/10 rounded-full" />
                 <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] border-[2px] border-white/5 rounded-full" />
               </div>
-              <div className="relative z-10 grid md:grid-cols-12 gap-6 items-center px-8 md:pl-16 md:pr-8 py-12 md:py-16">
-                <div className="md:col-span-6">
-                  <h2 className="font-display text-3xl md:text-4xl font-extrabold text-white mb-4">Become a Provider</h2>
-                  <p className="text-white/85 mb-8 leading-relaxed">
-                    Join the Impact Works network and connect your organization with residents who need your services — through the Linksi platform.
+              <div className="relative z-10 grid md:grid-cols-12 gap-8 items-center px-8 md:pl-16 md:pr-8 py-12 md:py-16">
+                <div className="md:col-span-5">
+                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/70 mb-3">Linksi Platform</p>
+                  <h2 className="font-display text-3xl md:text-4xl font-extrabold text-white mb-4">Provider Portal</h2>
+                  <p className="text-white/85 leading-relaxed">
+                    Already part of the network? Sign in to your Linksi dashboard. New to Impact Works? Register your organization to start connecting residents with your services.
                   </p>
+                </div>
+                <div className="md:col-span-7 grid sm:grid-cols-2 gap-4">
+                  <a
+                    href="https://linksi.impact-works.us"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col gap-2 bg-white/15 backdrop-blur-sm border border-white/30 rounded-2xl p-6 hover:bg-white/25 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group"
+                  >
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/60">Existing Provider</span>
+                    <span className="font-display text-xl font-extrabold text-white">Sign In</span>
+                    <span className="text-sm text-white/75 leading-relaxed">Access your Linksi dashboard and manage your organization&apos;s services.</span>
+                    <span className="mt-2 text-white font-bold group-hover:translate-x-1 transition-transform duration-200">&rarr;</span>
+                  </a>
                   <a
                     href="https://linksy.impact-works.us/join/provider"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-white text-brand-orange font-display font-bold px-8 py-4 rounded-xl hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                    className="flex flex-col gap-2 bg-white rounded-2xl p-6 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group"
                   >
-                    Register Your Organization <span>&rarr;</span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-orange/70">New Organization</span>
+                    <span className="font-display text-xl font-extrabold text-brand-orange">Register</span>
+                    <span className="text-sm text-slate-600 leading-relaxed">Join the Linksi network and connect your organization with residents in need.</span>
+                    <span className="mt-2 text-brand-orange font-bold group-hover:translate-x-1 transition-transform duration-200">&rarr;</span>
                   </a>
-                </div>
-                <div className="md:col-span-6 relative flex justify-center items-center">
-                  <Image src="/images/linksi-full.png" alt="Linksi" width={800} height={430} className="w-full max-w-[500px] md:max-w-[560px] drop-shadow-2xl" />
                 </div>
               </div>
             </div>

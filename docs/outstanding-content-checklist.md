@@ -60,6 +60,7 @@ This file is the single source of truth for what's still needed to fully complet
 - **Find Help Now — Hosts page** — same callout band added below hero
 - **`/hosts` page — Provider/Host/Admin login card** — "Access Linksi" section relabeled as "Provider, Host & Admin Login"; copy updated to clarify it is for registered providers/hosts/admins only; button updated to "Sign In to Linksi"; URL corrected to `https://linksi.impact-works.us/dashboard`
 - **`/foundation` page — GiveButter donate button** — disabled placeholder replaced with live orange link to `https://givebutter.com/Linksi-Launch-bcdvbm`, opens in new tab; "coming soon" label removed
+- **`/providers` page — Provider Portal section** — bottom CTA rebuilt from single "Register Your Organization" button into a two-card "Provider Portal" section; left card (frosted glass) links existing providers to sign in at `https://linksi.impact-works.us`; right card (white) links new orgs to register at `https://linksy.impact-works.us/join/provider`
 
 ### June 9 scope
 - **`/hosts` page — CTA updated** — closing "Get in Touch" button replaced with direct link to `https://linksi.impact-works.us/join/host` ("Become a Host"), opens in new tab; no longer routes through the contact form

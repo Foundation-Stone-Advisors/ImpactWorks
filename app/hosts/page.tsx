@@ -357,7 +357,7 @@ export default function Hosts() {
                 Sign in to your Linksi account to manage referrals, update your organization's services, and access your community dashboard.
               </p>
               <a
-                href="https://linksy.impact-works.us/auth/login"
+                href="https://linksi.impact-works.us/dashboard"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center justify-center gap-2"

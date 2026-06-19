@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-06-15
+**Last updated:** 2026-06-18
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -101,10 +101,7 @@ This file is the single source of truth for what's still needed to fully complet
 
 ### 2. Hosting sites directory — `/hosts` page
 
-**Status:** Directory section is built and ready. Blocked on the list of hosting sites.
-
-**What's needed from you:**
-- [ ] List of current hosting sites with name, location, and URL — Connie confirmed this is being built and will grow over time. Update the `hostingSites` array in `app/hosts/page.tsx` as sites are confirmed.
+**Status:** ✅ Live as of 2026-06-18. 16 sites added. To add more, update the `hostingSites` array in `app/hosts/page.tsx`.
 
 ---
 

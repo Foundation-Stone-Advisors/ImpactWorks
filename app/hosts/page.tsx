@@ -7,7 +7,22 @@ import DarkBackdrop from "@/components/DarkBackdrop";
 
 // Update this list as hosting sites are confirmed — each entry appears as a card in the directory.
 const hostingSites: { name: string; location: string; url: string }[] = [
-  // { name: "Example County Agency", location: "Clay County, FL", url: "https://example.gov" },
+  { name: "Asbury United Methodist Church", location: "Clay County, FL", url: "https://linksi.impact-works.us/find-help/asbury-united-methodist-church" },
+  { name: "Clay County Library — Fleming Island Branch", location: "Fleming Island, FL", url: "https://linksi.impact-works.us/find-help/clay-county-government-fleming-island" },
+  { name: "Clay County Library — Green Cove Springs Branch", location: "Green Cove Springs, FL", url: "https://linksi.impact-works.us/find-help/clay-county-government-greencove-springs" },
+  { name: "Clay County Library — Keystone Heights Branch", location: "Keystone Heights, FL", url: "https://linksi.impact-works.us/find-help/clay-county-government-keystone-heights" },
+  { name: "Clay County Library — Orange Park Branch", location: "Orange Park, FL", url: "https://linksi.impact-works.us/find-help/clay-county-government-orange-park" },
+  { name: "Clay County Library — Middleburg-Clay Hill Branch", location: "Middleburg, FL", url: "https://linksi.impact-works.us/find-help/clay-county-government-middleburg-clay-hill" },
+  { name: "Clay Veterans, Inc.", location: "Clay County, FL", url: "https://linksi.impact-works.us/find-help/clay-veterans-inc" },
+  { name: "For The Least of These", location: "Clay County, FL", url: "https://linksi.impact-works.us/find-help/for-the-least-of-these" },
+  { name: "Mercy Support Services", location: "Clay County, FL", url: "https://linksi.impact-works.us/find-help/mercy-support-services" },
+  { name: "Mission of the Dirt Road", location: "Clay County, FL", url: "https://linksi.impact-works.us/find-help/mission-of-the-dirt-road" },
+  { name: "Quigley House", location: "Clay County, FL", url: "https://linksi.impact-works.us/find-help/quigley-house" },
+  { name: "River Christian Church", location: "Clay County, FL", url: "https://linksi.impact-works.us/find-help/river-christian-church" },
+  { name: "Seeds of Love Outreach", location: "Clay County, FL", url: "https://linksi.impact-works.us/find-help/seeds-of-love-outreach" },
+  { name: "St. Johns River State College", location: "Clay County, FL", url: "https://linksi.impact-works.us/find-help/st-johns-river-state-college-st-johns-river-state-college-foundation" },
+  { name: "The Clothes Closet and Food Pantry", location: "Clay County, FL", url: "https://linksi.impact-works.us/find-help/the-clothes-closet-food-pantry" },
+  { name: "The Way Free Medical Clinic", location: "Clay County, FL", url: "https://linksi.impact-works.us/find-help/the-way-free-medical-clinic" },
 ];
 
 const whyHost = [

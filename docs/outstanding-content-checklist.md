@@ -54,6 +54,25 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
 
+### June 18 scope
+- **`/hosts` page — Hosting Sites Directory** — populated with 16 confirmed Clay County hosting organizations; "Directory Coming Soon" placeholder replaced by live card grid. Sites added:
+  - Asbury United Methodist Church → `https://linksi.impact-works.us/find-help/asbury-united-methodist-church`
+  - Clay County Library — Fleming Island Branch → `https://linksi.impact-works.us/find-help/clay-county-government-fleming-island`
+  - Clay County Library — Green Cove Springs Branch → `https://linksi.impact-works.us/find-help/clay-county-government-greencove-springs`
+  - Clay County Library — Keystone Heights Branch → `https://linksi.impact-works.us/find-help/clay-county-government-keystone-heights`
+  - Clay County Library — Orange Park Branch → `https://linksi.impact-works.us/find-help/clay-county-government-orange-park`
+  - Clay County Library — Middleburg-Clay Hill Branch → `https://linksi.impact-works.us/find-help/clay-county-government-middleburg-clay-hill`
+  - Clay Veterans, Inc. → `https://linksi.impact-works.us/find-help/clay-veterans-inc`
+  - For The Least of These → `https://linksi.impact-works.us/find-help/for-the-least-of-these`
+  - Mercy Support Services → `https://linksi.impact-works.us/find-help/mercy-support-services`
+  - Mission of the Dirt Road → `https://linksi.impact-works.us/find-help/mission-of-the-dirt-road`
+  - Quigley House → `https://linksi.impact-works.us/find-help/quigley-house`
+  - River Christian Church → `https://linksi.impact-works.us/find-help/river-christian-church`
+  - Seeds of Love Outreach → `https://linksi.impact-works.us/find-help/seeds-of-love-outreach`
+  - St. Johns River State College → `https://linksi.impact-works.us/find-help/st-johns-river-state-college-st-johns-river-state-college-foundation`
+  - The Clothes Closet and Food Pantry → `https://linksi.impact-works.us/find-help/the-clothes-closet-food-pantry`
+  - The Way Free Medical Clinic → `https://linksi.impact-works.us/find-help/the-way-free-medical-clinic`
+
 ### June 15 scope
 - **Find Help Now — nav** — "FIND HELP NOW" added to desktop and mobile nav as large bold brand-orange stacked text (3 words, each on own line), linking to `https://linksi.impact-works.us/find-help`; image version was tried first but replaced with text for legibility
 - **Find Help Now — Linksi Platform page** — callout band added below hero with supporting copy and the Find Help Now mascot image (`public/images/find-help-now-linksi.png`), linking to `https://linksi.impact-works.us/find-help`

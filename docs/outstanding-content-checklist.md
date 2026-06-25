@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-06-25
+**Last updated:** 2026-06-25 (session 2)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -57,13 +57,16 @@ This file is the single source of truth for what's still needed to fully complet
 ### June 25 scope
 - **`/news` page** — blog-style news feed: card grid + sticky sidebar with search and post index
 - **`/news/[slug]` page** — full post view with OG meta tags and social share buttons (Facebook, X, LinkedIn, native Web Share on mobile)
-- **`/news/admin` page** — password-protected admin dashboard (shared password via `NEWS_ADMIN_PASSWORD` env var); lists all posts (drafts + published) with edit/delete
-- **`/news/admin/new` and `/news/admin/edit/[id]`** — rich text post editor powered by Tiptap (bold, italic, headings, bullet/ordered lists, links, blockquotes, undo/redo); author dropdown (Connie Thomas / Michelle / Heather Johnston); save-as-draft and publish workflow
-- **News API** — `GET /api/news` (public, published only), `GET /api/news/[slug]`, `POST/PUT/DELETE /api/admin/news/[id]` (admin only)
+- **`/news/admin` page** — password-protected admin dashboard (shared password via `NEWS_ADMIN_PASSWORD` env var); lists all posts with Published / Scheduled (blue) / Draft (amber) status badges
+- **`/news/admin/new` and `/news/admin/edit/[id]`** — rich text post editor powered by Tiptap (bold, italic, H2/H3, bullet/ordered lists, links, blockquotes, YouTube embed, undo/redo); author dropdown (Connie Thomas / Michelle Reaves / Heather Johnston / Admin); Publish Now vs. Schedule for Later with datetime picker; save-as-draft workflow
+- **Scheduled publishing** — `CRON_SECRET` env var + Vercel cron (`/api/cron/publish-scheduled`, every 5 min) auto-publishes scheduled posts at the chosen time
+- **News API** — `GET /api/news` (public, published only), `GET /api/news/[slug]`, `POST/PUT/DELETE /api/admin/news` routes (admin only, cookie-authenticated)
 - **Nav** — "News" added between Impact and Providers (desktop + mobile)
 - **Footer** — "News" added to Navigate column
-- **`prose-content` CSS** — article body typography styles for Tiptap-generated HTML
-- **Requires setup:** 2 new Vercel env vars (`NEWS_ADMIN_PASSWORD`, `SUPABASE_SERVICE_ROLE_KEY`) + Supabase `news_posts` table (SQL in outstanding items below)
+- **`prose-content` CSS** — article body typography + responsive 16:9 YouTube embed styles
+- **Supabase** — `news_posts` table live on Linksy project; RLS enabled (anon reads published only; service role for admin writes); `scheduled_at` column added
+- **Vercel env vars** — `NEWS_ADMIN_PASSWORD`, `SUPABASE_SERVICE_ROLE_KEY`, `CRON_SECRET`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` all set
+- **Admin URL (not in nav):** `https://www.impact-works.us/news/admin` — share with Connie, Michelle, Heather
 
 ### June 18 scope
 - **`/hosts` page — Hosting Sites Directory** — populated with 16 confirmed Clay County hosting organizations; "Directory Coming Soon" placeholder replaced by live card grid. Sites added:
@@ -135,41 +138,11 @@ This file is the single source of truth for what's still needed to fully complet
 
 ---
 
-### 3. News page — setup required before going live
+### 3. News — fully live ✅
 
-**Status:** Code is complete. Needs Supabase table + 2 Vercel env vars.
+**Status:** Complete as of 2026-06-25. Admin URL: `https://www.impact-works.us/news/admin`
 
-**Step 1 — Create the Supabase table.** Run this SQL in the Supabase SQL editor:
-
-```sql
-create table news_posts (
-  id uuid primary key default gen_random_uuid(),
-  title text not null,
-  slug text not null unique,
-  author text not null,
-  content text not null,
-  excerpt text,
-  published boolean not null default false,
-  published_at timestamptz,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
-);
-
-alter table news_posts enable row level security;
-
-create policy "Public read published posts"
-  on news_posts for select
-  to anon
-  using (published = true);
-```
-
-**Step 2 — Add Vercel environment variables:**
-- [ ] `NEWS_ADMIN_PASSWORD` — any strong password; share it with Connie, Michelle, and Heather. This is what they use to log in at `/news/admin`.
-- [ ] `SUPABASE_SERVICE_ROLE_KEY` — found in Supabase → Project Settings → API → "service_role" key (keep secret; server-only).
-
-**Step 3 — Share the admin URL with authors:**
-- Authors go to `https://www.impact-works.us/news/admin` directly (not linked in the nav).
-- They enter the shared password, then can create, edit, publish, or delete posts.
+Authors log in with the shared password and can create, edit, schedule, or publish posts. No code changes needed to add content.
 
 ---
 

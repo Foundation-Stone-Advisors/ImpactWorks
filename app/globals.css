@@ -169,6 +169,26 @@
   }
 }
 
+/* YouTube embed — responsive 16:9 in both editor and public posts */
+.prose-content div[data-youtube-video],
+.ProseMirror div[data-youtube-video] {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+}
+.prose-content div[data-youtube-video] iframe,
+.ProseMirror div[data-youtube-video] iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 12px;
+}
+
 /* Tiptap / ProseMirror editor */
 .ProseMirror {
   outline: none;

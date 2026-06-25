@@ -32,7 +32,7 @@ export async function GET(request: Request) {
 
   const { data, error } = await getAdminClient()
     .from("news_posts")
-    .select("id, title, slug, author, published, published_at, created_at")
+    .select("id, title, slug, author, published, published_at, scheduled_at, created_at")
     .order("created_at", { ascending: false });
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
   if (!isAuthorized(request)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = await request.json();
-  const { title, author, content, excerpt, published } = body;
+  const { title, author, content, excerpt, published, scheduled_at } = body;
 
   if (!title?.trim() || !content?.trim()) {
     return NextResponse.json({ error: "Title and content are required" }, { status: 400 });
@@ -71,6 +71,7 @@ export async function POST(request: Request) {
       excerpt: excerpt?.trim() || stripHtml(content).substring(0, 220),
       published: published ?? false,
       published_at: published ? new Date().toISOString() : null,
+      scheduled_at: scheduled_at ?? null,
     })
     .select()
     .single();

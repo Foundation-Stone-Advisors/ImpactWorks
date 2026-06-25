@@ -23,7 +23,7 @@ export default async function EditPostPage({
 
   const { data: post } = await supabase
     .from("news_posts")
-    .select("id, title, author, content, excerpt, published")
+    .select("id, title, author, content, excerpt, published, scheduled_at")
     .eq("id", id)
     .single();
 

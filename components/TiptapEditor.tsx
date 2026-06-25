@@ -4,6 +4,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
+import Youtube from "@tiptap/extension-youtube";
 import { useCallback } from "react";
 
 interface TiptapEditorProps {
@@ -24,6 +25,7 @@ export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
       StarterKit,
       Link.configure({ openOnClick: false, HTMLAttributes: { class: "text-brand-orange underline" } }),
       Placeholder.configure({ placeholder: "Write your post content here…" }),
+      Youtube.configure({ width: 640, height: 360, nocookie: true }),
     ],
     content,
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
@@ -39,6 +41,13 @@ export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
     if (url === null) return;
     if (url === "") { editor.chain().focus().extendMarkRange("link").unsetLink().run(); return; }
     editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
+  }, [editor]);
+
+  const embedYoutube = useCallback(() => {
+    if (!editor) return;
+    const url = window.prompt("Paste a YouTube URL (e.g. https://youtube.com/watch?v=...)");
+    if (!url) return;
+    editor.chain().focus().setYoutubeVideo({ src: url }).run();
   }, [editor]);
 
   if (!editor) return null;
@@ -76,6 +85,9 @@ export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
         </button>
         <button type="button" onClick={() => editor.chain().focus().toggleBlockquote().run()} className={toolbarBtn(editor.isActive("blockquote"))}>
           ❝ Quote
+        </button>
+        <button type="button" onClick={embedYoutube} className={toolbarBtn(false)}>
+          ▶ YouTube
         </button>
         <div className="w-px h-5 bg-slate-300 mx-0.5 ml-auto" />
         <button type="button" onClick={() => editor.chain().focus().undo().run()} disabled={!editor.can().undo()} className="px-2.5 py-1.5 text-sm rounded-lg text-slate-500 hover:bg-slate-200 disabled:opacity-30 transition-colors">

@@ -26,7 +26,7 @@ export async function PUT(
 
   const { id } = await params;
   const body = await request.json();
-  const { title, author, content, excerpt, published } = body;
+  const { title, author, content, excerpt, published, scheduled_at } = body;
 
   if (!title?.trim() || !content?.trim()) {
     return NextResponse.json({ error: "Title and content are required" }, { status: 400 });
@@ -41,6 +41,7 @@ export async function PUT(
       excerpt: excerpt?.trim() || stripHtml(content).substring(0, 220),
       published: published ?? false,
       published_at: published ? new Date().toISOString() : null,
+      scheduled_at: scheduled_at ?? null,
       updated_at: new Date().toISOString(),
     })
     .eq("id", id)

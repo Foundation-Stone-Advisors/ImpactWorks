@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-06-18
+**Last updated:** 2026-06-25
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -53,6 +53,17 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page** — "Closed-Loop Referrals" added to Capabilities section (Equity angle: surfaces where residents fall through the cracks so communities can close service gaps)
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
+
+### June 25 scope
+- **`/news` page** — blog-style news feed: card grid + sticky sidebar with search and post index
+- **`/news/[slug]` page** — full post view with OG meta tags and social share buttons (Facebook, X, LinkedIn, native Web Share on mobile)
+- **`/news/admin` page** — password-protected admin dashboard (shared password via `NEWS_ADMIN_PASSWORD` env var); lists all posts (drafts + published) with edit/delete
+- **`/news/admin/new` and `/news/admin/edit/[id]`** — rich text post editor powered by Tiptap (bold, italic, headings, bullet/ordered lists, links, blockquotes, undo/redo); author dropdown (Connie Thomas / Michelle / Heather Johnston); save-as-draft and publish workflow
+- **News API** — `GET /api/news` (public, published only), `GET /api/news/[slug]`, `POST/PUT/DELETE /api/admin/news/[id]` (admin only)
+- **Nav** — "News" added between Impact and Providers (desktop + mobile)
+- **Footer** — "News" added to Navigate column
+- **`prose-content` CSS** — article body typography styles for Tiptap-generated HTML
+- **Requires setup:** 2 new Vercel env vars (`NEWS_ADMIN_PASSWORD`, `SUPABASE_SERVICE_ROLE_KEY`) + Supabase `news_posts` table (SQL in outstanding items below)
 
 ### June 18 scope
 - **`/hosts` page — Hosting Sites Directory** — populated with 16 confirmed Clay County hosting organizations; "Directory Coming Soon" placeholder replaced by live card grid. Sites added:
@@ -124,7 +135,45 @@ This file is the single source of truth for what's still needed to fully complet
 
 ---
 
-### 3. Stats refresh — Clay County numbers (`/expansion` page)
+### 3. News page — setup required before going live
+
+**Status:** Code is complete. Needs Supabase table + 2 Vercel env vars.
+
+**Step 1 — Create the Supabase table.** Run this SQL in the Supabase SQL editor:
+
+```sql
+create table news_posts (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  slug text not null unique,
+  author text not null,
+  content text not null,
+  excerpt text,
+  published boolean not null default false,
+  published_at timestamptz,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+alter table news_posts enable row level security;
+
+create policy "Public read published posts"
+  on news_posts for select
+  to anon
+  using (published = true);
+```
+
+**Step 2 — Add Vercel environment variables:**
+- [ ] `NEWS_ADMIN_PASSWORD` — any strong password; share it with Connie, Michelle, and Heather. This is what they use to log in at `/news/admin`.
+- [ ] `SUPABASE_SERVICE_ROLE_KEY` — found in Supabase → Project Settings → API → "service_role" key (keep secret; server-only).
+
+**Step 3 — Share the admin URL with authors:**
+- Authors go to `https://www.impact-works.us/news/admin` directly (not linked in the nav).
+- They enter the shared password, then can create, edit, publish, or delete posts.
+
+---
+
+### 4. Stats refresh — Clay County numbers (`/expansion` page)
 
 **Status:** Not updated. Blocked on having the new numbers.
 

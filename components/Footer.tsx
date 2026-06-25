@@ -28,6 +28,7 @@ export default function Footer() {
                 { href: "/about", label: "About" },
                 { href: "/platform", label: "Linksi Platform" },
                 { href: "/impact", label: "Impact" },
+                { href: "/news", label: "News" },
                 { href: "/providers", label: "Providers" },
                 { href: "/hosts", label: "Hosts" },
                 { href: "/foundation", label: "Foundation" },

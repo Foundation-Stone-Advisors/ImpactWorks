@@ -129,6 +129,56 @@
   .gradient-text-green {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-green to-emerald-400;
   }
+
+  /* Rich text content rendered from Tiptap / news posts */
+  .prose-content {
+    @apply text-slate-700 text-base md:text-lg leading-relaxed;
+  }
+  .prose-content h2 {
+    @apply font-display text-2xl md:text-3xl font-bold text-slate-800 mt-10 mb-4;
+  }
+  .prose-content h3 {
+    @apply font-display text-xl font-bold text-slate-800 mt-8 mb-3;
+  }
+  .prose-content p {
+    @apply mb-5;
+  }
+  .prose-content ul {
+    @apply mb-5 pl-6 space-y-1.5 list-disc;
+  }
+  .prose-content ol {
+    @apply mb-5 pl-6 space-y-1.5 list-decimal;
+  }
+  .prose-content li {
+    @apply leading-relaxed;
+  }
+  .prose-content blockquote {
+    @apply border-l-4 border-brand-orange pl-5 py-1 my-6 text-slate-500 italic;
+  }
+  .prose-content a {
+    @apply text-brand-orange underline underline-offset-2 hover:text-brand-orange-light transition-colors;
+  }
+  .prose-content strong {
+    @apply font-bold text-slate-800;
+  }
+  .prose-content code {
+    @apply bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+  .prose-content hr {
+    @apply border-slate-200 my-8;
+  }
+}
+
+/* Tiptap / ProseMirror editor */
+.ProseMirror {
+  outline: none;
+}
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #94a3b8;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
 }
 
 ::-webkit-scrollbar { width: 6px; }

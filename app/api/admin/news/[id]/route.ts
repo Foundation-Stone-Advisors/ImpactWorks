@@ -11,7 +11,12 @@ function getAdminClient() {
 function isAuthorized(request: Request): boolean {
   const cookie = request.headers.get("cookie") ?? "";
   const match = cookie.match(/(?:^|;\s*)news_admin_auth=([^;]+)/);
-  return !!match && match[1] === process.env.NEWS_ADMIN_PASSWORD;
+  if (!match) return false;
+  try {
+    return decodeURIComponent(match[1]) === process.env.NEWS_ADMIN_PASSWORD;
+  } catch {
+    return match[1] === process.env.NEWS_ADMIN_PASSWORD;
+  }
 }
 
 function stripHtml(html: string): string {

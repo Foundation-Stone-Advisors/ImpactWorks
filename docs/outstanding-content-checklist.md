@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-06-25 (session 2)
+**Last updated:** 2026-06-29 (session 3)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -53,6 +53,16 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page** — "Closed-Loop Referrals" added to Capabilities section (Equity angle: surfaces where residents fall through the cracks so communities can close service gaps)
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
+
+### June 29 scope
+- **`linksy.` → `linksi.` URL fix** — all 6 broken `linksy.impact-works.us` links corrected to `linksi.impact-works.us` across 5 files:
+  - `app/providers/page.tsx` — Register Your Organization CTA
+  - `app/join/page.tsx` — Sign In card + Register Your Organization card
+  - `app/contact/page.tsx` — "I Need Help Finding Services" find-help redirect
+  - `app/page.tsx` — homepage "Partner With Us" CTA
+  - `components/Footer.tsx` — footer "Partner with us" link
+
+---
 
 ### June 25 scope
 - **`/news` page** — blog-style news feed: card grid + sticky sidebar with search and post index

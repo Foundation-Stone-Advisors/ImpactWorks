@@ -122,7 +122,7 @@ export default function Providers() {
                     <span className="mt-2 text-white font-bold group-hover:translate-x-1 transition-transform duration-200">&rarr;</span>
                   </a>
                   <a
-                    href="https://linksy.impact-works.us/join/provider"
+                    href="https://linksi.impact-works.us/join/provider"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex flex-col gap-2 bg-white rounded-2xl p-6 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group"

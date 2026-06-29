@@ -46,7 +46,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm text-slate-400">
               <li>Clay County, Florida</li>
             </ul>
-            <a href="https://linksy.impact-works.us/join/provider" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-brand-orange hover:text-brand-orange-light mt-6 transition-colors group">
+            <a href="https://linksi.impact-works.us/join/provider" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-brand-orange hover:text-brand-orange-light mt-6 transition-colors group">
               Partner with us <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
             </a>
             <div className="flex items-center gap-4 mt-6">

@@ -12,7 +12,7 @@ const pathways = [
     description:
       "Already have a Linksi account? Sign in to manage referrals, update your profile, and stay connected with the network.",
     cta: "Sign In to Portal",
-    href: "https://linksy.impact-works.us/auth/login",
+    href: "https://linksi.impact-works.us/auth/login",
     borderAccent: "border-l-brand-blue",
     iconColor: "text-brand-blue",
     iconBg: "bg-brand-blue/10 border border-brand-blue/20",
@@ -30,7 +30,7 @@ const pathways = [
     description:
       "Add your organization to the Clay County directory. Connect with providers, expand your reach, and coordinate services more effectively.",
     cta: "Start Registration",
-    href: "https://linksy.impact-works.us/join/provider",
+    href: "https://linksi.impact-works.us/join/provider",
     borderAccent: "border-l-brand-green",
     iconColor: "text-brand-green",
     iconBg: "bg-brand-green/10 border border-brand-green/20",

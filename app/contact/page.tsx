@@ -14,7 +14,7 @@ const REASONS = [
 
 type Reason = (typeof REASONS)[number];
 
-const FIND_HELP_URL = "https://linksy.impact-works.us/find-help";
+const FIND_HELP_URL = "https://linksi.impact-works.us/find-help";
 
 export default function Contact() {
   const [reason, setReason] = useState<Reason | "">("");

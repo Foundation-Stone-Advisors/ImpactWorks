@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-06-29 (session 3)
+**Last updated:** 2026-07-14 (session 4)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -53,6 +53,12 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page** — "Closed-Loop Referrals" added to Capabilities section (Equity angle: surfaces where residents fall through the cracks so communities can close service gaps)
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
+
+### July 14 scope
+- **Find Help Now — rotating host of the month** — nav link in desktop and mobile now cycles through all 16 Clay County hosting sites monthly (deterministic: `monthIndex % 16`). Desktop shows stacked FIND/HELP/NOW text with "Powered by" and the host name beneath; mobile shows "FIND HELP NOW" on one line with "Powered by [Host]" below (image removed from mobile menu). Link targets that host's specific Linksi chatbot URL. Rotates automatically on the 1st of each month, no code changes needed.
+  - Host list lives in `lib/findHelpHosts.ts` — add new hosts there as they join
+  - Current rotation (July 2026): Clay Veterans, Inc.
+- **Wix embed instructions page** — `public/find-help-wix-embed.html` (served at `https://www.impact-works.us/find-help-wix-embed.html`). Public, no login required. Shows live preview of the rotating widget + one-click Copy button + 5-step Wix instructions. Shareable link for the Impact Clay team to self-serve adding the widget to their Wix site.
 
 ### June 29 scope
 - **`linksy.` → `linksi.` URL fix** — all 6 broken `linksy.impact-works.us` links corrected to `linksi.impact-works.us` across 5 files:

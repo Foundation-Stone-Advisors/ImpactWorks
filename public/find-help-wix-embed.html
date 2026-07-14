@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Help Now — Wix Embed Snippet</title>
+<style>
+  :root {
+    --bg: #F8F7F4;
+    --surface: #FFFFFF;
+    --border: #E4E0D8;
+    --text: #1A1A18;
+    --muted: #78776F;
+    --accent: #F97316;
+    --accent-soft: #FEF0E6;
+    --code-bg: #EFECE6;
+    --code-text: #38362E;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131210;
+      --surface: #1C1B18;
+      --border: #2C2B26;
+      --text: #ECEAE4;
+      --muted: #8A8880;
+      --accent: #FB923C;
+      --accent-soft: #271508;
+      --code-bg: #1F1E1A;
+      --code-text: #CEC9BC;
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 48px 24px 64px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+
+  .intro {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 540px;
+    margin-bottom: 44px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  /* Preview */
+  .preview-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 48px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 36px;
+  }
+
+  .fhn-widget {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    background: #F97316;
+    color: white;
+    padding: 20px 36px;
+    border-radius: 16px;
+    font-family: system-ui, -apple-system, sans-serif;
+    transition: opacity 0.18s, transform 0.15s;
+    box-shadow: 0 6px 24px rgba(249, 115, 22, 0.28);
+  }
+  .fhn-widget:hover { opacity: 0.91; transform: translateY(-2px); }
+  .fhn-title {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: white;
+    line-height: 1.15;
+  }
+  .fhn-rule {
+    width: 36px;
+    height: 1px;
+    background: rgba(255,255,255,0.38);
+    margin: 10px 0;
+  }
+  .fhn-powered {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 4px;
+  }
+  .fhn-host {
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.35;
+    max-width: 210px;
+  }
+
+  .preview-caption {
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* Code block */
+  .code-panel {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 36px;
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .code-filename {
+    font-family: 'Menlo', 'Monaco', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .copy-btn {
+    font-family: system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: none;
+    padding: 5px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .copy-btn:hover { opacity: 0.78; }
+
+  pre {
+    margin: 0;
+    padding: 22px 20px;
+    overflow-x: auto;
+    font-size: 12px;
+    line-height: 1.7;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    color: var(--code-text);
+    tab-size: 2;
+    white-space: pre;
+  }
+
+  /* Steps */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .step-body {
+    font-size: 14px;
+    color: var(--text);
+    padding-top: 3px;
+    line-height: 1.55;
+  }
+
+  kbd {
+    display: inline-block;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-family: 'Menlo', monospace;
+    font-size: 11px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .note {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 13px 18px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.55;
+  }
+</style>
+</head>
+<body>
+
+<p class="eyebrow">Impact Clay — Wix Embed</p>
+<h1>Find Help Now<br>Rotating Host Widget</h1>
+<p class="intro">A self-contained code block to drop into any page on the Impact Clay Wix site. The featured host rotates automatically on the 1st of each month — no maintenance needed.</p>
+
+<p class="section-label">Live Preview</p>
+<div class="preview-panel">
+  <a id="fhn-preview" href="#" target="_blank" rel="noopener noreferrer" class="fhn-widget">
+    <span class="fhn-title">Find Help Now</span>
+    <div class="fhn-rule"></div>
+    <span class="fhn-powered">Powered by</span>
+    <span class="fhn-host" id="fhn-preview-host">Loading…</span>
+  </a>
+  <p class="preview-caption" id="fhn-caption"></p>
+</div>
+
+<p class="section-label">Code — Copy &amp; Paste This into Wix</p>
+<div class="code-panel">
+  <div class="code-header">
+    <span class="code-filename">find-help-now.html</span>
+    <button class="copy-btn" id="copy-btn" onclick="doCopy()">Copy</button>
+  </div>
+  <pre id="code-display"></pre>
+</div>
+
+<p class="section-label">How to Add This to Wix</p>
+<div class="steps">
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">In the Wix Editor, click <strong>Add Elements</strong> in the left sidebar.</div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">Go to <strong>Embed Code</strong> → <strong>Embed HTML</strong> and click to place it on the page.</div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">Click <strong>Enter Code</strong> in the embed box that appears.</div>
+  </div>
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">Paste the code above and click <kbd>Update</kbd>. The widget will appear immediately.</div>
+  </div>
+  <div class="step">
+    <div class="step-num">5</div>
+    <div class="step-body">Resize the embed box to roughly <strong>300 × 160 px</strong> so the widget has room to display, then drag it into position.</div>
+  </div>
+</div>
+
+<div class="note">
+  The host name and link update on their own every month — no code changes or logins required. To add a new host to the rotation, contact the Impact Works team.
+</div>
+
+<script>
+(function () {
+  var hosts = [
+    { name: "Asbury United Methodist Church", url: "https://linksi.impact-works.us/find-help/asbury-united-methodist-church" },
+    { name: "Clay County Library — Fleming Island Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-fleming-island" },
+    { name: "Clay County Library — Green Cove Springs Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-greencove-springs" },
+    { name: "Clay County Library — Keystone Heights Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-keystone-heights" },
+    { name: "Clay County Library — Orange Park Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-orange-park" },
+    { name: "Clay County Library — Middleburg-Clay Hill Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-middleburg-clay-hill" },
+    { name: "Clay Veterans, Inc.", url: "https://linksi.impact-works.us/find-help/clay-veterans-inc" },
+    { name: "For The Least of These", url: "https://linksi.impact-works.us/find-help/for-the-least-of-these" },
+    { name: "Mercy Support Services", url: "https://linksi.impact-works.us/find-help/mercy-support-services" },
+    { name: "Mission of the Dirt Road", url: "https://linksi.impact-works.us/find-help/mission-of-the-dirt-road" },
+    { name: "Quigley House", url: "https://linksi.impact-works.us/find-help/quigley-house" },
+    { name: "River Christian Church", url: "https://linksi.impact-works.us/find-help/river-christian-church" },
+    { name: "Seeds of Love Outreach", url: "https://linksi.impact-works.us/find-help/seeds-of-love-outreach" },
+    { name: "St. Johns River State College", url: "https://linksi.impact-works.us/find-help/st-johns-river-state-college-st-johns-river-state-college-foundation" },
+    { name: "The Clothes Closet and Food Pantry", url: "https://linksi.impact-works.us/find-help/the-clothes-closet-food-pantry" },
+    { name: "The Way Free Medical Clinic", url: "https://linksi.impact-works.us/find-help/the-way-free-medical-clinic" }
+  ];
+
+  var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var now = new Date();
+  var host = hosts[now.getMonth() % hosts.length];
+
+  document.getElementById("fhn-preview").href = host.url;
+  document.getElementById("fhn-preview-host").textContent = host.name;
+  document.getElementById("fhn-caption").textContent = months[now.getMonth()] + " host — updates automatically on the 1st of each month";
+
+  var lines = [
+    "<style>",
+    "  .fhn-widget {",
+    "    display: inline-flex;",
+    "    flex-direction: column;",
+    "    align-items: center;",
+    "    text-align: center;",
+    "    text-decoration: none;",
+    "    background: #F97316;",
+    "    color: white;",
+    "    padding: 20px 36px;",
+    "    border-radius: 16px;",
+    "    font-family: system-ui, sans-serif;",
+    "    box-shadow: 0 6px 24px rgba(249,115,22,0.28);",
+    "    transition: opacity 0.18s;",
+    "  }",
+    "  .fhn-widget:hover { opacity: 0.88; }",
+    "  .fhn-title {",
+    "    font-size: 21px; font-weight: 900;",
+    "    letter-spacing: 0.07em;",
+    "    text-transform: uppercase;",
+    "    color: white; line-height: 1.15;",
+    "  }",
+    "  .fhn-rule {",
+    "    width: 36px; height: 1px;",
+    "    background: rgba(255,255,255,0.38);",
+    "    margin: 10px 0;",
+    "  }",
+    "  .fhn-powered {",
+    "    font-size: 9px; font-weight: 700;",
+    "    letter-spacing: 0.12em;",
+    "    text-transform: uppercase;",
+    "    color: rgba(255,255,255,0.7);",
+    "    margin-bottom: 4px;",
+    "  }",
+    "  .fhn-host {",
+    "    font-size: 13px; font-weight: 700;",
+    "    color: white; line-height: 1.35;",
+    "    max-width: 210px;",
+    "  }",
+    "</style>",
+    "",
+    "<a id=\"fhn-link\" href=\"#\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"fhn-widget\">",
+    "  <span class=\"fhn-title\">Find Help Now</span>",
+    "  <div class=\"fhn-rule\"></div>",
+    "  <span class=\"fhn-powered\">Powered by</span>",
+    "  <span class=\"fhn-host\" id=\"fhn-host-name\">Loading…</span>",
+    "</a>",
+    "",
+    "<script>",
+    "(function() {",
+    "  var hosts = [",
+    "    { name: \"Asbury United Methodist Church\", url: \"https://linksi.impact-works.us/find-help/asbury-united-methodist-church\" },",
+    "    { name: \"Clay County Library — Fleming Island Branch\", url: \"https://linksi.impact-works.us/find-help/clay-county-government-fleming-island\" },",
+    "    { name: \"Clay County Library — Green Cove Springs Branch\", url: \"https://linksi.impact-works.us/find-help/clay-county-government-greencove-springs\" },",
+    "    { name: \"Clay County Library — Keystone Heights Branch\", url: \"https://linksi.impact-works.us/find-help/clay-county-government-keystone-heights\" },",
+    "    { name: \"Clay County Library — Orange Park Branch\", url: \"https://linksi.impact-works.us/find-help/clay-county-government-orange-park\" },",
+    "    { name: \"Clay County Library — Middleburg-Clay Hill Branch\", url: \"https://linksi.impact-works.us/find-help/clay-county-government-middleburg-clay-hill\" },",
+    "    { name: \"Clay Veterans, Inc.\", url: \"https://linksi.impact-works.us/find-help/clay-veterans-inc\" },",
+    "    { name: \"For The Least of These\", url: \"https://linksi.impact-works.us/find-help/for-the-least-of-these\" },",
+    "    { name: \"Mercy Support Services\", url: \"https://linksi.impact-works.us/find-help/mercy-support-services\" },",
+    "    { name: \"Mission of the Dirt Road\", url: \"https://linksi.impact-works.us/find-help/mission-of-the-dirt-road\" },",
+    "    { name: \"Quigley House\", url: \"https://linksi.impact-works.us/find-help/quigley-house\" },",
+    "    { name: \"River Christian Church\", url: \"https://linksi.impact-works.us/find-help/river-christian-church\" },",
+    "    { name: \"Seeds of Love Outreach\", url: \"https://linksi.impact-works.us/find-help/seeds-of-love-outreach\" },",
+    "    { name: \"St. Johns River State College\", url: \"https://linksi.impact-works.us/find-help/st-johns-river-state-college-st-johns-river-state-college-foundation\" },",
+    "    { name: \"The Clothes Closet and Food Pantry\", url: \"https://linksi.impact-works.us/find-help/the-clothes-closet-food-pantry\" },",
+    "    { name: \"The Way Free Medical Clinic\", url: \"https://linksi.impact-works.us/find-help/the-way-free-medical-clinic\" }",
+    "  ];",
+    "  var host = hosts[new Date().getMonth() % hosts.length];",
+    "  document.getElementById(\"fhn-link\").href = host.url;",
+    "  document.getElementById(\"fhn-host-name\").textContent = host.name;",
+    "})();",
+    "<\/script>"
+  ];
+
+  var snippet = lines.join("\n");
+  document.getElementById("code-display").textContent = snippet;
+  window._fhnSnippet = snippet;
+})();
+
+function doCopy() {
+  navigator.clipboard.writeText(window._fhnSnippet).then(function () {
+    var btn = document.getElementById("copy-btn");
+    btn.textContent = "Copied!";
+    setTimeout(function () { btn.textContent = "Copy"; }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>

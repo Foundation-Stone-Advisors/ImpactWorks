@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { getHostOfMonth } from "@/lib/findHelpHosts";
 
 const links = [
   { href: "/", label: "Home" },
@@ -23,6 +24,7 @@ export default function Nav() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const hostOfMonth = getHostOfMonth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -78,15 +80,17 @@ export default function Nav() {
             </Link>
           ))}
           <a
-            href="https://linksi.impact-works.us/find-help"
+            href={hostOfMonth.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 flex-shrink-0 leading-tight text-center font-display font-extrabold text-[15px] uppercase tracking-wide text-brand-orange hover:text-brand-orange/80 transition-colors"
-            aria-label="Find Help Now with Linksi"
+            className="ml-2 leading-tight text-center font-display font-extrabold text-[15px] uppercase tracking-wide text-brand-orange hover:text-brand-orange/80 transition-colors max-w-[130px]"
+            aria-label={`Find Help Now — Powered by ${hostOfMonth.name}`}
           >
             <span className="block">FIND</span>
             <span className="block">HELP</span>
             <span className="block">NOW</span>
+            <span className="block text-[8px] font-medium normal-case tracking-normal text-brand-orange/60 leading-tight mt-0.5">Powered by</span>
+            <span className="block text-[9px] font-semibold normal-case tracking-normal text-brand-orange/80 leading-tight">{hostOfMonth.name}</span>
           </a>
           <Link href="/join" className="ml-2 btn-primary !py-2.5 !px-5 text-sm !rounded-lg">
             Join Us
@@ -157,20 +161,16 @@ export default function Nav() {
                 className="pt-2 flex flex-col gap-3"
               >
                 <a
-                  href="https://linksi.impact-works.us/find-help"
+                  href={hostOfMonth.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex justify-center hover:opacity-90 transition-opacity"
+                  className="flex flex-col items-center hover:opacity-90 transition-opacity py-2"
                   onClick={() => setMenuOpen(false)}
-                  aria-label="Find Help Now with Linksi"
+                  aria-label={`Find Help Now — Powered by ${hostOfMonth.name}`}
                 >
-                  <Image
-                    src="/images/find-help-now-linksi.png"
-                    alt="Find Help Now with Linksi"
-                    width={160}
-                    height={160}
-                    className="h-16 w-auto"
-                  />
+                  <span className="font-display font-extrabold text-[22px] uppercase tracking-wide text-brand-orange leading-tight">FIND HELP NOW</span>
+                  <span className="text-[10px] font-medium text-brand-orange/60 leading-tight mt-0.5">Powered by</span>
+                  <span className="text-[11px] font-semibold text-brand-orange/80 leading-tight text-center">{hostOfMonth.name}</span>
                 </a>
                 <Link
                   href="/join"

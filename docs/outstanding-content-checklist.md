@@ -168,16 +168,13 @@ Authors log in with the shared password and can create, edit, schedule, or publi
 
 ---
 
-### 7. Facebook host spotlight links — Linksi domain allowlist (NEW — 2026-07-15)
+### 7. Facebook host spotlight links — Linksi domain allowlist ✅ Fixed 2026-07-15
 
-**Status:** Diagnosed. Blocked on Eric making a config change in Linksi.
+**Status:** Fixed in Linksi codebase. No config change from Eric needed.
 
-**What's happening:** Every link clicked from a Facebook post passes through `l.facebook.com` as a redirect. Linksi's widget sees the Referer header as `l.facebook.com` and rejects it ("This widget is not authorized for this domain"). Intermittent behavior is because Facebook sometimes bypasses its own redirect (e.g., when the user copies the URL directly) but always redirects via `l.facebook.com` for normal link clicks.
+**Root cause:** Facebook routes all outbound link clicks through `l.facebook.com` as a redirect tracker. The widget's Referer-based allowlist check treated this as the display origin and rejected the request.
 
-**What's needed from Eric:**
-- [ ] Add `l.facebook.com` to Linksi's authorized domain allowlist
-- [ ] Add `lm.facebook.com` to Linksi's authorized domain allowlist
-- [ ] Add `m.facebook.com` to Linksi's authorized domain allowlist
+**Fix applied:** `app/find-help/[slug]/page.tsx` in the Linksi repo now treats `l.facebook.com`, `lm.facebook.com`, and `m.facebook.com` as pass-through referrers — skipping the allowlist check, exactly like direct navigation. The host slug remains the credential, so no security is lost. Deployed via commit `52b3244`.
 
 ---
 

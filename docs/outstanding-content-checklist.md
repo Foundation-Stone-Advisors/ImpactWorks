@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-07-14 (session 4)
+**Last updated:** 2026-07-15 (session 5)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -53,6 +53,9 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page** — "Closed-Loop Referrals" added to Capabilities section (Equity angle: surfaces where residents fall through the cracks so communities can close service gaps)
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
+
+### July 15 scope
+- **Facebook → Linksi host links — diagnosed** — clicking any host spotlight link shared on Facebook fails with "This widget is not authorized for this domain / Detected domain: l.facebook.com (or lm.facebook.com)." Root cause: Facebook routes all link clicks through `l.facebook.com` as a redirect tracker, setting the HTTP Referer header to `l.facebook.com`. Linksi checks the Referer against its authorized domain allowlist; `l.facebook.com` is not on it. **Fix is Eric's:** he needs to add `l.facebook.com`, `lm.facebook.com`, and `m.facebook.com` to Linksi's authorized domain allowlist. No changes needed to the Impact Works site.
 
 ### July 14 scope
 - **Find Help Now — rotating host of the month** — nav link in desktop and mobile now cycles through all 16 Clay County hosting sites monthly (deterministic: `monthIndex % 16`). Desktop shows stacked FIND/HELP/NOW text with "Powered by" and the host name beneath; mobile shows "FIND HELP NOW" on one line with "Powered by [Host]" below (image removed from mobile menu). Link targets that host's specific Linksi chatbot URL. Rotates automatically on the 1st of each month, no code changes needed.
@@ -159,6 +162,19 @@ This file is the single source of truth for what's still needed to fully complet
 **Status:** Complete as of 2026-06-25. Admin URL: `https://www.impact-works.us/news/admin`
 
 Authors log in with the shared password and can create, edit, schedule, or publish posts. No code changes needed to add content.
+
+---
+
+### 7. Facebook host spotlight links — Linksi domain allowlist (NEW — 2026-07-15)
+
+**Status:** Diagnosed. Blocked on Eric making a config change in Linksi.
+
+**What's happening:** Every link clicked from a Facebook post passes through `l.facebook.com` as a redirect. Linksi's widget sees the Referer header as `l.facebook.com` and rejects it ("This widget is not authorized for this domain"). Intermittent behavior is because Facebook sometimes bypasses its own redirect (e.g., when the user copies the URL directly) but always redirects via `l.facebook.com` for normal link clicks.
+
+**What's needed from Eric:**
+- [ ] Add `l.facebook.com` to Linksi's authorized domain allowlist
+- [ ] Add `lm.facebook.com` to Linksi's authorized domain allowlist
+- [ ] Add `m.facebook.com` to Linksi's authorized domain allowlist
 
 ---
 

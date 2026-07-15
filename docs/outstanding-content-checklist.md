@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-07-15 (session 5)
+**Last updated:** 2026-07-15 (session 6)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -54,7 +54,10 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
 
-### July 15 scope
+### July 15 scope (session 6)
+- **Hosting Sites directory moved to top of `/hosts` page** — per Michelle's request, the 16-site directory now appears immediately after the hero and Find Help Now band, before "What is Linksi?" Previously it was near the bottom. No content changes — layout reorder only.
+
+### July 15 scope (session 5)
 - **Facebook → Linksi host links — diagnosed** — clicking any host spotlight link shared on Facebook fails with "This widget is not authorized for this domain / Detected domain: l.facebook.com (or lm.facebook.com)." Root cause: Facebook routes all link clicks through `l.facebook.com` as a redirect tracker, setting the HTTP Referer header to `l.facebook.com`. Linksi checks the Referer against its authorized domain allowlist; `l.facebook.com` is not on it. **Fix is Eric's:** he needs to add `l.facebook.com`, `lm.facebook.com`, and `m.facebook.com` to Linksi's authorized domain allowlist. No changes needed to the Impact Works site.
 
 ### July 14 scope

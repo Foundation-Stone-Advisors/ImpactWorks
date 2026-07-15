@@ -215,6 +215,50 @@ export default function Hosts() {
         </div>
       </section>
 
+      {/* Hosting sites directory */}
+      <section className="section-pad section-light">
+        <div className="max-w-site mx-auto">
+          <ScrollReveal className="mb-10">
+            <p className="eyebrow mb-3">Directory</p>
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold text-slate-800 mb-4">Hosting Sites</h2>
+            <p className="text-slate-500 max-w-2xl">
+              Organizations currently hosting the Linksi platform in their region. This directory grows as new hosts come online.
+            </p>
+          </ScrollReveal>
+
+          {hostingSites.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {hostingSites.map((site, i) => (
+                <ScrollReveal key={site.name} delay={i * 0.08}>
+                  <a
+                    href={site.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="card-light p-6 h-full border-l-4 border-brand-blue group flex flex-col gap-2 hover:shadow-md transition-shadow"
+                  >
+                    <h3 className="font-display text-lg font-bold text-slate-800 group-hover:text-brand-orange transition-colors">{site.name}</h3>
+                    <p className="text-sm text-slate-400">{site.location}</p>
+                    <span className="text-xs text-brand-blue mt-auto group-hover:text-brand-orange transition-colors">Visit site &rarr;</span>
+                  </a>
+                </ScrollReveal>
+              ))}
+            </div>
+          ) : (
+            <ScrollReveal delay={0.1}>
+              <div className="card-light p-10 text-center border border-dashed border-slate-200 rounded-2xl">
+                <div className="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                </div>
+                <p className="font-display font-semibold text-slate-700 mb-2">Directory Coming Soon</p>
+                <p className="text-sm text-slate-400">Hosting sites are being confirmed and will appear here as they come online.</p>
+              </div>
+            </ScrollReveal>
+          )}
+        </div>
+      </section>
+
       {/* What is Linksi */}
       <section className="section-pad bg-brand-blue">
         <div className="max-w-site mx-auto text-center">
@@ -381,50 +425,6 @@ export default function Hosts() {
               </a>
             </div>
           </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Hosting sites directory */}
-      <section className="section-pad section-light">
-        <div className="max-w-site mx-auto">
-          <ScrollReveal className="mb-10">
-            <p className="eyebrow mb-3">Directory</p>
-            <h2 className="font-display text-3xl md:text-4xl font-extrabold text-slate-800 mb-4">Hosting Sites</h2>
-            <p className="text-slate-500 max-w-2xl">
-              Organizations currently hosting the Linksi platform in their region. This directory grows as new hosts come online.
-            </p>
-          </ScrollReveal>
-
-          {hostingSites.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {hostingSites.map((site, i) => (
-                <ScrollReveal key={site.name} delay={i * 0.08}>
-                  <a
-                    href={site.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="card-light p-6 h-full border-l-4 border-brand-blue group flex flex-col gap-2 hover:shadow-md transition-shadow"
-                  >
-                    <h3 className="font-display text-lg font-bold text-slate-800 group-hover:text-brand-orange transition-colors">{site.name}</h3>
-                    <p className="text-sm text-slate-400">{site.location}</p>
-                    <span className="text-xs text-brand-blue mt-auto group-hover:text-brand-orange transition-colors">Visit site &rarr;</span>
-                  </a>
-                </ScrollReveal>
-              ))}
-            </div>
-          ) : (
-            <ScrollReveal delay={0.1}>
-              <div className="card-light p-10 text-center border border-dashed border-slate-200 rounded-2xl">
-                <div className="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                </div>
-                <p className="font-display font-semibold text-slate-700 mb-2">Directory Coming Soon</p>
-                <p className="text-sm text-slate-400">Hosting sites are being confirmed and will appear here as they come online.</p>
-              </div>
-            </ScrollReveal>
-          )}
         </div>
       </section>
 

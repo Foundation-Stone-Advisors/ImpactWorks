@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-07-15 (session 6)
+**Last updated:** 2026-07-21 (session 7)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -175,6 +175,20 @@ Authors log in with the shared password and can create, edit, schedule, or publi
 **Root cause:** Facebook routes all outbound link clicks through `l.facebook.com` as a redirect tracker. The widget's Referer-based allowlist check treated this as the display origin and rejected the request.
 
 **Fix applied:** `app/find-help/[slug]/page.tsx` in the Linksi repo now treats `l.facebook.com`, `lm.facebook.com`, and `m.facebook.com` as pass-through referrers — skipping the allowlist check, exactly like direct navigation. The host slug remains the credential, so no security is lost. Deployed via commit `52b3244`.
+
+---
+
+### 8. Public flyer QR code — possible wrong URL
+
+**Status:** Under investigation as of 2026-07-21. Awaiting flyer from Michelle.
+
+**Background:** Michelle confirmed the QR code on public handout flyers links to `linksi.impact-works.us`. That URL routes to the provider/host/admin login page — not the public-facing service finder. The correct URL for members of the public seeking services is `https://linksi.impact-works.us/find-help`.
+
+**What's needed:**
+- [ ] Michelle to send the flyer so David can test the QR code directly
+- [ ] If confirmed wrong: flyers need to be reprinted with `https://linksi.impact-works.us/find-help`
+
+**Note:** The rotating Find Help Now nav link (monthly host rotation) does not affect the flyer QR code — that rotation is internal to the Impact Works website only.
 
 ---
 

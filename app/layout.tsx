@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import FindHelpBanner from "@/components/FindHelpBanner";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-display",
@@ -40,6 +41,7 @@ export default function RootLayout({
       <body
         className={`${plusJakarta.variable} ${jetbrainsMono.variable} font-display antialiased flex flex-col min-h-screen bg-white text-slate-800`}
       >
+        <FindHelpBanner />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

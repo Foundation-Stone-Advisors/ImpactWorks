@@ -88,49 +88,10 @@
     margin-bottom: 36px;
   }
 
-  .fhn-widget {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
-    background: #F97316;
-    color: white;
-    padding: 20px 36px;
-    border-radius: 16px;
-    font-family: system-ui, -apple-system, sans-serif;
-    transition: opacity 0.18s, transform 0.15s;
-    box-shadow: 0 6px 24px rgba(249, 115, 22, 0.28);
-  }
-  .fhn-widget:hover { opacity: 0.91; transform: translateY(-2px); }
-  .fhn-title {
-    font-size: 21px;
-    font-weight: 900;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: white;
-    line-height: 1.15;
-  }
-  .fhn-rule {
-    width: 36px;
-    height: 1px;
-    background: rgba(255,255,255,0.38);
-    margin: 10px 0;
-  }
-  .fhn-powered {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 4px;
-  }
-  .fhn-host {
-    font-size: 13px;
-    font-weight: 700;
-    color: white;
-    line-height: 1.35;
-    max-width: 210px;
+  .preview-panel iframe {
+    border: none;
+    border-radius: 14px;
+    display: block;
   }
 
   .preview-caption {
@@ -253,16 +214,16 @@
 
 <p class="eyebrow">Impact Clay — Wix Embed</p>
 <h1>Find Help Now<br>Rotating Host Widget</h1>
-<p class="intro">A self-contained code block to drop into any page on the Impact Clay Wix site. The featured host rotates automatically on the 1st of each month — no maintenance needed.</p>
+<p class="intro">A one-line embed to drop into any page on the Impact Clay Wix site. The featured host, link, and widget design update automatically on the 1st of each month — no maintenance or code changes ever needed.</p>
 
 <p class="section-label">Live Preview</p>
 <div class="preview-panel">
-  <a id="fhn-preview" href="#" target="_blank" rel="noopener noreferrer" class="fhn-widget">
-    <span class="fhn-title">Find Help Now</span>
-    <div class="fhn-rule"></div>
-    <span class="fhn-powered">Powered by</span>
-    <span class="fhn-host" id="fhn-preview-host">Loading…</span>
-  </a>
+  <iframe
+    src="/find-help-widget.html"
+    width="300"
+    height="130"
+    title="Find Help Now widget preview"
+  ></iframe>
   <p class="preview-caption" id="fhn-caption"></p>
 </div>
 
@@ -295,120 +256,21 @@
   </div>
   <div class="step">
     <div class="step-num">5</div>
-    <div class="step-body">Resize the embed box to roughly <strong>300 × 160 px</strong> so the widget has room to display, then drag it into position.</div>
+    <div class="step-body">Resize the embed box to roughly <strong>300 × 140 px</strong> so the widget has room to display, then drag it into position.</div>
   </div>
 </div>
 
 <div class="note">
-  The host name and link update on their own every month — no code changes or logins required. To add a new host to the rotation, contact the Impact Works team.
+  The featured host, link, and widget design update automatically — no code changes or logins required on your site. To add a new host to the rotation, contact the Impact Works team.
 </div>
 
 <script>
 (function () {
-  var hosts = [
-    { name: "Asbury United Methodist Church", url: "https://linksi.impact-works.us/find-help/asbury-united-methodist-church" },
-    { name: "Clay County Library — Fleming Island Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-fleming-island" },
-    { name: "Clay County Library — Green Cove Springs Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-greencove-springs" },
-    { name: "Clay County Library — Keystone Heights Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-keystone-heights" },
-    { name: "Clay County Library — Orange Park Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-orange-park" },
-    { name: "Clay County Library — Middleburg-Clay Hill Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-middleburg-clay-hill" },
-    { name: "Clay Veterans, Inc.", url: "https://linksi.impact-works.us/find-help/clay-veterans-inc" },
-    { name: "For The Least of These", url: "https://linksi.impact-works.us/find-help/for-the-least-of-these" },
-    { name: "Mercy Support Services", url: "https://linksi.impact-works.us/find-help/mercy-support-services" },
-    { name: "Mission of the Dirt Road", url: "https://linksi.impact-works.us/find-help/mission-of-the-dirt-road" },
-    { name: "Quigley House", url: "https://linksi.impact-works.us/find-help/quigley-house" },
-    { name: "River Christian Church", url: "https://linksi.impact-works.us/find-help/river-christian-church" },
-    { name: "Seeds of Love Outreach", url: "https://linksi.impact-works.us/find-help/seeds-of-love-outreach" },
-    { name: "St. Johns River State College", url: "https://linksi.impact-works.us/find-help/st-johns-river-state-college-st-johns-river-state-college-foundation" },
-    { name: "The Clothes Closet and Food Pantry", url: "https://linksi.impact-works.us/find-help/the-clothes-closet-food-pantry" },
-    { name: "The Way Free Medical Clinic", url: "https://linksi.impact-works.us/find-help/the-way-free-medical-clinic" }
-  ];
-
   var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   var now = new Date();
-  var host = hosts[now.getMonth() % hosts.length];
-
-  document.getElementById("fhn-preview").href = host.url;
-  document.getElementById("fhn-preview-host").textContent = host.name;
   document.getElementById("fhn-caption").textContent = months[now.getMonth()] + " host — updates automatically on the 1st of each month";
 
-  var lines = [
-    "<style>",
-    "  .fhn-widget {",
-    "    display: inline-flex;",
-    "    flex-direction: column;",
-    "    align-items: center;",
-    "    text-align: center;",
-    "    text-decoration: none;",
-    "    background: #F97316;",
-    "    color: white;",
-    "    padding: 20px 36px;",
-    "    border-radius: 16px;",
-    "    font-family: system-ui, sans-serif;",
-    "    box-shadow: 0 6px 24px rgba(249,115,22,0.28);",
-    "    transition: opacity 0.18s;",
-    "  }",
-    "  .fhn-widget:hover { opacity: 0.88; }",
-    "  .fhn-title {",
-    "    font-size: 21px; font-weight: 900;",
-    "    letter-spacing: 0.07em;",
-    "    text-transform: uppercase;",
-    "    color: white; line-height: 1.15;",
-    "  }",
-    "  .fhn-rule {",
-    "    width: 36px; height: 1px;",
-    "    background: rgba(255,255,255,0.38);",
-    "    margin: 10px 0;",
-    "  }",
-    "  .fhn-powered {",
-    "    font-size: 9px; font-weight: 700;",
-    "    letter-spacing: 0.12em;",
-    "    text-transform: uppercase;",
-    "    color: rgba(255,255,255,0.7);",
-    "    margin-bottom: 4px;",
-    "  }",
-    "  .fhn-host {",
-    "    font-size: 13px; font-weight: 700;",
-    "    color: white; line-height: 1.35;",
-    "    max-width: 210px;",
-    "  }",
-    "</style>",
-    "",
-    "<a id=\"fhn-link\" href=\"#\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"fhn-widget\">",
-    "  <span class=\"fhn-title\">Find Help Now</span>",
-    "  <div class=\"fhn-rule\"></div>",
-    "  <span class=\"fhn-powered\">Powered by</span>",
-    "  <span class=\"fhn-host\" id=\"fhn-host-name\">Loading…</span>",
-    "</a>",
-    "",
-    "<script>",
-    "(function() {",
-    "  var hosts = [",
-    "    { name: \"Asbury United Methodist Church\", url: \"https://linksi.impact-works.us/find-help/asbury-united-methodist-church\" },",
-    "    { name: \"Clay County Library — Fleming Island Branch\", url: \"https://linksi.impact-works.us/find-help/clay-county-government-fleming-island\" },",
-    "    { name: \"Clay County Library — Green Cove Springs Branch\", url: \"https://linksi.impact-works.us/find-help/clay-county-government-greencove-springs\" },",
-    "    { name: \"Clay County Library — Keystone Heights Branch\", url: \"https://linksi.impact-works.us/find-help/clay-county-government-keystone-heights\" },",
-    "    { name: \"Clay County Library — Orange Park Branch\", url: \"https://linksi.impact-works.us/find-help/clay-county-government-orange-park\" },",
-    "    { name: \"Clay County Library — Middleburg-Clay Hill Branch\", url: \"https://linksi.impact-works.us/find-help/clay-county-government-middleburg-clay-hill\" },",
-    "    { name: \"Clay Veterans, Inc.\", url: \"https://linksi.impact-works.us/find-help/clay-veterans-inc\" },",
-    "    { name: \"For The Least of These\", url: \"https://linksi.impact-works.us/find-help/for-the-least-of-these\" },",
-    "    { name: \"Mercy Support Services\", url: \"https://linksi.impact-works.us/find-help/mercy-support-services\" },",
-    "    { name: \"Mission of the Dirt Road\", url: \"https://linksi.impact-works.us/find-help/mission-of-the-dirt-road\" },",
-    "    { name: \"Quigley House\", url: \"https://linksi.impact-works.us/find-help/quigley-house\" },",
-    "    { name: \"River Christian Church\", url: \"https://linksi.impact-works.us/find-help/river-christian-church\" },",
-    "    { name: \"Seeds of Love Outreach\", url: \"https://linksi.impact-works.us/find-help/seeds-of-love-outreach\" },",
-    "    { name: \"St. Johns River State College\", url: \"https://linksi.impact-works.us/find-help/st-johns-river-state-college-st-johns-river-state-college-foundation\" },",
-    "    { name: \"The Clothes Closet and Food Pantry\", url: \"https://linksi.impact-works.us/find-help/the-clothes-closet-food-pantry\" },",
-    "    { name: \"The Way Free Medical Clinic\", url: \"https://linksi.impact-works.us/find-help/the-way-free-medical-clinic\" }",
-    "  ];",
-    "  var host = hosts[new Date().getMonth() % hosts.length];",
-    "  document.getElementById(\"fhn-link\").href = host.url;",
-    "  document.getElementById(\"fhn-host-name\").textContent = host.name;",
-    "})();",
-    "<\/script>"
-  ];
-
-  var snippet = lines.join("\n");
+  var snippet = '<iframe\n  src="https://www.impact-works.us/find-help-widget.html"\n  width="300"\n  height="130"\n  frameborder="0"\n  style="border:none; border-radius:14px; display:block;"\n></iframe>';
   document.getElementById("code-display").textContent = snippet;
   window._fhnSnippet = snippet;
 })();

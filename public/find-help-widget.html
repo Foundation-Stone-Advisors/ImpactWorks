@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Help Now</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: transparent; }
+  a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    height: 100%;
+    background: #F97316;
+    color: white;
+    text-decoration: none;
+    padding: 16px 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 24px rgba(249, 115, 22, 0.28);
+    font-family: system-ui, -apple-system, sans-serif;
+    transition: opacity 0.18s, transform 0.15s;
+  }
+  a:hover { opacity: 0.91; transform: translateY(-1px); }
+  img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .text { display: flex; flex-direction: column; }
+  .title {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    color: white;
+  }
+  .hosted-by {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 6px;
+    margin-bottom: 2px;
+  }
+  .host-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.3;
+  }
+</style>
+</head>
+<body>
+<a id="fhn-link" href="#" target="_blank" rel="noopener noreferrer">
+  <img src="/images/linksi-mascot.png" alt="Linksi">
+  <div class="text">
+    <span class="title">Find Help Now</span>
+    <span class="hosted-by">Hosted by:</span>
+    <span class="host-name" id="fhn-host">Loading…</span>
+  </div>
+</a>
+<script>
+(function () {
+  var hosts = [
+    { name: "Asbury United Methodist Church", url: "https://linksi.impact-works.us/find-help/asbury-united-methodist-church" },
+    { name: "Clay County Library — Fleming Island Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-fleming-island" },
+    { name: "Clay County Library — Green Cove Springs Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-greencove-springs" },
+    { name: "Clay County Library — Keystone Heights Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-keystone-heights" },
+    { name: "Clay County Library — Orange Park Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-orange-park" },
+    { name: "Clay County Library — Middleburg-Clay Hill Branch", url: "https://linksi.impact-works.us/find-help/clay-county-government-middleburg-clay-hill" },
+    { name: "Clay Veterans, Inc.", url: "https://linksi.impact-works.us/find-help/clay-veterans-inc" },
+    { name: "For The Least of These", url: "https://linksi.impact-works.us/find-help/for-the-least-of-these" },
+    { name: "Mercy Support Services", url: "https://linksi.impact-works.us/find-help/mercy-support-services" },
+    { name: "Mission of the Dirt Road", url: "https://linksi.impact-works.us/find-help/mission-of-the-dirt-road" },
+    { name: "Quigley House", url: "https://linksi.impact-works.us/find-help/quigley-house" },
+    { name: "River Christian Church", url: "https://linksi.impact-works.us/find-help/river-christian-church" },
+    { name: "Seeds of Love Outreach", url: "https://linksi.impact-works.us/find-help/seeds-of-love-outreach" },
+    { name: "St. Johns River State College", url: "https://linksi.impact-works.us/find-help/st-johns-river-state-college-st-johns-river-state-college-foundation" },
+    { name: "The Clothes Closet and Food Pantry", url: "https://linksi.impact-works.us/find-help/the-clothes-closet-food-pantry" },
+    { name: "The Way Free Medical Clinic", url: "https://linksi.impact-works.us/find-help/the-way-free-medical-clinic" }
+  ];
+  var host = hosts[new Date().getMonth() % hosts.length];
+  document.getElementById("fhn-link").href = host.url;
+  document.getElementById("fhn-host").textContent = host.name;
+})();
+</script>
+</body>
+</html>

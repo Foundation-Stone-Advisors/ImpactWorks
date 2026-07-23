@@ -83,14 +83,23 @@ export default function Nav() {
             href={hostOfMonth.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 leading-tight text-center font-display font-extrabold text-[15px] uppercase tracking-wide text-brand-orange hover:text-brand-orange/80 transition-colors max-w-[130px]"
-            aria-label={`Find Help Now — Powered by ${hostOfMonth.name}`}
+            className="ml-2 flex items-center gap-2 hover:opacity-80 transition-opacity"
+            aria-label={`Find Help Now — Hosted by ${hostOfMonth.name}`}
           >
-            <span className="block">FIND</span>
-            <span className="block">HELP</span>
-            <span className="block">NOW</span>
-            <span className="block text-[8px] font-medium normal-case tracking-normal text-brand-orange/60 leading-tight mt-0.5">Powered by</span>
-            <span className="block text-[9px] font-semibold normal-case tracking-normal text-brand-orange/80 leading-tight">{hostOfMonth.name}</span>
+            <Image
+              src="/images/linksi-mascot.png"
+              alt="Linksi"
+              width={36}
+              height={36}
+              className="flex-shrink-0"
+            />
+            <div className="leading-tight font-display font-extrabold text-[15px] uppercase tracking-wide text-brand-orange">
+              <span className="block">FIND</span>
+              <span className="block">HELP</span>
+              <span className="block">NOW</span>
+              <span className="block text-[8px] font-medium normal-case tracking-normal text-brand-orange/60 leading-tight mt-0.5">Hosted by:</span>
+              <span className="block text-[9px] font-semibold normal-case tracking-normal text-brand-orange/80 leading-tight">{hostOfMonth.name}</span>
+            </div>
           </a>
           <Link href="/join" className="ml-2 btn-primary !py-2.5 !px-5 text-sm !rounded-lg">
             Join Us
@@ -164,13 +173,22 @@ export default function Nav() {
                   href={hostOfMonth.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center hover:opacity-90 transition-opacity py-2"
+                  className="flex flex-row items-center gap-3 hover:opacity-90 transition-opacity py-2"
                   onClick={() => setMenuOpen(false)}
-                  aria-label={`Find Help Now — Powered by ${hostOfMonth.name}`}
+                  aria-label={`Find Help Now — Hosted by ${hostOfMonth.name}`}
                 >
-                  <span className="font-display font-extrabold text-[22px] uppercase tracking-wide text-brand-orange leading-tight">FIND HELP NOW</span>
-                  <span className="text-[10px] font-medium text-brand-orange/60 leading-tight mt-0.5">Powered by</span>
-                  <span className="text-[11px] font-semibold text-brand-orange/80 leading-tight text-center">{hostOfMonth.name}</span>
+                  <Image
+                    src="/images/linksi-mascot.png"
+                    alt="Linksi"
+                    width={44}
+                    height={44}
+                    className="flex-shrink-0"
+                  />
+                  <div>
+                    <span className="block font-display font-extrabold text-[22px] uppercase tracking-wide text-brand-orange leading-tight">FIND HELP NOW</span>
+                    <span className="block text-[10px] font-medium text-brand-orange/60 leading-tight mt-0.5">Hosted by:</span>
+                    <span className="block text-[11px] font-semibold text-brand-orange/80 leading-tight">{hostOfMonth.name}</span>
+                  </div>
                 </a>
                 <Link
                   href="/join"

@@ -8,6 +8,7 @@ import DarkBackdrop from "@/components/DarkBackdrop";
 // Update this list as hosting sites are confirmed — each entry appears as a card in the directory.
 const hostingSites: { name: string; location: string; url: string }[] = [
   { name: "Asbury United Methodist Church", location: "Clay County, FL", url: "https://linksi.impact-works.us/find-help/asbury-united-methodist-church" },
+  { name: "Clay Behavioral Health Center", location: "Clay County, FL", url: "https://linksi.impact-works.us/find-help/clay-behavioral-health-center" },
   { name: "Clay County Library — Fleming Island Branch", location: "Fleming Island, FL", url: "https://linksi.impact-works.us/find-help/clay-county-government-fleming-island" },
   { name: "Clay County Library — Green Cove Springs Branch", location: "Green Cove Springs, FL", url: "https://linksi.impact-works.us/find-help/clay-county-government-greencove-springs" },
   { name: "Clay County Library — Keystone Heights Branch", location: "Keystone Heights, FL", url: "https://linksi.impact-works.us/find-help/clay-county-government-keystone-heights" },
@@ -167,6 +168,16 @@ export default function Hosts() {
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }} className="font-mono text-xs text-slate-400 mt-4 tracking-wide">
               No additional staff.&nbsp;&nbsp;No complicated systems.&nbsp;&nbsp;No data management.
             </motion.p>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-8 flex flex-wrap gap-4">
+              <a
+                href="https://linksi.impact-works.us/join/host"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-brand-orange text-white font-semibold px-8 py-3 rounded-xl hover:bg-orange-600 transition-colors"
+              >
+                Apply to Become a Host <span>&rarr;</span>
+              </a>
+            </motion.div>
           </div>
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} className="md:col-span-5 hidden md:flex justify-center">
             <div className="relative w-full max-w-[320px] bg-white/[0.05] backdrop-blur-md border border-white/12 rounded-2xl p-6 shadow-2xl">

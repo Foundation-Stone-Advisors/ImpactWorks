@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-07-21 (session 7)
+**Last updated:** 2026-08-04 (session 8)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -53,6 +53,11 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page** — "Closed-Loop Referrals" added to Capabilities section (Equity angle: surfaces where residents fall through the cracks so communities can close service gaps)
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
+
+### August 4 scope (session 8)
+- **`/providers` page — Provider Portal moved into hero** — Sign In and Register cards relocated from a separate full-width section below the hero into the right column of the hero itself (replacing the Provider Growth chart). Cards are compact frosted/orange rows, desktop only (mobile shows headline only, same as before). The standalone portal section below the hero has been removed.
+
+---
 
 ### July 15 scope (session 6)
 - **Hosting Sites directory moved to top of `/hosts` page** — per Michelle's request, the 16-site directory now appears immediately after the hero and Find Help Now band, before "What is Linksi?" Previously it was near the bottom. No content changes — layout reorder only.

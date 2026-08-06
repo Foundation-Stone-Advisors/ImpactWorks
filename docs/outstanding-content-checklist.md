@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-08-04 (session 8)
+**Last updated:** 2026-08-06 (session 9)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -53,6 +53,9 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page** — "Closed-Loop Referrals" added to Capabilities section (Equity angle: surfaces where residents fall through the cracks so communities can close service gaps)
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
+
+### August 6 scope (session 9)
+- **Heather's email alias request — diagnosed, no Impact Works code change needed** — Heather requested that `help@impact-works.us` (shown to applicants during the provider registration flow) be changed to `linksi@impact-works.us`, and that any mass-email reply-to using `info@impact-works.us` be updated similarly. Searched the entire Impact Works codebase — neither address appears here. Both are hardcoded in the **Linksi application** (`linksi.impact-works.us`). Action is Eric's: (1) find `help@impact-works.us` in the Linksi provider application flow and change to `linksi@impact-works.us`; (2) find `info@impact-works.us` used as a reply-to in any Linksi bulk/notification emails and change to `linksi@impact-works.us`.
 
 ### August 4 scope (session 8)
 - **`/providers` page — Provider Portal moved into hero** — Sign In and Register cards relocated from a separate full-width section below the hero into the right column of the hero itself (replacing the Provider Growth chart). Cards are compact frosted/orange rows, desktop only (mobile shows headline only, same as before). The standalone portal section below the hero has been removed.
@@ -230,6 +233,18 @@ Authors log in with the shared password and can create, edit, schedule, or publi
 - [ ] Any photos/visuals to accompany the history
 
 The current About page has a Timeline section (2024 + 2025 milestones) ready to expand once copy is provided.
+
+---
+
+### 9. Linksi support email — change to `linksi@impact-works.us` (Eric's action)
+
+**Status:** Pending. Diagnosed 2026-08-06 — no Impact Works site changes needed.
+
+**Background:** Heather reported that the Linksi provider application flow displays `help@impact-works.us` as the support contact. That alias currently routes only to Michelle. Heather wants it changed to `linksi@impact-works.us` (shared between Michelle and Heather) so she doesn't have to wait for forwarded emails about new provider applications. She also flagged that any mass-email reply-to using `info@impact-works.us` should be updated for the same reason.
+
+**What's needed (Eric):**
+- [ ] Find `help@impact-works.us` in the Linksi codebase (provider application flow) and change to `linksi@impact-works.us`
+- [ ] Find `info@impact-works.us` used as reply-to in any Linksi bulk/notification emails and change to `linksi@impact-works.us`
 
 ---
 

@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-08-06 (session 9)
+**Last updated:** 2026-08-19 (session 10)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -233,6 +233,26 @@ Authors log in with the shared password and can create, edit, schedule, or publi
 - [ ] Any photos/visuals to accompany the history
 
 The current About page has a Timeline section (2024 + 2025 milestones) ready to expand once copy is provided.
+
+---
+
+### 10. Events page — Linksi `events` table schema (Eric's action)
+
+**Status:** Page built as of 2026-08-19. Waiting on schema confirmation.
+
+**What was built:**
+- `/events` page — monthly calendar grid + upcoming list sidebar; clicking any event opens a detail modal
+- Modal includes: title, date/time, location, description, event URL, and share buttons (Facebook, X, Instagram copy-to-clipboard)
+- API route: `app/api/events/route.ts` — queries Supabase `events` table
+- "Events" added to desktop nav, mobile menu, and footer
+
+**What Eric needs to confirm (API route: `app/api/events/route.ts`):**
+- [ ] **Table name**: Currently assumes `events` — update if different
+- [ ] **Public flag column**: Currently filters `.eq("is_public", true)` — update if Linksi uses `published`, `active`, or another boolean
+- [ ] **Column names**: Assumed schema: `id`, `title`, `description`, `starts_at`, `ends_at`, `location`, `image_url`, `url`, `category` — adjust `.select()` call if your columns differ
+- [ ] **RLS policy**: The anon key is used for reads — ensure the Supabase RLS policy on the `events` table allows public SELECT on rows where `is_public = true`
+
+If the table or columns don't yet exist, Eric can create the `events` table in the Linksi Supabase project and events added via the admin dashboard will automatically appear on the Impact Works events page.
 
 ---
 

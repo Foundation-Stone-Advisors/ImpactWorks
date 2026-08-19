@@ -283,17 +283,14 @@ export default function EventsPage() {
   const [viewMonth, setViewMonth] = useState(today.getMonth());
   const [events, setEvents] = useState<LinksiEvent[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<LinksiEvent | null>(null);
 
   useEffect(() => {
     fetch("/api/events")
       .then((r) => r.json())
-      .then((data) => {
-        if (Array.isArray(data)) setEvents(data);
-        else setError("Unable to load events.");
-      })
-      .catch(() => setError("Unable to load events."))
+      .then((data) => { if (Array.isArray(data)) setEvents(data); })
+      .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, []);
 
@@ -347,10 +344,6 @@ export default function EventsPage() {
             <div className="flex flex-col items-center justify-center py-24 gap-4">
               <div className="w-10 h-10 border-2 border-brand-orange border-t-transparent rounded-full animate-spin" />
               <p className="text-slate-400 text-sm">Loading events…</p>
-            </div>
-          ) : error ? (
-            <div className="text-center py-24">
-              <p className="text-slate-400">{error}</p>
             </div>
           ) : (
             <div className="grid lg:grid-cols-[1fr_340px] gap-10 items-start">

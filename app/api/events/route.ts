@@ -24,8 +24,9 @@ export async function GET() {
       .order("starts_at", { ascending: true });
 
     if (error) {
+      // Log for Vercel — likely means the events table doesn't exist yet in Linksi's Supabase project
       console.error("Supabase events error:", error.message);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      return NextResponse.json([]);
     }
 
     return NextResponse.json(data ?? [], {
@@ -33,6 +34,6 @@ export async function GET() {
     });
   } catch (err) {
     console.error("Events API error:", err);
-    return NextResponse.json([], { status: 500 });
+    return NextResponse.json([]);
   }
 }

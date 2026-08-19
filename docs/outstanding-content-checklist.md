@@ -54,6 +54,14 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
 
+### August 19 scope (session 10)
+- **`/hosts` page — "What You Get as a Host" section added** — Six benefit cards (Community Insights Dashboard, Become the Front Door to Help, Reduce Misrouted Requests, Zero Data Management, Extend Your Community Reach, Recognition as a Community Connector) + a tools panel (Usage Reports, Community Need Trends, Resource Gap View, Embed & QR Generator) inserted immediately after the hero. First thing visitors see after the headline.
+- **`/providers` page — "What You Get as a Provider" section added** — Six benefit cards (Instant Visibility, Referral Activity Tracking, Closed-Loop Tracking, Community Demand Reports, Easy Profile Management, Free to Participate) + a tools panel (Service Listing Manager, Referral Activity Feed, Closed-Loop Reports, Community Demand Data). Orange CTA section added at the bottom (was missing entirely).
+- **`/events` page** — New community events page at `impact-works.us/events`: monthly calendar grid (color-coded by category), upcoming events sidebar, event detail modal (title/date/time/location/description/external link), social sharing (Facebook, X, Instagram copy-to-clipboard). "Events" added to nav and footer.
+- **`/api/events` route** — Queries Linksi Supabase `events` table via anon key. Returns `[]` gracefully if table is missing; errors logged server-side.
+- **Supabase `events` table** — Created in Linksi project (`vjusthretnfmxmgdiwtw`): columns `id, title, description, starts_at, ends_at, location, image_url, url, category, is_public, created_at, updated_at`. RLS enabled; anon SELECT allowed where `is_public = true`. Index on `starts_at`. Events managed via Linksi admin dashboard (`/dashboard/admin?tab=events`).
+- **Nav — Linksi dropdown** — "Linksi Platform" shortened to "Linksi". Converted from a direct link to a hover dropdown (desktop) / tap-to-expand accordion (mobile) containing: Platform, Providers, Hosts. Providers and Hosts removed from the flat nav list.
+
 ### August 6 scope (session 9)
 - **Heather's email alias request — diagnosed, no Impact Works code change needed** — Heather requested that `help@impact-works.us` (shown to applicants during the provider registration flow) be changed to `linksi@impact-works.us`, and that any mass-email reply-to using `info@impact-works.us` be updated similarly. Searched the entire Impact Works codebase — neither address appears here. Both are hardcoded in the **Linksi application** (`linksi.impact-works.us`). Action is Eric's: (1) find `help@impact-works.us` in the Linksi provider application flow and change to `linksi@impact-works.us`; (2) find `info@impact-works.us` used as a reply-to in any Linksi bulk/notification emails and change to `linksi@impact-works.us`.
 
@@ -236,23 +244,11 @@ The current About page has a Timeline section (2024 + 2025 milestones) ready to 
 
 ---
 
-### 10. Events page — Linksi `events` table schema (Eric's action)
+### 10. Events page ✅ Complete 2026-08-19
 
-**Status:** Page built as of 2026-08-19. Waiting on schema confirmation.
+**Status:** Fully live. Supabase `events` table created and confirmed working. Calendar populates from Linksi admin dashboard.
 
-**What was built:**
-- `/events` page — monthly calendar grid + upcoming list sidebar; clicking any event opens a detail modal
-- Modal includes: title, date/time, location, description, event URL, and share buttons (Facebook, X, Instagram copy-to-clipboard)
-- API route: `app/api/events/route.ts` — queries Supabase `events` table
-- "Events" added to desktop nav, mobile menu, and footer
-
-**What Eric needs to confirm (API route: `app/api/events/route.ts`):**
-- [ ] **Table name**: Currently assumes `events` — update if different
-- [ ] **Public flag column**: Currently filters `.eq("is_public", true)` — update if Linksi uses `published`, `active`, or another boolean
-- [ ] **Column names**: Assumed schema: `id`, `title`, `description`, `starts_at`, `ends_at`, `location`, `image_url`, `url`, `category` — adjust `.select()` call if your columns differ
-- [ ] **RLS policy**: The anon key is used for reads — ensure the Supabase RLS policy on the `events` table allows public SELECT on rows where `is_public = true`
-
-If the table or columns don't yet exist, Eric can create the `events` table in the Linksi Supabase project and events added via the admin dashboard will automatically appear on the Impact Works events page.
+To add events: log in to `linksi.impact-works.us/dashboard/admin?tab=events`. New events appear on `impact-works.us/events` automatically.
 
 ---
 

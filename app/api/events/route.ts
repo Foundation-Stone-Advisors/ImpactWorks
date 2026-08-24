@@ -9,6 +9,48 @@ export const revalidate = 300; // 5-minute cache
 // Expected columns: id, title, description, starts_at, ends_at, location, image_url, url, category, is_public
 // If events use a different "public" flag (e.g. `published`), update the .eq() filter below.
 
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    const { password, ...eventData } = body;
+
+    if (!password || password !== process.env.NEWS_ADMIN_PASSWORD) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
+
+    const { data, error } = await supabase
+      .from("events")
+      .insert({
+        title: eventData.title,
+        description: eventData.description ?? null,
+        starts_at: eventData.starts_at,
+        ends_at: eventData.ends_at ?? null,
+        location: eventData.location ?? null,
+        image_url: null,
+        url: eventData.url ?? null,
+        category: eventData.category ?? null,
+        is_public: eventData.is_public ?? true,
+      })
+      .select("id, title, description, starts_at, ends_at, location, image_url, url, category")
+      .single();
+
+    if (error) {
+      console.error("Supabase events insert error:", error.message);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json(data);
+  } catch (err) {
+    console.error("Events POST error:", err);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
+  }
+}
+
 export async function GET() {
   try {
     const supabase = createClient(

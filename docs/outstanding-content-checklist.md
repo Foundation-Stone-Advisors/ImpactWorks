@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-08-19 (session 10)
+**Last updated:** 2026-08-24 (session 11)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -53,6 +53,10 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page** — "Closed-Loop Referrals" added to Capabilities section (Equity angle: surfaces where residents fall through the cracks so communities can close service gaps)
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
+
+### August 24 scope (session 11)
+- **Footer social links — all updated to `linksihelps` handles** — Facebook, Instagram, and YouTube updated from the old `impactworksfl`/`ImpactWorksFL` handles to `linksihelps`. LinkedIn added as a new fourth icon (`linkedin.com/company/linksihelps`). Change is in `components/Footer.tsx`.
+- **`/events` page — Add Event form** — Admins can now create events directly on the public calendar page without going to the Linksi admin dashboard. A `+ Add Event` button in the calendar header opens a modal with a password gate (uses `NEWS_ADMIN_PASSWORD`) followed by a full event form (Title, Category, Start, End, Location, Description, External Link, Public toggle). On save the event appears immediately in the calendar and sidebar. POST handler added to `app/api/events/route.ts` — uses `SUPABASE_SERVICE_ROLE_KEY` to write to the `events` table.
 
 ### August 19 scope (session 10)
 - **`/hosts` page — "What You Get as a Host" section added** — Six benefit cards (Community Insights Dashboard, Become the Front Door to Help, Reduce Misrouted Requests, Zero Data Management, Extend Your Community Reach, Recognition as a Community Connector) + a tools panel (Usage Reports, Community Need Trends, Resource Gap View, Embed & QR Generator) inserted immediately after the hero. First thing visitors see after the headline.

@@ -18,6 +18,7 @@ interface LinksiEvent {
 }
 
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const CATEGORIES = ["Community", "Health", "Education", "Faith", "Government"];
 const MONTHS = [
   "January","February","March","April","May","June",
   "July","August","September","October","November","December",
@@ -256,6 +257,255 @@ function EventModal({ event, onClose }: { event: LinksiEvent; onClose: () => voi
   );
 }
 
+// ─── AddEventModal ────────────────────────────────────────────────────────────
+
+function AddEventModal({ onClose, onAdded }: {
+  onClose: () => void;
+  onAdded: (e: LinksiEvent) => void;
+}) {
+  function getSavedPw() {
+    try { return sessionStorage.getItem("events_admin_pw") ?? ""; } catch { return ""; }
+  }
+
+  const [pw, setPw] = useState(getSavedPw);
+  const [showPwStep, setShowPwStep] = useState(() => !getSavedPw());
+  const [submitting, setSubmitting] = useState(false);
+  const [err, setErr] = useState("");
+  const [form, setForm] = useState({
+    title: "",
+    category: "Community",
+    starts_at: "",
+    ends_at: "",
+    location: "",
+    description: "",
+    url: "",
+    is_public: true,
+  });
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [onClose]);
+
+  function field(key: keyof typeof form, val: string | boolean) {
+    setForm(f => ({ ...f, [key]: val }));
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!form.title.trim() || !form.starts_at) return;
+    setSubmitting(true);
+    setErr("");
+
+    const res = await fetch("/api/events", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        password: pw,
+        title: form.title.trim(),
+        category: form.category.toLowerCase(),
+        starts_at: new Date(form.starts_at).toISOString(),
+        ends_at: form.ends_at ? new Date(form.ends_at).toISOString() : null,
+        location: form.location.trim() || null,
+        description: form.description.trim() || null,
+        url: form.url.trim() || null,
+        is_public: form.is_public,
+      }),
+    });
+
+    setSubmitting(false);
+
+    if (res.status === 401) {
+      try { sessionStorage.removeItem("events_admin_pw"); } catch {}
+      setPw("");
+      setShowPwStep(true);
+      setErr("Incorrect password.");
+      return;
+    }
+    if (!res.ok) {
+      setErr("Failed to save event. Please try again.");
+      return;
+    }
+
+    const data = await res.json();
+    try { sessionStorage.setItem("events_admin_pw", pw); } catch {}
+    onAdded(data);
+    onClose();
+  }
+
+  const inp = "w-full border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-orange/30 focus:border-brand-orange transition-colors";
+  const lbl = "block text-xs font-mono uppercase tracking-[0.12em] text-slate-500 mb-1.5";
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+        onClick={e => { if (e.target === e.currentTarget) onClose(); }}
+      >
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: 16 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 8 }}
+          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-10 bg-white rounded-2xl shadow-2xl w-full max-w-lg flex flex-col max-h-[90vh] overflow-hidden"
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 flex-shrink-0">
+            <h2 className="font-display text-lg font-bold text-slate-800">Add Event</h2>
+            <button
+              onClick={onClose}
+              className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 transition-colors"
+              aria-label="Close"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {showPwStep ? (
+            /* Password gate */
+            <div className="p-6">
+              <p className="text-sm text-slate-500 mb-4">Enter the admin password to add events.</p>
+              <label className={lbl}>Password</label>
+              <input
+                type="password"
+                value={pw}
+                onChange={e => setPw(e.target.value)}
+                className={inp}
+                autoFocus
+                onKeyDown={e => { if (e.key === "Enter" && pw) { setShowPwStep(false); setErr(""); } }}
+              />
+              {err && <p className="text-xs text-red-500 mt-2">{err}</p>}
+              <div className="flex justify-end mt-4">
+                <button
+                  onClick={() => { if (pw) { setShowPwStep(false); setErr(""); } }}
+                  className="bg-brand-orange text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-orange-600 transition-colors"
+                >
+                  Continue →
+                </button>
+              </div>
+            </div>
+          ) : (
+            /* Event form */
+            <form onSubmit={handleSubmit} className="overflow-y-auto flex-1 p-6 flex flex-col gap-4">
+              <div>
+                <label className={lbl}>Title <span className="text-brand-orange">*</span></label>
+                <input
+                  type="text"
+                  required
+                  value={form.title}
+                  onChange={e => field("title", e.target.value)}
+                  className={inp}
+                  placeholder="Event title"
+                  autoFocus
+                />
+              </div>
+
+              <div>
+                <label className={lbl}>Category</label>
+                <select value={form.category} onChange={e => field("category", e.target.value)} className={inp}>
+                  {CATEGORIES.map(c => <option key={c}>{c}</option>)}
+                </select>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className={lbl}>Start <span className="text-brand-orange">*</span></label>
+                  <input
+                    type="datetime-local"
+                    required
+                    value={form.starts_at}
+                    onChange={e => field("starts_at", e.target.value)}
+                    className={inp}
+                  />
+                </div>
+                <div>
+                  <label className={lbl}>End</label>
+                  <input
+                    type="datetime-local"
+                    value={form.ends_at}
+                    onChange={e => field("ends_at", e.target.value)}
+                    className={inp}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className={lbl}>Location</label>
+                <input
+                  type="text"
+                  value={form.location}
+                  onChange={e => field("location", e.target.value)}
+                  className={inp}
+                  placeholder="Address or venue name"
+                />
+              </div>
+
+              <div>
+                <label className={lbl}>Description</label>
+                <textarea
+                  value={form.description}
+                  onChange={e => field("description", e.target.value)}
+                  className={`${inp} resize-none`}
+                  rows={3}
+                  placeholder="Brief description of the event"
+                />
+              </div>
+
+              <div>
+                <label className={lbl}>External Link</label>
+                <input
+                  type="url"
+                  value={form.url}
+                  onChange={e => field("url", e.target.value)}
+                  className={inp}
+                  placeholder="https://..."
+                />
+              </div>
+
+              <label className="flex items-center gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={form.is_public}
+                  onChange={e => field("is_public", e.target.checked)}
+                  className="w-4 h-4"
+                />
+                <span className="text-sm text-slate-600">Visible to the public</span>
+              </label>
+
+              {err && <p className="text-xs text-red-500">{err}</p>}
+
+              <div className="flex items-center justify-end gap-3 pt-2 border-t border-slate-100">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="text-sm text-slate-500 hover:text-slate-700 px-4 py-2.5 rounded-xl hover:bg-slate-100 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="bg-brand-orange text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-orange-600 transition-colors disabled:opacity-60"
+                >
+                  {submitting ? "Saving…" : "Save Event"}
+                </button>
+              </div>
+            </form>
+          )}
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 // ─── Calendar ─────────────────────────────────────────────────────────────────
 
 function buildCalendarGrid(year: number, month: number) {
@@ -285,6 +535,16 @@ export default function EventsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<LinksiEvent | null>(null);
+  const [addEventOpen, setAddEventOpen] = useState(false);
+
+  function handleEventAdded(newEvent: LinksiEvent) {
+    setEvents(prev =>
+      [...prev, newEvent].sort((a, b) => new Date(a.starts_at).getTime() - new Date(b.starts_at).getTime())
+    );
+    const d = new Date(newEvent.starts_at);
+    setViewYear(d.getFullYear());
+    setViewMonth(d.getMonth());
+  }
 
   useEffect(() => {
     fetch("/api/events")
@@ -352,26 +612,37 @@ export default function EventsPage() {
               <div>
                 {/* Month nav */}
                 <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={prevMonth}
+                      className="w-9 h-9 rounded-xl border border-slate-200 flex items-center justify-center text-slate-500 hover:border-brand-orange hover:text-brand-orange transition-colors"
+                      aria-label="Previous month"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    <h2 className="font-display text-xl font-bold text-slate-800">
+                      {MONTHS[viewMonth]} {viewYear}
+                    </h2>
+                    <button
+                      onClick={nextMonth}
+                      className="w-9 h-9 rounded-xl border border-slate-200 flex items-center justify-center text-slate-500 hover:border-brand-orange hover:text-brand-orange transition-colors"
+                      aria-label="Next month"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
                   <button
-                    onClick={prevMonth}
-                    className="w-9 h-9 rounded-xl border border-slate-200 flex items-center justify-center text-slate-500 hover:border-brand-orange hover:text-brand-orange transition-colors"
-                    aria-label="Previous month"
+                    onClick={() => setAddEventOpen(true)}
+                    className="flex items-center gap-1.5 text-xs font-semibold text-brand-orange border border-brand-orange/30 hover:bg-brand-orange hover:text-white px-3 py-1.5 rounded-xl transition-colors"
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                     </svg>
-                  </button>
-                  <h2 className="font-display text-xl font-bold text-slate-800">
-                    {MONTHS[viewMonth]} {viewYear}
-                  </h2>
-                  <button
-                    onClick={nextMonth}
-                    className="w-9 h-9 rounded-xl border border-slate-200 flex items-center justify-center text-slate-500 hover:border-brand-orange hover:text-brand-orange transition-colors"
-                    aria-label="Next month"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                    Add Event
                   </button>
                 </div>
 
@@ -509,6 +780,11 @@ export default function EventsPage() {
       {/* Event modal */}
       {selectedEvent && (
         <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
+      )}
+
+      {/* Add event modal */}
+      {addEventOpen && (
+        <AddEventModal onClose={() => setAddEventOpen(false)} onAdded={handleEventAdded} />
       )}
     </div>
   );

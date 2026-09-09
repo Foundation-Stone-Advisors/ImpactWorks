@@ -12,8 +12,8 @@ const nextConfig = {
     return [
       {
         // Force iOS to show the single "Add Event" sheet instead of
-        // "Subscribe to Calendar" by serving .ics files as a download.
-        source: "/events/:path*",
+        // "Subscribe to Calendar" by serving the .ics file as a download.
+        source: "/events/linksi-2.0-rollout.ics",
         headers: [
           {
             key: "Content-Disposition",

@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-08-24 (session 11)
+**Last updated:** 2026-09-09 (session 12)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -53,6 +53,10 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page** — "Closed-Loop Referrals" added to Capabilities section (Equity angle: surfaces where residents fall through the cracks so communities can close service gaps)
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
+
+### September 9 scope (session 12)
+- **`/events` page — Add Event button removed** — The `+ Add Event` button and `AddEventModal` component have been removed entirely. The events calendar is now read-only. All event management happens via the Linksi admin dashboard (`linksi.impact-works.us/dashboard/admin?tab=events`).
+- **`/events` page — ICS Content-Disposition bug fixed** — `next.config.mjs` had `source: "/events/:path*"` for the `Content-Disposition: attachment` header, which incorrectly applied a file-download header to the entire `/events` calendar page. This caused a spurious ICS file download when users interacted with the page. Narrowed to `source: "/events/linksi-2.0-rollout.ics"` so the header only applies to that specific file.
 
 ### August 24 scope (session 11)
 - **Footer social links — all updated to `linksihelps` handles** — Facebook, Instagram, and YouTube updated from the old `impactworksfl`/`ImpactWorksFL` handles to `linksihelps`. LinkedIn added as a new fourth icon (`linkedin.com/company/linksihelps`). Change is in `components/Footer.tsx`.

@@ -6,6 +6,10 @@ import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
 import DarkBackdrop from "@/components/DarkBackdrop";
 
+// `photo` is optional. A member with no photo yet renders an initials monogram in
+// their accent color instead of a broken image, so somebody can be listed the day
+// they are announced and their headshot can follow. Dropping a file into
+// public/team/ and adding the `photo` line is the whole swap.
 const team = [
   { name: "Connie Thomas", title: "Chief Executive Officer", photo: "/team/connie.jpg",
     objectPosition: "center 25%",
@@ -13,6 +17,13 @@ const team = [
   { name: "Michelle Reaves", title: "Chief Operating Officer", photo: "/team/michelle.jpg",
     objectPosition: "center 25%",
     bio: "Michelle Reaves brings expertise in project coordination, administrative operations, and grant writing. Certified in Six Sigma Lean Black Belt and Change Management, she previously secured critical funding and led process improvement at the Clay County Sheriff\u2019s Office." },
+  // Wesley: name and title only, pending his photo and bio (Connie, 2026-10-12).
+  { name: "Wesley Griffin", title: "Chief Financial Officer",
+    bio: "" },
+  // Title, bio and photo from David, 2026-10-13 ("profile picture"). His photo is
+  // square and already tightly framed, so it needs no objectPosition nudge.
+  { name: "David Petlansky", title: "Chief Technical Officer", photo: "/team/david.jpg",
+    bio: "David brings over 20 years of experience in digital media production, filmmaking, and photography. As Chief Technical Officer, he manages and supports Linksi’s software application, leveraging artificial intelligence to improve functionality and streamline operations. He also brings his extensive creative expertise to the organization’s documentation, visual storytelling, and marketing efforts, helping communicate Linksi’s mission and community impact." },
   { name: "Heather Johnston", title: "Data & Systems Analyst", photo: "/team/heather.jpg",
     objectPosition: "center 8%",
     bio: "Heather brings 20+ years of administrative experience across for-profit, nonprofit, and military settings as a Navy veteran. She holds a BA in Psychology from UNF and serves as a licensed Pastoral Care Lay Leader for the Diocese of North Florida." },
@@ -22,6 +33,10 @@ const team = [
     objectPosition: "center center",
     bio: "Amanda is Chief Community Development Officer of Impact Works, a Canadian-trained Naturopathic Doctor, and a community outreach coordinator for UF Health’s Early Intervention program. She brings people, ideas, and resources together, building relationships that encourage collaboration across sectors. Her heart is in addressing root causes and ensuring people have the support they need to thrive." },
 ];
+
+// "Wesley Griffin" -> "WG", for the monogram shown in place of a missing photo.
+const initials = (name: string) =>
+  name.split(" ").filter(Boolean).map((part) => part[0]).join("").slice(0, 2).toUpperCase();
 
 export default function About() {
   return (
@@ -300,34 +315,40 @@ export default function About() {
             <p className="body-text-muted mt-4 max-w-xl">A team combining clinical expertise, operational rigor, and community roots.</p>
           </ScrollReveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {team.map((member, i) => {
-              // One style per member — index into this directly, so it must stay
-              // at least as long as `team` or the card renders with no accent.
-              const styles = [
-                { accent: "bg-brand-blue", bg: "bg-brand-blue/5", line: "bg-brand-blue" },
-                { accent: "bg-brand-green", bg: "bg-brand-green/5", line: "bg-brand-green" },
-                { accent: "bg-brand-orange", bg: "bg-brand-orange/5", line: "bg-brand-orange" },
-                { accent: "bg-brand-gold", bg: "bg-brand-gold/5", line: "bg-brand-gold" },
-              ][i];
+              // Cycles, so adding a member never leaves a card with no accent color.
+              const palette = [
+                { accent: "bg-brand-blue", bg: "bg-brand-blue/5", line: "bg-brand-blue", text: "text-brand-blue" },
+                { accent: "bg-brand-green", bg: "bg-brand-green/5", line: "bg-brand-green", text: "text-brand-green" },
+                { accent: "bg-brand-orange", bg: "bg-brand-orange/5", line: "bg-brand-orange", text: "text-brand-orange" },
+                { accent: "bg-brand-gold", bg: "bg-brand-gold/5", line: "bg-brand-gold", text: "text-brand-gold" },
+              ];
+              const styles = palette[i % palette.length];
               return (
                 <ScrollReveal key={member.name} delay={i * 0.1}>
                   <div className="group relative bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 overflow-hidden h-full">
                     {/* Portrait area */}
                     <div className={`relative aspect-square overflow-hidden ${styles.bg}`}>
-                      <Image
-                        src={member.photo}
-                        alt={member.name}
-                        fill
-                        style={{ objectPosition: member.objectPosition }}
-                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                      />
+                      {member.photo ? (
+                        <Image
+                          src={member.photo}
+                          alt={member.name}
+                          fill
+                          style={{ objectPosition: member.objectPosition }}
+                          className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                        />
+                      ) : (
+                        // No photo yet — initials in the card's accent color, which reads as
+                        // deliberate where a gray silhouette reads as a broken image.
+                        <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+                          <span className={`font-display text-6xl font-bold tracking-tight ${styles.text} opacity-40`}>
+                            {initials(member.name)}
+                          </span>
+                        </div>
+                      )}
                       {/* Colored gradient overlay on hover */}
                       <div className={`absolute inset-0 ${styles.accent} opacity-0 group-hover:opacity-10 transition-opacity duration-500 mix-blend-multiply`} />
-                      {/* Corner accent number */}
-                      <div className={`absolute top-4 left-4 w-9 h-9 rounded-full ${styles.accent} flex items-center justify-center shadow-lg`}>
-                        <span className="font-mono text-[10px] text-white font-bold">{String(i + 1).padStart(2, "0")}</span>
-                      </div>
                     </div>
 
                     {/* Content */}

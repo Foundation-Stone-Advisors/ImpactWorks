@@ -56,7 +56,11 @@ This file is the single source of truth for what's still needed to fully complet
 
 ### October 12 scope (session 13)
 - **`/about` — Amanda Ferris added to Leadership** — Chief Community Development Officer, with the headshot and bio she sent on 2026-10-11 ("Website photo", Amanda → David, cc Connie). Bio is her own wording, unedited. Photo saved as `public/team/amanda.jpg` (converted from the PNG attachment, 1448×1086).
-- **`/about` — team grid widened to four** — the Leadership grid was `md:grid-cols-3` with a three-entry style array, so a fourth member would have rendered with no accent color. Grid is now `sm:grid-cols-2 lg:grid-cols-4` and the style array has a fourth (brand gold) entry.
+- **`/about` — David Petlansky added** — Chief Technical Officer, with his own title, bio and photo ("profile picture", 2026-10-13). Photo saved as `public/team/david.jpg`.
+- **`/about` — Wesley Griffin placeholder** — listed as Chief Financial Officer with no photo and no bio yet. His card shows an initials monogram in its accent color; add `photo:` and `bio:` to his entry in `app/about/page.tsx` when they arrive.
+- **`/about` — photo is now optional on a team member** — a member without one renders a monogram rather than a broken image, so somebody can be listed the day they are announced.
+- **`/about` — grid and accent colors** — the Leadership grid was `md:grid-cols-3` with a hard-coded three-entry style array indexed by position, so a fourth member would have crashed the page. The palette now cycles (`i % palette.length`) and the grid is `sm:grid-cols-2 lg:grid-cols-3`, which seats the six members evenly.
+- **`/about` — numbered badges removed** — the 01–06 circles over each portrait are gone (David, 2026-10-13).
 
 ### September 9 scope (session 12)
 - **`/events` page — Add Event button removed** — The `+ Add Event` button and `AddEventModal` component have been removed entirely. The events calendar is now read-only. All event management happens via the Linksi admin dashboard (`linksi.impact-works.us/dashboard/admin?tab=events`).
@@ -244,15 +248,14 @@ Authors log in with the shared password and can create, edit, schedule, or publi
 
 ---
 
-### 11. Leadership photos — Wesley and David
+### 11. Leadership photo and bio — Wesley Griffin
 
-**Status:** Waiting on them. Raised by Connie on 2026-10-12, replying to Amanda's "Website photo" thread: *"we need to do the same for Wesley and David!"*
+**Status:** Partly closed. Raised by Connie on 2026-10-12 on Amanda's "Website photo" thread: *"we need to do the same for Wesley and David!"* David's went live on 2026-10-13; Wesley is on the site as a name and title only.
 
 **What's needed:**
 - [ ] Wesley — headshot and bio
-- [ ] David — headshot and bio
 
-Each one drops into the `team` array in `app/about/page.tsx` with a photo in `public/team/`. The grid already holds four across; a fifth and sixth member need another entry each in the `styles` array in that section, or they render with no accent color.
+He is already in the `team` array in `app/about/page.tsx` and his card renders a "WG" monogram. Add a photo to `public/team/` plus `photo:` and `bio:` on his entry and the card fills in — nothing else changes.
 
 ---
 

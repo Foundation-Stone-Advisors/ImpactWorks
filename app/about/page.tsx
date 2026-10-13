@@ -16,6 +16,11 @@ const team = [
   { name: "Heather Johnston", title: "Data & Systems Analyst", photo: "/team/heather.jpg",
     objectPosition: "center 8%",
     bio: "Heather brings 20+ years of administrative experience across for-profit, nonprofit, and military settings as a Navy veteran. She holds a BA in Psychology from UNF and serves as a licensed Pastoral Care Lay Leader for the Diocese of North Florida." },
+  // Photo and bio supplied by Amanda, 2026-10-11 ("Website photo"); bio is her own wording, unedited.
+  // Her headshot is landscape, so object-cover crops the sides and "center" keeps the face centered.
+  { name: "Amanda Ferris", title: "Chief Community Development Officer", photo: "/team/amanda.jpg",
+    objectPosition: "center center",
+    bio: "Amanda is Chief Community Development Officer of Impact Works, a Canadian-trained Naturopathic Doctor, and a community outreach coordinator for UF Health’s Early Intervention program. She brings people, ideas, and resources together, building relationships that encourage collaboration across sectors. Her heart is in addressing root causes and ensuring people have the support they need to thrive." },
 ];
 
 export default function About() {
@@ -284,7 +289,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ━━━ TEAM — unified 3-column, equal weight ━━━ */}
+      {/* ━━━ TEAM — unified grid, equal weight; 4-up on large screens ━━━ */}
       <section className="section-pad section-light-alt">
         <div className="max-w-site mx-auto">
           <ScrollReveal className="mb-12">
@@ -295,12 +300,15 @@ export default function About() {
             <p className="body-text-muted mt-4 max-w-xl">A team combining clinical expertise, operational rigor, and community roots.</p>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {team.map((member, i) => {
+              // One style per member — index into this directly, so it must stay
+              // at least as long as `team` or the card renders with no accent.
               const styles = [
                 { accent: "bg-brand-blue", bg: "bg-brand-blue/5", line: "bg-brand-blue" },
                 { accent: "bg-brand-green", bg: "bg-brand-green/5", line: "bg-brand-green" },
                 { accent: "bg-brand-orange", bg: "bg-brand-orange/5", line: "bg-brand-orange" },
+                { accent: "bg-brand-gold", bg: "bg-brand-gold/5", line: "bg-brand-gold" },
               ][i];
               return (
                 <ScrollReveal key={member.name} delay={i * 0.1}>

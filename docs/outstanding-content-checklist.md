@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-09-09 (session 12)
+**Last updated:** 2026-10-12 (session 13)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -53,6 +53,10 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page** — "Closed-Loop Referrals" added to Capabilities section (Equity angle: surfaces where residents fall through the cracks so communities can close service gaps)
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
+
+### October 12 scope (session 13)
+- **`/about` — Amanda Ferris added to Leadership** — Chief Community Development Officer, with the headshot and bio she sent on 2026-10-11 ("Website photo", Amanda → David, cc Connie). Bio is her own wording, unedited. Photo saved as `public/team/amanda.jpg` (converted from the PNG attachment, 1448×1086).
+- **`/about` — team grid widened to four** — the Leadership grid was `md:grid-cols-3` with a three-entry style array, so a fourth member would have rendered with no accent color. Grid is now `sm:grid-cols-2 lg:grid-cols-4` and the style array has a fourth (brand gold) entry.
 
 ### September 9 scope (session 12)
 - **`/events` page — Add Event button removed** — The `+ Add Event` button and `AddEventModal` component have been removed entirely. The events calendar is now read-only. All event management happens via the Linksi admin dashboard (`linksi.impact-works.us/dashboard/admin?tab=events`).
@@ -237,6 +241,18 @@ Authors log in with the shared password and can create, edit, schedule, or publi
 **What's needed:**
 - [ ] Confirm `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are set in Vercel environment variables
 - [ ] Confirm `get_impact_stats` RPC exists in Supabase and returns `{ referrals, individuals, partner_organizations }`
+
+---
+
+### 11. Leadership photos — Wesley and David
+
+**Status:** Waiting on them. Raised by Connie on 2026-10-12, replying to Amanda's "Website photo" thread: *"we need to do the same for Wesley and David!"*
+
+**What's needed:**
+- [ ] Wesley — headshot and bio
+- [ ] David — headshot and bio
+
+Each one drops into the `team` array in `app/about/page.tsx` with a photo in `public/team/`. The grid already holds four across; a fifth and sixth member need another entry each in the `styles` array in that section, or they render with no accent color.
 
 ---
 

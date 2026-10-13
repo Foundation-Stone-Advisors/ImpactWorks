@@ -56,11 +56,13 @@ This file is the single source of truth for what's still needed to fully complet
 
 ### October 12 scope (session 13)
 - **`/about` — Amanda Ferris added to Leadership** — Chief Community Development Officer, with the headshot and bio she sent on 2026-10-11 ("Website photo", Amanda → David, cc Connie). Bio is her own wording, unedited. Photo saved as `public/team/amanda.jpg` (converted from the PNG attachment, 1448×1086).
-- **`/about` — David Petlansky added** — Chief Technical Officer, with his own title, bio and photo ("profile picture", 2026-10-13). Photo saved as `public/team/david.jpg`.
+- **`/about` — David Petlansky added** — Chief Technical Officer, with his own title, bio and photo ("profile picture", 2026-10-12). Photo saved as `public/team/david.jpg`.
 - **`/about` — Wesley Griffin placeholder** — listed as Chief Financial Officer with no photo and no bio yet. His card shows an initials monogram in its accent color; add `photo:` and `bio:` to his entry in `app/about/page.tsx` when they arrive.
 - **`/about` — photo is now optional on a team member** — a member without one renders a monogram rather than a broken image, so somebody can be listed the day they are announced.
 - **`/about` — grid and accent colors** — the Leadership grid was `md:grid-cols-3` with a hard-coded three-entry style array indexed by position, so a fourth member would have crashed the page. The palette now cycles (`i % palette.length`) and the grid is `sm:grid-cols-2 lg:grid-cols-3`, which seats the six members evenly.
-- **`/about` — numbered badges removed** — the 01–06 circles over each portrait are gone (David, 2026-10-13).
+- **`/about` — numbered badges removed** — the 01–06 circles over each portrait are gone (David, 2026-10-12).
+- **Deployed and verified** — pushed to `main` on 2026-10-12; all six leadership cards confirmed live on `https://www.impact-works.us/about`.
+- **Still open from this session:** Wesley's photo and bio (item 11), and a reply to Amanda and Connie on the "Website photo" thread — nobody has answered it yet.
 
 ### September 9 scope (session 12)
 - **`/events` page — Add Event button removed** — The `+ Add Event` button and `AddEventModal` component have been removed entirely. The events calendar is now read-only. All event management happens via the Linksi admin dashboard (`linksi.impact-works.us/dashboard/admin?tab=events`).
@@ -250,7 +252,7 @@ Authors log in with the shared password and can create, edit, schedule, or publi
 
 ### 11. Leadership photo and bio — Wesley Griffin
 
-**Status:** Partly closed. Raised by Connie on 2026-10-12 on Amanda's "Website photo" thread: *"we need to do the same for Wesley and David!"* David's went live on 2026-10-13; Wesley is on the site as a name and title only.
+**Status:** Partly closed. Raised by Connie on 2026-10-12 on Amanda's "Website photo" thread: *"we need to do the same for Wesley and David!"* David's went live on 2026-10-12; Wesley is on the site as a name and title only.
 
 **What's needed:**
 - [ ] Wesley — headshot and bio

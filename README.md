@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Impact Works
 
-## Getting Started
+The public marketing and content site for Impact Works, live at
+<https://www.impact-works.us>. Next.js App Router, Tailwind, deployed on Vercel.
 
-First, run the development server:
+**This is not the application.** Linksi — the service-matching product this site
+markets — lives at `linksi.impact-works.us` in a separate repository, and most
+of the "Join", "Find Help", provider and host links here point out to it. A
+request that sounds like a site change is often a Linksi change, so confirm the
+string exists in this repo before editing. See `CLAUDE.md` for the rest of the
+context a newcomer needs.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Running it
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    npm install
+    npm run dev      # http://localhost:3000
+    npm run build    # the real gate — CI does not run on this repo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+On a shared dev box, run `devports` first and start on a free port:
+`npx next dev -p <port>`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+Vercel builds and deploys on push to `main`, so **a push is a publish.**
+`vercel.json` also registers a cron that publishes scheduled news posts every
+five minutes.
 
-To learn more about Next.js, take a look at the following resources:
+Server-side configuration is entirely Vercel environment variables; nothing is
+committed and there is no `.env` in the repo. `CLAUDE.md` lists each variable
+and how its absence shows up.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Where things are
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| | |
+| --- | --- |
+| `app/` | routes — one directory per page, plus `api/` route handlers |
+| `components/` | shared UI (`Nav`, `Footer`, `ScrollReveal`, `DarkBackdrop`) |
+| `lib/` | data and helpers, including the Find Help host rotation |
+| `public/team/` | leadership headshots used by `/about` |
+| `docs/outstanding-content-checklist.md` | what shipped, and what is still waiting on a person |
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The checklist is the single source of truth for outstanding work. Update it in
+the same commit as the change it describes.

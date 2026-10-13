@@ -20,7 +20,7 @@ const team = [
   // Wesley: name and title only, pending his photo and bio (Connie, 2026-10-12).
   { name: "Wesley Griffin", title: "Chief Financial Officer",
     bio: "" },
-  // Title, bio and photo from David, 2026-10-13 ("profile picture"). His photo is
+  // Title, bio and photo from David, 2026-10-12 ("profile picture"). His photo is
   // square and already tightly framed, so it needs no objectPosition nudge.
   { name: "David Petlansky", title: "Chief Technical Officer", photo: "/team/david.jpg",
     bio: "David brings over 20 years of experience in digital media production, filmmaking, and photography. As Chief Technical Officer, he manages and supports Linksi’s software application, leveraging artificial intelligence to improve functionality and streamline operations. He also brings his extensive creative expertise to the organization’s documentation, visual storytelling, and marketing efforts, helping communicate Linksi’s mission and community impact." },

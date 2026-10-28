@@ -7,7 +7,14 @@ import Link from "next/link";
 
 const TiptapEditor = dynamic(() => import("./TiptapEditor"), { ssr: false });
 
-const AUTHORS = ["Connie Thomas", "Michelle Reaves", "Heather Johnston", "Admin"];
+const AUTHORS = [
+  "Connie Thomas",
+  "Michelle Reaves",
+  "Heather Johnston",
+  "Amanda Ferris",
+  "David Petlansky",
+  "Admin",
+];
 
 interface PostData {
   id?: string;

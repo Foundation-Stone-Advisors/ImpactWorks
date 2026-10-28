@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-10-12 (session 13)
+**Last updated:** 2026-10-28 (session 14)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -53,6 +53,15 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page** — "Closed-Loop Referrals" added to Capabilities section (Equity angle: surfaces where residents fall through the cracks so communities can close service gaps)
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
+
+### October 28 scope (session 14)
+- **News post written — "Meet A.L.I.C.E. Experience – Clay County"** — the full event video (<https://youtu.be/42fDl9t7Zf4>) embedded, Impact Works' own write-up of the September 29 morning, seven photographs through the body and a sixteen-photo thumbnail gallery. The HTML is `docs/posts/meet-alice-experience-clay-county.html`; `docs/posts/README.md` is how it gets published.
+- **Preview route `/preview/alice`** — renders that file in the same shell `/news/[slug]` uses. A draft post is not readable from the public site, so without this there was no way to look at a photo-led post before publishing it. Marked `noindex`.
+- **Photographs — `public/images/alice/`** — 23 images selected from the 180 in SharePoint (`FSA Marketing Clients/Impact Works Marketing/ALICE/Photos`), resized to 1400px for the body and 1100px for the gallery, 2.1 MB in total.
+- **Post editor — photos and an HTML view** — the editor had no image extension at all, so a photograph pasted into a post was silently dropped. Added `@tiptap/extension-image` (pinned to 3.27.1, which is the version its peer range allows against the installed core), a **🖼 Photo** toolbar button, and a **`</>` HTML** source view. A post containing a gallery, a figure or a table now opens in the HTML view and warns before switching away from it.
+- **Post editor — author list** — Amanda Ferris and David Petlansky added.
+- **`.prose-content` styles** — figures with captions, and a `.photo-grid` gallery at 2 / 3 / 4 columns whose tiles link to the full photo. No JavaScript: a post body is injected with `dangerouslySetInnerHTML`.
+- **Still open from this session:** the post itself is not published — see item 12.
 
 ### October 12 scope (session 13)
 - **`/about` — Amanda Ferris added to Leadership** — Chief Community Development Officer, with the headshot and bio she sent on 2026-10-11 ("Website photo", Amanda → David, cc Connie). Bio is her own wording, unedited. Photo saved as `public/team/amanda.jpg` (converted from the PNG attachment, 1448×1086).
@@ -247,6 +256,23 @@ Authors log in with the shared password and can create, edit, schedule, or publi
 **What's needed:**
 - [ ] Confirm `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are set in Vercel environment variables
 - [ ] Confirm `get_impact_stats` RPC exists in Supabase and returns `{ referrals, individuals, partner_organizations }`
+
+---
+
+### 12. Publish the Meet A.L.I.C.E. post (David's action)
+
+**Status:** Written and previewable, not published. Raised by David on 2026-10-28.
+
+Everything the post needs is in the repo and deployed. Publishing it needs the
+`/news/admin` password, which is not on this box, so the last step is David's:
+
+- [ ] Check the layout at <https://www.impact-works.us/preview/alice>
+- [ ] Open `/news/admin/new`, title it **Meet A.L.I.C.E. Experience – Clay County**, author **David Petlansky**
+- [ ] Click **`</>` HTML** and paste `docs/posts/meet-alice-experience-clay-county.html` whole
+- [ ] Write the excerpt by hand, then publish
+- [ ] Share `/news/meet-alice-experience-clay-county` to the socials
+
+Steps and the reasoning behind them: `docs/posts/README.md`.
 
 ---
 

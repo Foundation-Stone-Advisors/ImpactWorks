@@ -58,7 +58,8 @@ This file is the single source of truth for what's still needed to fully complet
 - **News post written — "The Linksi Podcast #1 — Mercy Support Services"** — launches the podcast series. The episode video (<https://youtu.be/nc52IjiLPJw>) embedded, a cover photograph, a write-up of Mercy Support Services compiled from their own site (mission, Self-Sufficiency Program, Mercy Village), and their direct Linksi listing at <https://linksi.org/find-help/mercy-support-services>. Guests: Carmen Queen, Director of Development, and Rev. Dr. Phyllis Simpson, Director of Programs. The HTML is `docs/posts/linksi-podcast-01-mercy-support-services.html`.
 - **Preview route generalized** — `app/preview/alice/` replaced by `app/preview/[slug]/`, which prerenders one page per entry in its `PREVIEWS` map. `/preview/alice` still resolves; the new post previews at `/preview/podcast-01`. Both `noindex`.
 - **Social previews now carry the cover photo** — `/news/[slug]` had no image in its Open Graph tags, so a post shared to Facebook or LinkedIn showed text only. The post's first `<img>` is now used as the OG and Twitter card image. There is no image column on `news_posts`, so the cover photo is simply the first photograph in the body.
-- **Still open from this session:** the cover photograph is not in the repo and the post is not published — see item 13.
+- **Cover art — `public/images/podcast/linksi-podcast-01-mercy-support-services.jpg`** — the episode cover, 1280×720, 224 KB. The source PNG in SharePoint (`Impact Works Marketing/The Linksi Podcast/episode 1 Mercy now.png`) is 10 MB, past what the Microsoft 365 connector will hand over, so the same artwork was taken from the episode's own thumbnail at the size the web wants anyway.
+- **Still open from this session:** the post is written and previewable, not published — see item 13.
 
 ### October 28 scope (session 14)
 - **News post written — "Meet A.L.I.C.E. Experience – Clay County"** — the full event video (<https://youtu.be/42fDl9t7Zf4>) embedded, Impact Works' own write-up of the September 29 morning, seven photographs through the body and a sixteen-photo thumbnail gallery. The HTML is `docs/posts/meet-alice-experience-clay-county.html`; `docs/posts/README.md` is how it gets published.
@@ -274,22 +275,16 @@ share buttons at the foot of the post generate links for.
 
 ---
 
-### 13. The Linksi Podcast #1 — cover photo and publish (David's action)
+### 13. Publish The Linksi Podcast #1 (David's action)
 
-**Status:** Written and typechecked, not previewable or publishable yet. Raised by David on 2026-11-23.
+**Status:** Written, previewable, not published. Raised by David on 2026-11-23.
 
-The post is `docs/posts/linksi-podcast-01-mercy-support-services.html` and it
-expects the cover photograph at
-`public/images/podcast/linksi-podcast-01-mercy-support-services.jpg`. That file
-is still in SharePoint — the Microsoft 365 connector lost its sign-in mid-session,
-so it could not be pulled down. Nothing is pushed until the photo is in, because
-the post and the preview would both show a broken image.
+Everything the post needs is in the repo and deployed. Publishing it needs the
+`/news/admin` password, so the last step is David's:
 
-- [ ] Re-authenticate the Microsoft 365 connector (`/mcp`), or drop the photo into `public/images/podcast/` by hand
-- [ ] Optimize it to roughly 1400px wide and commit it with the post
 - [ ] Check the layout at <https://www.impact-works.us/preview/podcast-01>
 - [ ] Open `/news/admin/new`, title it **The Linksi Podcast #1 — Mercy Support Services**, author **David Petlansky**
-- [ ] Click **`</>` HTML** and paste the file whole
+- [ ] Click **`</>` HTML** and paste `docs/posts/linksi-podcast-01-mercy-support-services.html` whole
 - [ ] Write the excerpt by hand, then publish
 - [ ] Share `/news/the-linksi-podcast-1-mercy-support-services` to the socials, and send Mercy the link
 

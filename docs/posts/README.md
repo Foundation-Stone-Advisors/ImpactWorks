@@ -55,4 +55,4 @@ JavaScript.
 | File | Status |
 | --- | --- |
 | `meet-alice-experience-clay-county.html` | Published 2026-10-28. Preview at `/preview/alice`. |
-| `linksi-podcast-01-mercy-support-services.html` | Written 2026-11-23. Preview at `/preview/podcast-01`. Waiting on the cover photo. |
+| `linksi-podcast-01-mercy-support-services.html` | Written 2026-11-23. Preview at `/preview/podcast-01`. |

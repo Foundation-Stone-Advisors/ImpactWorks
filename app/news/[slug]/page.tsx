@@ -19,6 +19,15 @@ async function getPost(slug: string) {
   return data;
 }
 
+// The news card and the social preview have no image field of their own, so
+// the post's own cover photo — its first <img> — doubles as the OG image.
+function firstImage(content: string): string | undefined {
+  const match = content?.match(/<img[^>]+src="([^"]+)"/i);
+  if (!match) return undefined;
+  const src = match[1];
+  return src.startsWith("http") ? src : `https://www.impact-works.us${src}`;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -27,6 +36,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPost(slug);
   if (!post) return {};
+  const image = firstImage(post.content);
   return {
     title: `${post.title} | Impact Works News`,
     description: post.excerpt,
@@ -36,6 +46,13 @@ export async function generateMetadata({
       url: `https://www.impact-works.us/news/${post.slug}`,
       siteName: "Impact Works",
       type: "article",
+      ...(image ? { images: [{ url: image }] } : {}),
+    },
+    twitter: {
+      card: image ? "summary_large_image" : "summary",
+      title: post.title,
+      description: post.excerpt,
+      ...(image ? { images: [image] } : {}),
     },
   };
 }

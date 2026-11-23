@@ -1,6 +1,6 @@
 # Outstanding Content Checklist
 
-**Last updated:** 2026-10-28 (session 14)
+**Last updated:** 2026-11-23 (session 15)
 **Status:** Site is live at [https://www.impact-works.us](https://www.impact-works.us). The items below are content, copy, decisions, or new pages that were deferred because they require input from stakeholders (numbers, copy, page content, donation flow decisions) rather than design/code work.
 
 This file is the single source of truth for what's still needed to fully complete the site.
@@ -54,6 +54,12 @@ This file is the single source of truth for what's still needed to fully complet
 - **Platform page process map image** — "Linksy Matches Services" corrected to "Linksi Matches Services" in step 2 label
 - **`/join` page** — simplified to two cards: Sign In (→ `https://linksy.impact-works.us/auth/login`) and Register Your Organization (→ `https://linksy.impact-works.us/join/provider`); Redeem an Invitation and Request Access removed
 
+### November 23 scope (session 15)
+- **News post written — "The Linksi Podcast #1 — Mercy Support Services"** — launches the podcast series. The episode video (<https://youtu.be/nc52IjiLPJw>) embedded, a cover photograph, a write-up of Mercy Support Services compiled from their own site (mission, Self-Sufficiency Program, Mercy Village), and their direct Linksi listing at <https://linksi.org/find-help/mercy-support-services>. Guests: Carmen Queen, Director of Development, and Rev. Dr. Phyllis Simpson, Director of Programs. The HTML is `docs/posts/linksi-podcast-01-mercy-support-services.html`.
+- **Preview route generalized** — `app/preview/alice/` replaced by `app/preview/[slug]/`, which prerenders one page per entry in its `PREVIEWS` map. `/preview/alice` still resolves; the new post previews at `/preview/podcast-01`. Both `noindex`.
+- **Social previews now carry the cover photo** — `/news/[slug]` had no image in its Open Graph tags, so a post shared to Facebook or LinkedIn showed text only. The post's first `<img>` is now used as the OG and Twitter card image. There is no image column on `news_posts`, so the cover photo is simply the first photograph in the body.
+- **Still open from this session:** the cover photograph is not in the repo and the post is not published — see item 13.
+
 ### October 28 scope (session 14)
 - **News post written — "Meet A.L.I.C.E. Experience – Clay County"** — the full event video (<https://youtu.be/42fDl9t7Zf4>) embedded, Impact Works' own write-up of the September 29 morning, seven photographs through the body and a sixteen-photo thumbnail gallery. The HTML is `docs/posts/meet-alice-experience-clay-county.html`; `docs/posts/README.md` is how it gets published.
 - **Preview route `/preview/alice`** — renders that file in the same shell `/news/[slug]` uses. A draft post is not readable from the public site, so without this there was no way to look at a photo-led post before publishing it. Marked `noindex`.
@@ -61,7 +67,7 @@ This file is the single source of truth for what's still needed to fully complet
 - **Post editor — photos and an HTML view** — the editor had no image extension at all, so a photograph pasted into a post was silently dropped. Added `@tiptap/extension-image` (pinned to 3.27.1, which is the version its peer range allows against the installed core), a **🖼 Photo** toolbar button, and a **`</>` HTML** source view. A post containing a gallery, a figure or a table now opens in the HTML view and warns before switching away from it.
 - **Post editor — author list** — Amanda Ferris and David Petlansky added.
 - **`.prose-content` styles** — figures with captions, and a `.photo-grid` gallery at 2 / 3 / 4 columns whose tiles link to the full photo. No JavaScript: a post body is injected with `dangerouslySetInnerHTML`.
-- **Still open from this session:** the post itself is not published — see item 12.
+- **Published 2026-10-28** — <https://www.impact-works.us/news/meet-alice-experience-clay-county>, first card on `/news`.
 
 ### October 12 scope (session 13)
 - **`/about` — Amanda Ferris added to Leadership** — Chief Community Development Officer, with the headshot and bio she sent on 2026-10-11 ("Website photo", Amanda → David, cc Connie). Bio is her own wording, unedited. Photo saved as `public/team/amanda.jpg` (converted from the PNG attachment, 1448×1086).
@@ -259,18 +265,33 @@ Authors log in with the shared password and can create, edit, schedule, or publi
 
 ---
 
-### 12. Publish the Meet A.L.I.C.E. post (David's action)
+### 12. Meet A.L.I.C.E. post ✅ Published 2026-10-28
 
-**Status:** Written and previewable, not published. Raised by David on 2026-10-28.
+Live at <https://www.impact-works.us/news/meet-alice-experience-clay-county> —
+video, seven body photographs and the sixteen-photo gallery all render, bylined
+David Petlansky. The only step left is sharing it to the socials, which the
+share buttons at the foot of the post generate links for.
 
-Everything the post needs is in the repo and deployed. Publishing it needs the
-`/news/admin` password, which is not on this box, so the last step is David's:
+---
 
-- [ ] Check the layout at <https://www.impact-works.us/preview/alice>
-- [ ] Open `/news/admin/new`, title it **Meet A.L.I.C.E. Experience – Clay County**, author **David Petlansky**
-- [ ] Click **`</>` HTML** and paste `docs/posts/meet-alice-experience-clay-county.html` whole
+### 13. The Linksi Podcast #1 — cover photo and publish (David's action)
+
+**Status:** Written and typechecked, not previewable or publishable yet. Raised by David on 2026-11-23.
+
+The post is `docs/posts/linksi-podcast-01-mercy-support-services.html` and it
+expects the cover photograph at
+`public/images/podcast/linksi-podcast-01-mercy-support-services.jpg`. That file
+is still in SharePoint — the Microsoft 365 connector lost its sign-in mid-session,
+so it could not be pulled down. Nothing is pushed until the photo is in, because
+the post and the preview would both show a broken image.
+
+- [ ] Re-authenticate the Microsoft 365 connector (`/mcp`), or drop the photo into `public/images/podcast/` by hand
+- [ ] Optimize it to roughly 1400px wide and commit it with the post
+- [ ] Check the layout at <https://www.impact-works.us/preview/podcast-01>
+- [ ] Open `/news/admin/new`, title it **The Linksi Podcast #1 — Mercy Support Services**, author **David Petlansky**
+- [ ] Click **`</>` HTML** and paste the file whole
 - [ ] Write the excerpt by hand, then publish
-- [ ] Share `/news/meet-alice-experience-clay-county` to the socials
+- [ ] Share `/news/the-linksi-podcast-1-mercy-support-services` to the socials, and send Mercy the link
 
 Steps and the reasoning behind them: `docs/posts/README.md`.
 
